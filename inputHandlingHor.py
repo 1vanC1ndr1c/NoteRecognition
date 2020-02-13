@@ -2,23 +2,20 @@ import cv2
 import numpy as np
 import os
 # TODO - make it into a function that has an arg = path(str)
-image_filename = "img02.jpg"                                                         # image Name
-img = cv2.imread(image_filename)                                                     # read
+file_name = "img02.jpg"                                                         # image Name
+img = cv2.imread(file_name)                                                     # read
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)                                         # transform into gray img
 th, thr = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)     # pixels have 1 of 2 values
-nonZeroElements = cv2.findNonZero(thr)                                               # find the non zero pixels
-nonZeroMinArea = cv2.minAreaRect(nonZeroElements)                                    # mark the area with a rectangle
+non_zero_elements = cv2.findNonZero(thr)                                             # find the non zero pixels
+non_zero_min_area = cv2.minAreaRect(non_zero_elements)                               # mark the area with a rectangle
 
-(cx, cy), (w, h), ang = nonZeroMinArea                                               # find rotated matrix
+(cx, cy), (w, h), ang = non_zero_min_area                                            # find rotated matrix
 M = cv2.getRotationMatrix2D((cx, cy), ang, 1.0)
 rotated = cv2.warpAffine(thr, M, (img.shape[1], img.shape[0]))                       # do the rotation
 
-#TODO filter out noise
-
-# cv2.imwrite("preborder.jpg",rotated)                                               # expand to fit A4 format
-bordered = cv2.copyMakeBorder(rotated,0,int((W*1.414)-H),0,0,cv2.BORDER_CONSTANT,value=[0, 0, 0])
-# cv2.imwrite("border.jpg",bordered)
+# expand to fit A4 format
+bordered = cv2.copyMakeBorder(rotated, 0, int((w*1.414)-h), 0, 0, cv2.BORDER_CONSTANT, value=[0, 0, 0])
 
 hist = cv2.reduce(rotated, 1, cv2.REDUCE_AVG).reshape(-1)                            # reduce matrix to a vector
 
@@ -49,13 +46,12 @@ for s in slices:
     valid_slices_pixel_mean.append(np.mean(s))
 mean = np.mean(valid_slices_pixel_mean)                                            # find the mean value of all slices
 
-
 j = 0
 for i in range(len(slices)):                                                        # save the valid slices
     # wanted slices have approximately the same mean of pixels, ignore the unwanted lines(+- 15% of mean)
     if 1.30 * mean > valid_slices_pixel_mean[i] > 0.70 * mean:
         sliceName = "slice" + str(j) + ".jpg"                                       # slice naming
-        path = "resources/" + image_filename[:-4] + "/"                             # directory for the slices
+        path = "resources/" + file_name[:-4] + "/"                             # directory for the slices
         try:                                                                        # create the dir if it doesn't exist
             os.makedirs(path)
         except FileExistsError:
