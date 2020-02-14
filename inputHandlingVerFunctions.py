@@ -152,6 +152,7 @@ def get_element_coordinates(dilated_img, hist):
     return x_cut_start, x_cut_end                            # return starting and ending coordinates
 
 
+
 def get_elements_from_image(path, x_cut_start, x_cut_end, img, element_number):
     # The def gets the coordinates of the symbols in the image. Those symbols are then cut out and saved.
     # If a part of the image that is cut out is greater than 75 pixels, that usually means that there are more
@@ -165,6 +166,7 @@ def get_elements_from_image(path, x_cut_start, x_cut_end, img, element_number):
 
     large_elements = []                                                 # parts of the image that need to be cut further
     large_elements_index = []                                           # the corresponding indexes of the large parts
+    large_elements_coords = []
     h, w = img.shape[:2]                                                # image dimensions
 
     for i in range(len(x_cut_start)):                                   # iterate through the 'cut coordinates'
@@ -184,6 +186,9 @@ def get_elements_from_image(path, x_cut_start, x_cut_end, img, element_number):
         elif len(element[0]) >= 75:                                     # if the element is too big
             large_elements.append(element)                              # save it into large_elements list
             large_elements_index.append(element_number)                 # and save it's index
+            large_element_position = (x_cut_start[i], x_cut_end[i])
+            large_elements_coords.append(large_element_position)
+
         element_number = element_number + 1                             # increase the indexing number
 
     large_part_index = 0                                                # additional index used in splitting large imgs
@@ -192,19 +197,32 @@ def get_elements_from_image(path, x_cut_start, x_cut_end, img, element_number):
         removed_noise_element = erode_dilate(el)
         # get both versions of the image (see def)
         one_side_crop_org_img, both_side_crop = crop_image_again(removed_noise_element, el)
+
         # find the histogram of remove_noise_image cropped from both sides
         hist = find_histogram(both_side_crop)
         # find the cut coordinates of remove_noise_image cropped from both sides
-        x_cut_start, x_cut_end = get_element_coordinates(both_side_crop, hist)
+        large_el_x_cut_start, large_el_x_cut_end = get_element_coordinates(both_side_crop, hist)
+        cv2.waitKey(0)
         # replace the original element with the half - cropped one (half crop explained in def crop_image_again())
         el = one_side_crop_org_img
-
-        h, w = el.shape[:2]                                                         # image dimensions
-        for i in range(len(x_cut_start)):
-            if x_cut_start[i] - 3 > 0 and x_cut_end[i] + 3 < w - 1:
-                element = el[0:h, x_cut_start[i] - 3:x_cut_end[i] + 3]              # cut the element from the image
+        # image dimensions
+        h_el, w_el = el.shape[:2]
+        # iterate through the 'cut coordinates'
+        for i in range(len(large_el_x_cut_start)):
+            # expand the first slice to the left using the original image if there are pixels to expand at that location
+            if i == 0 and large_elements_coords[0][0] > 3:
+                # start coordinate for cutting
+                first_x = large_elements_coords[0][0]
+                # end coordinate for cutting
+                last_x = first_x + large_el_x_cut_end[i] - large_el_x_cut_start[i]
+                # remove data after using it
+                # extract the part from the original image
+                element = img[0:h, first_x - 3:last_x + 2]
+            # expand the last slice to the right
+            elif i == len(large_el_x_cut_start) - 1:
+                element = el[0:h_el, large_el_x_cut_start[i] - 10: w_el -1]
             else:
-                element = el[0:h, x_cut_start[i]:x_cut_end[i]]
+                element = el[0:h_el, large_el_x_cut_start[i]:large_el_x_cut_end[i]]
             element_name = "el" + str(large_elements_index[large_part_index]).zfill(5) +\
                            "part" + str(i) + ".jpg"         # generate the element name
             if 4 < len(element[0]):
@@ -213,5 +231,4 @@ def get_elements_from_image(path, x_cut_start, x_cut_end, img, element_number):
                 except:  # else, skip that element
                     pass
         large_part_index = large_part_index + 1
-
     return element_number
