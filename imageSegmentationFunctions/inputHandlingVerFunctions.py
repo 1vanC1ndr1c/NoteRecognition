@@ -67,9 +67,7 @@ def crop_image_again(removed_noise_img, org_img):
             found_left = True
 
         # get the means from the right side
-        it_right = it_right - 1                                             # calculate the right side iterator
         column_mean_right = img_column_means[it_right]                      # get the right side mean
-
         if column_mean_right >= max_mean_right and found_right is False:    # find the right local max
             max_mean_right = column_mean_right                              # save right local max
             max_mean_index_right = it_right                                 # save the index of said right local maximum
@@ -79,18 +77,22 @@ def crop_image_again(removed_noise_img, org_img):
         if found_left is True and found_right is True:                      # if both maximums found, stop the search
             break
 
+        it_right = it_right - 1                                             # calculate the right side iterator
+
     # get the distance of the right maximum from the right edge
     max_mean_index_right = len(img_column_means) - 1 - max_mean_index_right
 
+    # left cut
     for i, column_mean in enumerate(img_column_means):                  # go horizontally; len(img[0]) = no. of columns
         if column_mean > img_mean:                                      # cut away the spaces before score lines
             if max_mean_index_left < max_mean_index_right:              # if max is closer on the left , crop left
                 # crop the original image only if the local maximum is on the left side
                 org_img = org_img[0:h, i:len(org_img[0])]
             # make a cropped version of the removed noise image
-            removed_noise_img = org_img[0:h, i:len(org_img[0])]
+            removed_noise_img = removed_noise_img[0:h, i:len(org_img[0])]
             break                                                       # break when done
 
+    # right cut
     for i in range(len(img_column_means) - 1, 0, -1):                   # go backwards (end to 0, with step being -1)
         column_mean = img_column_means[i]                               # calculate the mean of every column
         if column_mean > img_mean:                                      # cut away the spaces after score lines
@@ -98,7 +100,7 @@ def crop_image_again(removed_noise_img, org_img):
                 # crop the original image only if the local maximum is on the right side
                 org_img = org_img[0:h, 0:i]
             # make a cropped version of the removed noise image
-            removed_noise_img = org_img[0:h, 0:i]
+            removed_noise_img = removed_noise_img[0:h, 0:i]
             break                                                       # break when done
 
     return org_img, removed_noise_img,                                  # return one-side crop and both-side crop
@@ -171,9 +173,9 @@ def get_elements_from_image(path, x_cut_start, x_cut_end, img, element_number):
 
     for i in range(len(x_cut_start)):                                   # iterate through the 'cut coordinates'
         # make the crop area a bit bigger if the coordinates are not at the start or the end of the image
+        # else  if the coordinates are the start or the end of the image, cut the minimum required area
         if x_cut_start[i] - 3 > 0 and x_cut_end[i] + 3 < w - 1:
-            element = img[0:h, x_cut_start[i] - 3:x_cut_end[i] + 3]     # cut the element from the image
-        # if the coordinates are the start or the end of the image, cut the minimum required area
+            element = img[0:h, x_cut_start[i] - 3:x_cut_end[i] + 3]
         else:
             element = img[0:h, x_cut_start[i]:x_cut_end[i]]
 
@@ -194,41 +196,41 @@ def get_elements_from_image(path, x_cut_start, x_cut_end, img, element_number):
     large_part_index = 0                                                # additional index used in splitting large imgs
     for el in large_elements:                                           # iterate over elements in large elements
         # firstly, remove noise from the image(erode + dilate + erode)
-        removed_noise_element = erode_dilate(el)
-        # get both versions of the image (see def)
-        one_side_crop_org_img, both_side_crop = crop_image_again(removed_noise_element, el)
-
+        # then get both versions of the image (see def 'crop_image_again():' above)
         # find the histogram of remove_noise_image cropped from both sides
-        hist = find_histogram(both_side_crop)
-        # find the cut coordinates of remove_noise_image cropped from both sides
-        large_el_x_cut_start, large_el_x_cut_end = get_element_coordinates(both_side_crop, hist)
-        cv2.waitKey(0)
+        # find the coordinates where the image will be cut of 'remove_noise_image' cropped from both sides
         # replace the original element with the half - cropped one (half crop explained in def crop_image_again())
+
+        removed_noise_element = erode_dilate(el)
+        one_side_crop_org_img, both_side_crop = crop_image_again(removed_noise_element, el)
+        hist = find_histogram(both_side_crop)
+        large_el_x_cut_start, large_el_x_cut_end = get_element_coordinates(both_side_crop, hist)
         el = one_side_crop_org_img
-        # image dimensions
-        h_el, w_el = el.shape[:2]
-        # iterate through the 'cut coordinates'
-        for i in range(len(large_el_x_cut_start)):
+
+        h_el, w_el = el.shape[:2]                                       # image dimensions
+
+        for i in range(len(large_el_x_cut_start)):                      # iterate through the 'cut coordinates'
             # expand the first slice to the left using the original image if there are pixels to expand at that location
+            # first_x = get the coordinates from the original image
+            # last_x = second coordinate found in original image by adding the width of the cut element
+            # this enables adding additional pixels on both side that aren't found in the already cut image pare
             if i == 0 and large_elements_coords[0][0] > 3:
-                # start coordinate for cutting
                 first_x = large_elements_coords[0][0]
-                # end coordinate for cutting
                 last_x = first_x + large_el_x_cut_end[i] - large_el_x_cut_start[i]
-                # remove data after using it
-                # extract the part from the original image
-                element = img[0:h, first_x - 3:last_x + 2]
-            # expand the last slice to the right
-            elif i == len(large_el_x_cut_start) - 1:
-                element = el[0:h_el, large_el_x_cut_start[i] - 10: w_el -1]
-            else:
-                element = el[0:h_el, large_el_x_cut_start[i]:large_el_x_cut_end[i]]
+                element = img[0:h, first_x - 3:last_x + 15]
+            elif i == len(large_el_x_cut_start) - 1:                    # expand the last slice to the right
+                element = el[0:h_el, large_el_x_cut_start[i] - 10: w_el - 1]
+            else:                                                       # else - slices in the middle
+                element = el[0:h_el, large_el_x_cut_start[i] - 2:large_el_x_cut_end[i] + 2]
             element_name = "el" + str(large_elements_index[large_part_index]).zfill(5) +\
-                           "part" + str(i) + ".jpg"         # generate the element name
-            if 4 < len(element[0]):
-                try:  # if the element is not null
-                    cv2.imwrite(path + element_name, element)  # save the elements in the directory
-                except:  # else, skip that element
+                           "part" + str(i) + ".jpg"
+
+            if 4 < len(element[0]):                                     # ignore elements smaller than 4 pixels
+                try:                                                    # if the element is not null
+                    cv2.imwrite(path + element_name, element)           # save the elements in the directory
+                except:                                                 # else, skip that element
                     pass
-        large_part_index = large_part_index + 1
-    return element_number
+        large_part_index = large_part_index + 1                         # indexing number for the parts of the large img
+        large_elements_coords.remove(large_elements_coords[0])          # remove the coords of the first large image
+
+    return element_number                                               # return the update element number
