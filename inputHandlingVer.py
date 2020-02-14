@@ -7,7 +7,7 @@ from inputHandlingVerFunctions import get_element_coordinates
 from inputHandlingVerFunctions import get_elements_from_image
 # TODO - make it into a function that has an arg = path(str)
 
-path = ".\\resources\\img02\\"                                         # image location
+path = ".\\resources\\img04\\"                                         # image location
 
 images = []                                                            # get all the image names in the directory
 for r, d, f in os.walk(path):                                          # r=root, d=directories, f = files
@@ -30,8 +30,8 @@ for image_name in images:                                             # process 
     # get the updated element number and cut out all the symbols into separate images
     elementNumber = get_elements_from_image(path, x_cut_start, x_cut_end, img, elementNumber)
 
-for fileName in os.listdir(path):                                   # delete redundant images from the previous step
-    if fileName.startswith("slice"):
-        os.remove(os.path.join(path, fileName))
+# for fileName in os.listdir(path):                                   # delete redundant images from the previous step
+#     if fileName.startswith("slice"):
+#         os.remove(os.path.join(path, fileName))
 
 

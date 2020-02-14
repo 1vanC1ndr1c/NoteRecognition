@@ -1,9 +1,24 @@
 import cv2
 import numpy as np
 import os
+
 # TODO - make it into a function that has an arg = path(str)
-file_name = "img02.jpg"                                                         # image Name
-img = cv2.imread(file_name)                                                     # read
+file_name = "img04.png"
+# image Name
+
+
+if file_name.endswith(".png"):                                                        # if .png, convert to .jpg
+    img = cv2.imread(file_name, cv2.IMREAD_UNCHANGED)
+    b, g, r, a = cv2.split(img)
+    new_img = cv2.merge((b, g, r))
+    not_a = cv2.bitwise_not(a)
+    not_a = cv2.cvtColor(not_a, cv2.COLOR_GRAY2BGR)
+    new_img = cv2.bitwise_and(new_img, new_img, mask=a)
+    new_img = cv2.add(new_img, not_a)
+    img = new_img
+
+else:
+    img = cv2.imread(file_name)                                                     # read
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)                                         # transform into gray img
 th, thr = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)     # pixels have 1 of 2 values
@@ -11,6 +26,8 @@ non_zero_elements = cv2.findNonZero(thr)                                        
 non_zero_min_area = cv2.minAreaRect(non_zero_elements)                               # mark the area with a rectangle
 
 (cx, cy), (w, h), ang = non_zero_min_area                                            # find rotated matrix
+if abs(ang) < 1:                                                                     # ignore small rot. adjustment
+    ang = 0
 M = cv2.getRotationMatrix2D((cx, cy), ang, 1.0)
 rotated = cv2.warpAffine(thr, M, (img.shape[1], img.shape[0]))                       # do the rotation
 
