@@ -154,7 +154,7 @@ def get_element_coordinates(dilated_img, hist):
     return x_cut_start, x_cut_end                            # return starting and ending coordinates
 
 
-
+# TODO make cuts relative with percentage * sizes instead of fixed number of pixels
 def get_elements_from_image(path, x_cut_start, x_cut_end, img, element_number):
     # The def gets the coordinates of the symbols in the image. Those symbols are then cut out and saved.
     # If a part of the image that is cut out is greater than 75 pixels, that usually means that there are more
