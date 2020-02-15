@@ -8,8 +8,6 @@ def input_handling_hor(file_name):
     # This def gets as an input an image ('.jpg' or '.png' and produces a number of images corresponding to the
     # number of horizontal lines that contain notes in the original (input) image.
 
-    file_name = ".\\imageSegmentationFunctions\\img05.png"
-
     if file_name.endswith(".png"):                                                    # if .png, convert to .jpg
         img = cv2.imread(file_name, cv2.IMREAD_UNCHANGED)
         b, g, r, a = cv2.split(img)
@@ -35,16 +33,21 @@ def input_handling_hor(file_name):
     (cx, cy), (w, h), ang = non_zero_min_area                                          # find rotated matrix
     if abs(ang) < 1:                                                                   # ignore small rot. adjustment
         ang = 0
-    M = cv2.getRotationMatrix2D((cx, cy), ang, 1.0)
-    rotated = cv2.warpAffine(thr, M, (img.shape[1], img.shape[0]))                     # do the rotation
+    m = cv2.getRotationMatrix2D((cx, cy), ang, 1.0)
+    rotated = cv2.warpAffine(thr, m, (img.shape[1], img.shape[0]))                     # do the rotation
 
-    # expand to fit A4 format
-    bordered = cv2.copyMakeBorder(rotated, 0, int((w*1.414)-h), 0, 0, cv2.BORDER_CONSTANT, value=[0, 0, 0])
+    h, w = rotated.shape[:2]                                                           # picture dimensions
+    # expand to fit A4 format, if the image is shorter than a4
+    if (int(w*1.414 - h)) > 1:
+        bordered = cv2.copyMakeBorder(rotated, 0, int((w*1.414 - h)), 0, 0, cv2.BORDER_CONSTANT, value=[0, 0, 0])
+        # make the image a standard size
+    else:
+        bordered = rotated
 
     hist = cv2.reduce(rotated, 1, cv2.REDUCE_AVG).reshape(-1)                          # reduce matrix to a vector
 
     th = 2                                                                             # number found experimentally
-    h, w = img.shape[:2]                                                               # picture dimensions
+    h, w = bordered.shape[:2]                                                          # picture dimensions
 
     upper_bound = [y for y in range(h - 1) if hist[y] <= th < hist[y + 1]]             # upper bounds
     lower_bound = [y for y in range(h - 1) if hist[y] > th >= hist[y + 1]]             # lower bounds

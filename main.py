@@ -3,9 +3,10 @@ from pathlib import Path
 
 
 def main():
+
     img_name = "img05.png"
     parent = str(Path(__file__).parent)
-    path = parent + "\\resources-input-images\\" + img_name
+    path = parent + ".\\resources_input_images\\" + img_name
     input_handling(path)
 
 
