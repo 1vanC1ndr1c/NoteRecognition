@@ -34,6 +34,6 @@ def input_handling_ver(path):
         # get the updated element number and cut out all the symbols into separate images
         element_number = get_elements_from_image(path, x_cut_start, x_cut_end, img, element_number)
 
-    for fileName in os.listdir(path):                                 # delete redundant images (from the previous step)
-        if fileName.startswith("slice"):
-            os.remove(os.path.join(path, fileName))
+    # for fileName in os.listdir(path):                                 # delete redundant images (from the previous step)
+    #     if fileName.startswith("slice"):
+    #         os.remove(os.path.join(path, fileName))

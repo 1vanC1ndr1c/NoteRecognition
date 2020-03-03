@@ -23,11 +23,14 @@ def crop_image(img):
             img = img[0:h, i:len(img[0])]                               # crop the image
             break                                                       # break when done
 
+    img_column_means = np.mean(img, axis=0)                             # calculate the means of img cropped from left
+
     for i in range(len(img_column_means) - 1, 0, -1):                   # go backwards (end to 0, with step being -1)
         column_mean = img_column_means[i]                               # calculate the mean of every column
         if column_mean > img_mean:                                      # cut away the spaces after score lines
             img = img[0:h, 0:i]                                         # crop the image
             break                                                       # break when done
+
     return img                                                          # return the cropped image
 
 
@@ -35,7 +38,7 @@ def crop_image_again(removed_noise_img, org_img):
     # The def crops the image in two different ways:
     # 1. crop the image from both sides so that everything up to the first local maximum is removed.
     # 2. crop the image only from the side which has the local maximum closer to it.
-    # The 2. is needed because of the way that  connected 8th notes when have their means calculated.
+    # The 2. is needed because of the way that  connected 8th notes have their means calculated.
     # Cropping without checking (1.) leads to the last note (depending on the vertical orientation) being cut.
     # The 2. crop insures that last note is not cut. But still, for the needs of a histogram we need the correctly cut
     # version of the image.
@@ -49,7 +52,7 @@ def crop_image_again(removed_noise_img, org_img):
     img_mean = np.mean(removed_noise_img)                          # find the mean of the image
     img_column_means = np.mean(removed_noise_img, axis=0)          # calculate all the column means in the image
 
-    # find the left local maximum
+    # find the local maximum
     found_left = False                                              # flag that indicates if the left max is found
     found_right = False                                             # flag that indicates if the right max is found
     max_mean_left = -1                                              # value of the left local maximum
@@ -92,6 +95,7 @@ def crop_image_again(removed_noise_img, org_img):
             removed_noise_img = removed_noise_img[0:h, i:len(org_img[0])]
             break                                                       # break when done
 
+    img_column_means = np.mean(removed_noise_img, axis=0)               # calculate the means of img cropped from left
     # right cut
     for i in range(len(img_column_means) - 1, 0, -1):                   # go backwards (end to 0, with step being -1)
         column_mean = img_column_means[i]                               # calculate the mean of every column
@@ -213,7 +217,7 @@ def get_elements_from_image(path, x_cut_start, x_cut_end, img, element_number):
             # expand the first slice to the left using the original image if there are pixels to expand at that location
             # first_x = get the coordinates from the original image
             # last_x = second coordinate found in original image by adding the width of the cut element
-            # this enables adding additional pixels on both side that aren't found in the already cut image pare
+            # this enables adding additional pixels on both side that aren't found in the already cut image
             if i == 0 and large_elements_coords[0][0] > 3:
                 first_x = large_elements_coords[0][0]
                 last_x = first_x + large_el_x_cut_end[i] - large_el_x_cut_start[i]
@@ -232,5 +236,4 @@ def get_elements_from_image(path, x_cut_start, x_cut_end, img, element_number):
                     pass
         large_part_index = large_part_index + 1                         # indexing number for the parts of the large img
         large_elements_coords.remove(large_elements_coords[0])          # remove the coords of the first large image
-
     return element_number                                               # return the update element number

@@ -44,7 +44,7 @@ def input_handling_hor(file_name):
     else:
         bordered = rotated
 
-    hist = cv2.reduce(rotated, 1, cv2.REDUCE_AVG).reshape(-1)                          # reduce matrix to a vector
+    hist = cv2.reduce(bordered, 1, cv2.REDUCE_AVG).reshape(-1)                          # reduce matrix to a vector
 
     th = 2                                                                             # number found experimentally
     h, w = bordered.shape[:2]                                                          # picture dimensions
