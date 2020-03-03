@@ -4,6 +4,7 @@ from pathlib import Path
 
 def main():
 
+    # img_name = "img03.png"
     img_name = "img04.jpg"
     parent = str(Path(__file__).parent)
     path = parent + ".\\resources_input_images\\" + img_name

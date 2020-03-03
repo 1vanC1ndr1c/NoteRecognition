@@ -38,6 +38,7 @@ def input_handling_hor(file_name):
 
     h, w = rotated.shape[:2]                                                           # picture dimensions
     # expand to fit A4 format, if the image is shorter than a4
+    #TODO fix this, doesn't workmd
     if (int(w*1.414 - h)) > 1:
         bordered = cv2.copyMakeBorder(rotated, 0, int((w*1.414 - h)), 0, 0, cv2.BORDER_CONSTANT, value=[0, 0, 0])
         # make the image a standard size
