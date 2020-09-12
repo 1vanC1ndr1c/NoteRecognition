@@ -76,4 +76,4 @@ def split_into_rows(img_name):
                 cv2.imwrite(img_slice_name, img_slice)
     except:
         return False
-    return False
+    return True
