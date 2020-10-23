@@ -1,0 +1,10 @@
+img02_row0_slice0_template_clef_g_1.png.png
+img02_row0_slice1_template_time_signature_4-4.png.png
+img02_row0_slice6_template_Z_barline_1.png.png
+img02_row0_slice11_template_Z_barline_1.png.png
+img02_row0_slice15_template_Z_barline_1.png.png
+img02_row0_slice19_template_Z_barline_1.png.png
+img02_row0_slice26_template_Z_barline_1.png.png
+img02_row0_slice33_template_Z_barline_1.png.png
+img02_row0_slice37_template_Z_barline_1.png.png
+img02_row0_slice41_template_Z_barline_3.png.png
