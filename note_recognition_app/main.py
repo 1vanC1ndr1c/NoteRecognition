@@ -4,7 +4,7 @@ from note_recognition_app.image_processing.template_matcher import extract_eleme
 from note_recognition_app.image_processing.row_splitter import split_into_rows
 
 def main():
-    img_name = "img00.png"
+    img_name = "img02.png"
     #is_success = split_into_rows(img_name)
 
     # if is_success is True:

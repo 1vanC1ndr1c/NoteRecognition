@@ -18,7 +18,7 @@ def generate_result_img(slices):
 
     # Read the image separator that will be put between individual slices (a ordinary vertical green line).
     # Generate the path to the vertical separator.
-    sp_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'display'))
+    sp_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'display_resources'))
     sp_path = os.path.abspath(os.path.join(sp_path, 'img_separator_ver.png'))
     column_splitter = cv2.imread(sp_path)  # Read the image.
     # Resize it to be the same height as the slices (otherwise the concatenation will not work).
@@ -26,7 +26,7 @@ def generate_result_img(slices):
 
     # Read the image separator that will be put between individual slices (a ordinary horizontal green line).
     # Generate the path to the horizontal separator.
-    sp_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'display'))
+    sp_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'display_resources'))
     sp_path = os.path.abspath(os.path.join(sp_path, 'img_separator_hor.png'))
     row_splitter = cv2.imread(sp_path)  # Read the image.
     # Resize it to be the same width as the slices (otherwise the concatenation will not work).
@@ -66,7 +66,7 @@ def generate_result_img(slices):
             # Calculate the needed expansion to make it a full row (roughly 5 * 200 px + the green lines between).
             w_to_expand = row_w - current_row_w
             # Generate the path to the full black image that will be used to fill the rest of the row.
-            f_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'display'))
+            f_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'display_resources'))
             f_path = os.path.abspath(os.path.join(f_path, 'filler.png'))
             filler = cv2.imread(f_path)  # Read the image.
             filler = cv2.resize(filler, (w_to_expand, 200))  # Resize it to be the needed width and 200 px tall.

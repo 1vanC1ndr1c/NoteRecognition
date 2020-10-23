@@ -7,8 +7,8 @@ import numpy as np
 
 
 def extract_elements_by_template_matching(img_name):
-    img_name = "img05.png"  # TODO remove and pass as an argument
-    img_location = "resources/" + img_name[:-4]
+    img_name = "img02.png"  # TODO remove and pass as an argument
+    img_location = "resources/input_images/input_images_rows/" + img_name[:-4]
     rows_numerated = [row for row in os.listdir(img_location) if row.startswith("row")]
 
     for row_number, row_img in enumerate(rows_numerated):
@@ -38,7 +38,6 @@ def extract_elements_by_template_matching(img_name):
                                              img_name, str(row_number),
                                              found_t_names, t_recognized_list
                                              )
-
         # from copy import deepcopy
         # from note_recognition_app.image_processing.img_resizer import ResizeWithAspectRatio
         # from note_recognition_app.image_processing.row_splitter_result_visualizer import generate_result_img

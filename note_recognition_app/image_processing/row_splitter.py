@@ -7,13 +7,13 @@ import numpy as np
 
 def split_into_rows(img_name):
     try:
-        dir_name = "resources/" + img_name[:-4]
+        dir_name = "resources/input_images/input_images_rows/" + img_name[:-4]
         try:
             os.mkdir(dir_name)
         except OSError as e:
             pass
 
-        path = os.path.join(os.getcwd(), 'resources', img_name)
+        path = os.path.join(os.getcwd(), 'resources', 'input_images', img_name)
         img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
         trans_mask = img[:, :, 3] == 0
         img[trans_mask] = [255, 255, 255, 255]
