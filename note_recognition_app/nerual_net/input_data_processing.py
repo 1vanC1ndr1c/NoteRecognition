@@ -22,7 +22,7 @@ def prepare_new_data(test_data_percentage):
                         A list containing all the images for training, their values and names.
     """
     # Generate the path to the images.
-    dataset_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'dataset_OLD'))
+    dataset_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'dataset'))
 
     # Load all the image files in the directory. TEST, LIMITED DATASET
     # dataset_images_names = [im for index, im in enumerate(listdir(dataset_path)) if im.endswith(".png") and
@@ -96,6 +96,7 @@ def get_categorized_images(test_data_dictionary, train_data_dictionary, dataset_
         test_data_array, test_data_label = test_future.result()
         train_data_array, train_data_label = train_future.result()
 
+    print()
     return (test_data_array, test_data_label), (train_data_array, train_data_label)
 
 
@@ -117,12 +118,12 @@ def load_images(image_dictionary, dataset_path, type_of_data, output_value):
         out_str = output_value[0]  # Read the string used to report the progress.
 
         if type_of_data == "train":  # If the training set is being read...
-            out_str = out_str[0: out_str.find("|") + 1]  # Change only the counter for that part of the string.
+            out_str = out_str[0: out_str.find("|") + 2]  # Change only the counter for that part of the string.
             out_str = out_str + "Loading {} data > Image({} of {})".format(type_of_data, counter, data_len)
             print("\r{}".format(out_str), end='')  # Print the current progress.
 
         elif type_of_data == "test":  # If the testing set is being read...
-            out_str = out_str[out_str.find("|") - 1:]  # Change only the counter for that part of the string.
+            out_str = out_str[out_str.find("|") - 2:]  # Change only the counter for that part of the string.
             out_str = "Loading {} data > Image({} of {})".format(type_of_data, counter, data_len) + out_str
             print("\r{}".format(out_str), end='')  # Print the current progress.
 
@@ -135,5 +136,4 @@ def load_images(image_dictionary, dataset_path, type_of_data, output_value):
         data_label.append((img_value, img_name))  # Save image classification and name into a list.
 
     data_array = np.array(data_array)
-    print("\n")
     return data_array, data_label
