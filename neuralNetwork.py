@@ -86,7 +86,7 @@ def prepare_data(data, dataType):
 		dataType = [i.strip('\'') for i in dataType]
 	return dataType
 
-# Metadata from wiki dataset
+# Metadata from wiki dataset_OLD
 matWiki = sc.loadmat(ROOT_DIR + 'wiki_crop\\wiki.mat')
 dataWiki = matWiki['wiki']
 
@@ -96,7 +96,7 @@ photo_taken_as_list_WIKI = prepare_data(dataWiki, 'photo_taken')
 full_path_as_list_WIKI = prepare_data(dataWiki, 'full_path')
 
 '''
-# Metadata from imdb dataset
+# Metadata from imdb dataset_OLD
 matIMDB = sc.loadmat(ROOT_DIR + 'imdb_crop\\imdb.mat')
 dataIMDB = matIMDB['imdb']
 gender_as_list_IMDB = prepare_data(dataIMDB, 'gender')
@@ -153,7 +153,7 @@ def create_image_set():
 				gender = int(float(gender))
 				gender = get_gender_label(gender)
 				image_set.append([np.array(img), gender, age_label])
-			print('Added ' + current_dataset + ' ' + curr_dir + ' to dataset.')
+			print('Added ' + current_dataset + ' ' + curr_dir + ' to dataset_OLD.')
 	shuffle(image_set)
 	np.save(IMAGESET_NAME, image_set)
 	print('Dataset created.')

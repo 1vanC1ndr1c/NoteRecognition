@@ -13,4 +13,4 @@ lib64
 venv/
 .idea/
 __pycache__/
-/resources/dataset/
+/resources/dataset_OLD/

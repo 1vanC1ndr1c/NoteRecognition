@@ -16,7 +16,7 @@ Also, for every shifted image, an image with gaussian noise is also saved.
 
 def main():
     """
-    The main function reads the images from the original dataset and removes the images that were already shifted.
+    The main function reads the images from the original dataset_OLD and removes the images that were already shifted.
     The unshifted images are then sent do the function that shifts them.
     """
     # Get the path to the dataset directory.
@@ -61,9 +61,9 @@ def generate_more_images(img_name, path, current_index, total):
     img_plus_x = deepcopy(img)  # Copy the original image. This image will have pixels added to the right.
     img_minus_x = deepcopy(img)  # Copy the original image. This image will have pixels added to the left.
 
-    for x in range(0, 6):  # Iterate [0-5]
+    for x in range(0, 4):  # Iterate [0-3]
         # Print out the current progress.
-        print("'\rImage({} of {}): '{}', Iteration: {} out of 5.".format(current_index, total, img_name, x), end='')
+        print("'\rImage({} of {}): '{}', Iteration: {} out of 3.".format(current_index, total, img_name, x), end='')
 
         # Add a column of pixels (1 pixel wide) to the right.
         img_plus_x = np.concatenate((img_plus_x[0: image_h, 1:image_w], px_right), axis=1)
@@ -75,7 +75,7 @@ def generate_more_images(img_name, path, current_index, total):
         img_minus_x_plus_y = deepcopy(img_minus_x)  # Image that goes to the right and up.
         img_minus_x_minus_y = deepcopy(img_minus_x)  # Image that goes to the right and down.
 
-        for y in range(0, 6):  # Iterate [0-5]
+        for y in range(0, 4):  # Iterate [0-3]
             # Add a row of pixels (1 pixel tall) to the top.
             img_plus_x_plus_y = np.concatenate((img_plus_x_plus_y[1:image_h, 0:image_w], px_up), axis=0)
             # Add a row of pixels (1 pixel tall) to the bottom.
