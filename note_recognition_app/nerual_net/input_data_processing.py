@@ -6,7 +6,6 @@ from os import listdir
 from pathlib import Path
 
 import cv2
-
 import numpy as np
 
 
@@ -26,7 +25,7 @@ def prepare_new_data(test_data_percentage):
 
     # Load all the image files in the directory. TEST, LIMITED DATASET
     # dataset_images_names = [im for index, im in enumerate(listdir(dataset_path)) if im.endswith(".png") and
-    #                         index < 100]
+    #                         index < 200]
 
     # # Load all the image files in the directory.(Real Dataset)
     dataset_images_names = [im for im in listdir(dataset_path) if im.endswith(".png")]

@@ -1,6 +1,6 @@
 import sys
 
-from note_recognition_app.nerual_net.main_driver import start_neural_net
+from note_recognition_app.nerual_net.neural_net_main import start_the_networks
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
 
     # extract_elements(img_name)
     # extract_elements_by_template_matching(img_name)
-    start_neural_net()
+    start_the_networks()
 
 
 if __name__ == '__main__':
