@@ -109,7 +109,7 @@ def train_note_values_neural_net(test_data_percentage):
         #                                      verbose=2
         #                                      )
         # print('\nTest accuracy:', test_acc)
-        # predictions = probability_model.predict(value_network_test_data_arr)
+        predictions = probability_model.predict(value_network_test_data_arr)
         # print(predictions[0])
         # print("max= ", np.argmax(predictions[0]))
         # import cv2
