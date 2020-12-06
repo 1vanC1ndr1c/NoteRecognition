@@ -49,6 +49,9 @@ def generate_more_images(img_name, path, current_index, total):
     :param current_index: Current index (out of all images) of the image that is being processed.
     :param total: Total number of images.
     """
+
+    NO_OF_ITER = 3  # Number of iterations per image. Change to change the size of the new dataset.
+
     img_path = os.path.join(path, img_name)  # Construct the path to the image.
     img = cv2.imread(img_path)  # Read the image.
     image_w, image_h = img.shape[:-1]  # Get the image dimensions.
@@ -61,7 +64,7 @@ def generate_more_images(img_name, path, current_index, total):
     img_plus_x = deepcopy(img)  # Copy the original image. This image will have pixels added to the right.
     img_minus_x = deepcopy(img)  # Copy the original image. This image will have pixels added to the left.
 
-    for x in range(0, 3):  # Iterate [0-2]
+    for x in range(0, NO_OF_ITER):
         # Print out the current progress.
         print("'\rImage({} of {}): '{}', Iteration: {} out of 2.".format(current_index, total, img_name, x), end='')
 
@@ -75,7 +78,7 @@ def generate_more_images(img_name, path, current_index, total):
         img_minus_x_plus_y = deepcopy(img_minus_x)  # Image that goes to the right and up.
         img_minus_x_minus_y = deepcopy(img_minus_x)  # Image that goes to the right and down.
 
-        for y in range(0, 3):  # Iterate [0-2]
+        for y in range(0, NO_OF_ITER):
             # Add a row of pixels (1 pixel tall) to the top.
             img_plus_x_plus_y = np.concatenate((img_plus_x_plus_y[1:image_h, 0:image_w], px_up), axis=0)
             # Add a row of pixels (1 pixel tall) to the bottom.
