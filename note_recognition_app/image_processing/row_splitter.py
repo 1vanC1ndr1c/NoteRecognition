@@ -5,28 +5,36 @@ import cv2
 import numpy as np
 
 
-def split_into_rows(img_name):
+def split_into_rows(img_path):
+    """
+    This function splits the input image into separate rows of note lines.
+    :param img_path: Path to the image.
+    :return: boolean: True if successful, false otherwise.
+    """
     try:
+
+        img_name = img_path[img_path.rfind('\\') + 1:]  # Extract image name from the given path.
+        # Directory name for the directory that will hold the rows of the input image.
         dir_name = "resources/input_images/input_images_rows/" + img_name[:-4]
-        try:
+        try:  # Try creating a directory.
             os.mkdir(dir_name)
         except OSError as e:
-            pass
+            return False  # Return False if directory creating was unsuccessful.
 
-        path = os.path.join(os.getcwd(), 'resources', 'input_images', img_name)
-        img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
-        trans_mask = img[:, :, 3] == 0
+        img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)  # Read the image.
+        trans_mask = img[:, :, 3] == 0  # Remove any transparency.
         img[trans_mask] = [255, 255, 255, 255]
-        img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert to BR2GRAY (grayscale mode).
+        # Make a black and white image based on a threshold.
         th, img_gray = cv2.threshold(img_gray, 127, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
-        image_w, image_h = img_gray.shape[::-1]
+        image_w, image_h = img_gray.shape[::-1]  # Image dimensions.
 
         template_path = os.path.abspath(
             os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'templates', 'line_start_templates'))
         row_templates = [file for file in os.listdir(template_path)]
 
-        t_locations = []
-        t_dimensions = []
+        t_locations = []  # List that will contain all the locations that were found by template matching.
+        t_dimensions = []  # List that will contain all the dimensions of the found templates on the locations.
         for t in row_templates:  # Iterate through all of the vertical line templates.
             template = cv2.imread(template_path + "\\" + t, 0)  # Read the template from the path.
             res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)  # Convert the template into a gray image.
@@ -44,11 +52,11 @@ def split_into_rows(img_name):
                         t_locations.append(point)
                         t_dimensions.append((template_w, template_h))
 
-        for index, el in enumerate(t_locations):
-            img_slice_name = dir_name + "/row" + str(index) + ".png"
-            img_slice = img_gray[el[1] - 40:el[1] + t_dimensions[index][1] + 40:, 0:image_w]
-            cv2.imwrite(img_slice_name, img_slice)
-    except Exception as e:
+        for index, el in enumerate(t_locations):  # Iterate through found locations.
+            img_slice_name_and_path = dir_name + "/row" + str(index) + ".png"  # Generate a path and a name.
+            img_slice = img_gray[el[1] - 40:el[1] + t_dimensions[index][1] + 40:, 0:image_w]  # Cut the part of the img.
+            cv2.imwrite(img_slice_name_and_path, img_slice)  # Save that part of the image.
+    except Exception as e:  # Catch exception.
         print(e)
-        return False
+        return False  # If any exceptions caught, return False.
     return True
