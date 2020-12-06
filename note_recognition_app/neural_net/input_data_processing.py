@@ -12,7 +12,7 @@ import numpy as np
 def prepare_new_data(test_data_percentage):
     """
     Main function that calls all the other functions listed below.
-    It classifies all the images found in the dataset_OLD into a dictionary containing the image name as a key and a
+    It classifies all the images found in the dataset into a dictionary containing the image name as a key and a
     note value as a value.
     It splits the data into a training set and testing set.
     It then loads the image, saves it with its value and a name into .dat files (separate files for train and test).
@@ -111,7 +111,7 @@ def load_images(image_dictionary, dataset_path, type_of_data, output_value):
     counter = 0  # Counter used to report the progress( 'counter value' out of 'maximum number')
     data_len = len(image_dictionary)  # Get the length of dictionary.
     data_array = []  # List containing numpy array images
-    data_label = []  # List containing labes that define images.
+    data_label = []  # List containing labels that define images.
     for img_name, img_value in image_dictionary.items():  # Iterate over the dictionary.
         counter = counter + 1
         out_str = output_value[0]  # Read the string used to report the progress.
