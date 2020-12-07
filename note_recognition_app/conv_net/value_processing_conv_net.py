@@ -6,6 +6,7 @@ import numpy as np
 import tensorflow as tf
 
 from note_recognition_app.conv_net.input_data_processing import prepare_new_data
+from note_recognition_app.info_output.output_constructor import construct_output
 
 
 def train_note_values_conv_net(test_data_percentage):
@@ -18,6 +19,9 @@ def train_note_values_conv_net(test_data_percentage):
     """
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Alleged fix for some tensorflow bugs.
 
+    construct_output(indent_level=0,
+                     message="Convolutional Network 1 (Note value determining).")
+
     # Import the dataset and split it to training and testing.
     (test_data_arr, test_data_label), (train_data_arr, train_data_label) = prepare_new_data(test_data_percentage)
 
@@ -28,6 +32,7 @@ def train_note_values_conv_net(test_data_percentage):
     train_data_arr = train_data_arr / 255.0
 
     # Construct the path for saving the results of training.
+    construct_output(indent_level=0, message="Save the network weights to avoid retraining on every run.")
     saved_model_values_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources'))
     saved_model_values_path = os.path.join(saved_model_values_path, 'saved_models')
     saved_model_name = "value_processing_net_saved.ckpt"
@@ -54,14 +59,12 @@ def train_note_values_conv_net(test_data_percentage):
                    "G3", "G4", "G5"]
 
     # Fetch only the labels (note values) from the data.
-    value_network_test_data_label = [item[0] for item in value_network_test_data_label]
     value_network_train_data_label = [item[0] for item in value_network_train_data_label]
     # Assign the corresponding numerical values to labels.
-    value_network_test_data_label_values_numerical = values_to_numerical(value_network_test_data_label, class_names)
     value_network_train_data_label_values_numerical = values_to_numerical(value_network_train_data_label, class_names)
 
     with tf.device('/GPU:1'):  # Specify using nvidia discrete GPU instead of Intel integrated graphics.
-
+        construct_output(indent_level=0, message="Start training.")
         # Set up the layers.
         # The first layer in this network, tf.keras.layers.Flatten, transforms the format of the images
         # from a 2D array(200x200px) to 1D array(of 200x200 = 40000 pixels)
@@ -70,7 +73,6 @@ def train_note_values_conv_net(test_data_percentage):
         # The first Dense layer has 128 nodes( or neurons).
         # The second( and last) layer returns an array with length of 22.
         # Each node contains a score that indicates the current image belongs to one of the 22 classes.
-
         model = tf.keras.Sequential([
             tf.keras.layers.Flatten(input_shape=(200, 200)),
             tf.keras.layers.Dense(128, activation='relu'),
@@ -84,7 +86,6 @@ def train_note_values_conv_net(test_data_percentage):
         # Optimizer —This is how the model is updated based on the data it sees and its loss function.
         # Metrics —Used to monitor the training and testing steps.
         # The following example uses accuracy, the fraction of the images that are correctly classified.
-
         model.compile(optimizer='adam',
                       loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                       metrics=['accuracy'])
@@ -99,13 +100,18 @@ def train_note_values_conv_net(test_data_percentage):
             value_network_train_data_arr,
             value_network_train_data_label_values_numerical,
             epochs=2,
-            callbacks=[values_model_cb])
+            # callbacks=[values_model_cb]
+        )
 
         # Attach a softmax layer to convert the logits to probabilities, which are easier to interpret.
         probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
 
-        # TESTING THE NETWORK.
+        # TESTING THE NETWORK. =======================================================================================
         # Compare how the model performs on the test dataset.
+        # value_network_test_data_label = [item[0] for item in value_network_test_data_label]
+        # value_network_test_data_label_values_numerical = values_to_numerical(
+        #     value_network_test_data_label,
+        #     class_names)
         # test_loss, test_acc = model.evaluate(value_network_test_data_arr,
         #                                      value_network_test_data_label_values_numerical,
         #                                      verbose=2
@@ -115,8 +121,11 @@ def train_note_values_conv_net(test_data_percentage):
         # print(predictions[0])
         # print("max= ", np.argmax(predictions[0]))
         # import cv2
-        # cv2.imshow("sa", value_network_test_data_arr[0])
+        # cv2.imshow("img", value_network_test_data_arr[0])
         # cv2.waitKey()
+
+        construct_output(indent_level=0, message="End training.")
+        construct_output(indent_level=0, message="Convolutional Network 1 (Note value determining) Done.")
 
 
 def values_to_numerical(data_label_values, class_names):
@@ -156,12 +165,13 @@ def analyze_using_saved_data(img_name):
     dir_name = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
     dir_name = os.path.join(dir_name, 'input_images_individual_elements', img_name[:-4], 'unrecognized')
 
-    # Create a conv. network.
+    # Create a convolutional network.
     model_note_values = tf.keras.Sequential([
         tf.keras.layers.Flatten(input_shape=(200, 200)),
         tf.keras.layers.Dense(128, activation='relu'),
         tf.keras.layers.Dense(22)
     ])
+    # Load saved values into the created network.
     saved_model_values_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources'))
     saved_model_values_path = os.path.join(saved_model_values_path, 'saved_models')
     saved_model_name = "value_processing_net_saved.ckpt"
@@ -169,15 +179,17 @@ def analyze_using_saved_data(img_name):
     model_note_values.load_weights(saved_model_values_path)
     model_note_values = tf.keras.Sequential([model_note_values, tf.keras.layers.Softmax()])
 
+    # Sort the elements by their position in the image.
     elements = [el for el in os.listdir(dir_name) if el.endswith(".png")]
     elements_sorted = []
     for el in elements:
         el_row = el[el.index("_row") + 4: el.index("_slice")]
         el_row_position = el[el.index("_slice") + 6: el.index("_UNKNOWN")]
         elements_sorted.append((el_row, el_row_position, el))
-    elements_sorted = sorted(elements_sorted, key=lambda element: (int(element[0]), int(element[1])))
+    elements_sorted = sorted(elements_sorted, key=lambda e: (int(e[0]), int(e[1])))
 
-    class_names = ["A3", "A4", "A5",  # class_names contains possible results
+    # class_names contains all the possible result names.
+    class_names = ["A3", "A4", "A5",
                    "B3", "B4", "B5",
                    "C3", "C4", "C5",
                    "D3", "D4", "D5",
@@ -185,14 +197,15 @@ def analyze_using_saved_data(img_name):
                    "F3", "F4", "F5",
                    "G3", "G4", "G5"]
 
-    predictions_note_value_names = []
-    for element in elements_sorted:
-        element = element[2]
-        img_path = os.path.join(dir_name, element)
+    predictions_note_value_names = []  # List that will contain note values of the original image (ordered).
+    for element in elements_sorted:  # Iterate through all the elements.
+        element = element[2]  # Get the element name.
+        img_path = os.path.join(dir_name, element)  # Construct the path to the element.
         img = cv2.imread(img_path)  # Read the image.
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        img = np.array([img]) / 255.0
-        predictions = model_note_values.predict(img)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert the color space.
+        img = np.array([img]) / 255.0  # Scale to [0-1]
+        predictions = model_note_values.predict(img)  # Use the network to get the element value (numerical)
+        # Turn the numerical value into a string.
         predictions_note_value_names.append(class_names[int(np.argmax(predictions[0]))])
 
     return predictions_note_value_names

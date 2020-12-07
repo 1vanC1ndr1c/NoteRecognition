@@ -23,11 +23,10 @@ def prepare_new_data(test_data_percentage):
     # Generate the path to the images.
     dataset_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'dataset'))
 
-    # Load all the image files in the directory. TEST, LIMITED DATASET
-    # dataset_images_names = [im for index, im in enumerate(listdir(dataset_path)) if im.endswith(".png") and
-    #                         index < 200]
+    # Load all the image files in the directory. TEST, LIMITED DATASET, comment the other one.
+    # dataset_images_names = [im for i, im in enumerate(listdir(dataset_path)) if im.endswith(".png") and i < 200]
 
-    # # Load all the image files in the directory.(Real Dataset)
+    # # Load all the image files in the directory. REAL DATASET, comment the other one.
     dataset_images_names = [im for im in listdir(dataset_path) if im.endswith(".png")]
 
     # Classify the input images based on their values. (Connect an image with what it is shown on it.)
@@ -37,7 +36,7 @@ def prepare_new_data(test_data_percentage):
     test_data_dictionary, train_data_dictionary = split_the_data(names_and_note_values, test_data_percentage)
 
     # Get the images, their values, and their names for both test and train dictionaries.
-    test_data, train_data = get_categorized_images(test_data_dictionary, train_data_dictionary, dataset_path)
+    test_data, train_data = load_dataset(test_data_dictionary, train_data_dictionary, dataset_path)
 
     return test_data, train_data
 
@@ -67,7 +66,12 @@ def classify_the_images(dataset_images_names):
 
 
 def split_the_data(names_and_note_values, test_data_percentage):
-    # Split the data into train and test components.
+    """
+    Splits the data into train and test components.
+    :param names_and_note_values: Collection that needs to be split.
+    :param test_data_percentage: Number [0-1] indicating how much of the 'names_and_note_values' is used for testing.
+    :return: dict, dict: Original data split into test and training dictionaries.
+    """
     no_of_items = int(test_data_percentage * len(names_and_note_values))  # Take a percentage of items for testing.
     # Get a random requested percent of items from the original list.
     # test_data_dictionary contains an image name and its classification.
@@ -78,8 +82,15 @@ def split_the_data(names_and_note_values, test_data_percentage):
     return test_data_dictionary, train_data_dictionary
 
 
-def get_categorized_images(test_data_dictionary, train_data_dictionary, dataset_path):
-    # Format for an information shown in stdout.
+def load_dataset(test_data_dictionary, train_data_dictionary, dataset_path):
+    """
+    This function loads the dataset.
+    :param test_data_dictionary: Dictionary containing image name and labels for testing part of dataset.
+    :param train_data_dictionary: Dictionary containing image name and labels for training part of dataset.
+    :param dataset_path: Path to the images location.
+    :return: (np.array, np.array), (np.array, np.array): Arrays containing images and their labels (in tuples).
+    """
+
     output_value = "Loading test data > Image(0 of {})".format(len(test_data_dictionary))
     output_value = output_value + " | Loading train data > Image(0 of {})".format(len(train_data_dictionary))
     # Turn it into a list so it can be passed by reference to both threads as a common variable.
@@ -106,7 +117,7 @@ def load_images(image_dictionary, dataset_path, type_of_data, output_value):
     :param dataset_path: Path to said image.
     :param type_of_data: Specifies if it is a 'train' or 'test' set.
     :param output_value: String used to report the progress using stdout.
-    :return: list: containing a triplet(image(array), image classification, image name))
+    :return: np.array, np.array: containing a tuple(image(array), (image classification, image name))
     """
     counter = 0  # Counter used to report the progress( 'counter value' out of 'maximum number')
     data_len = len(image_dictionary)  # Get the length of dictionary.
