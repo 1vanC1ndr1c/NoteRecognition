@@ -4,6 +4,8 @@ from pathlib import Path
 import cv2
 import numpy as np
 
+from note_recognition_app.info_output.output_constructor import construct_output
+
 
 def split_into_rows(img_path):
     """
@@ -12,15 +14,19 @@ def split_into_rows(img_path):
     :return: boolean: True if successful, false otherwise.
     """
     try:
-
+        construct_output(indent_level=0, message="Row splitting.")
         img_name = img_path[img_path.rfind('\\') + 1:]  # Extract image name from the given path.
         # Directory name for the directory that will hold the rows of the input image.
-        dir_name = "resources/input_images/input_images_rows/" + img_name[:-4]
+        dir_name = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
+        dir_name = os.path.join(dir_name, 'input_images_rows', img_name[:-4])
+        print("2 ", dir_name)
         try:  # Try creating a directory.
+            construct_output(indent_level=1, message="Creating a folder for the image: {}".format(dir_name))
             os.mkdir(dir_name)
         except OSError as e:
-            return False  # Return False if directory creating was unsuccessful.
+            construct_output(indent_level=1, message="Folder already exists: {}".format(dir_name))
 
+        construct_output(indent_level=1, message="Reading the input image {}.".format(img_name))
         img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)  # Read the image.
         trans_mask = img[:, :, 3] == 0  # Remove any transparency.
         img[trans_mask] = [255, 255, 255, 255]
@@ -33,6 +39,7 @@ def split_into_rows(img_path):
             os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'templates', 'line_start_templates'))
         row_templates = [file for file in os.listdir(template_path)]
 
+        construct_output(indent_level=1, message="Finding rows in the image.")
         t_locations = []  # List that will contain all the locations that were found by template matching.
         t_dimensions = []  # List that will contain all the dimensions of the found templates on the locations.
         for t in row_templates:  # Iterate through all of the vertical line templates.
@@ -52,11 +59,12 @@ def split_into_rows(img_path):
                         t_locations.append(point)
                         t_dimensions.append((template_w, template_h))
 
+        construct_output(indent_level=1, message="Saving the found rows into folder: {}".format(dir_name))
         for index, el in enumerate(t_locations):  # Iterate through found locations.
             img_slice_name_and_path = dir_name + "/row" + str(index) + ".png"  # Generate a path and a name.
             img_slice = img_gray[el[1] - 40:el[1] + t_dimensions[index][1] + 40:, 0:image_w]  # Cut the part of the img.
             cv2.imwrite(img_slice_name_and_path, img_slice)  # Save that part of the image.
     except Exception as e:  # Catch exception.
         print(e)
-        return False  # If any exceptions caught, return False.
-    return True
+        exit(-1)  # If any exceptions caught, return False.
+    construct_output(indent_level=0, message="Row splitting done.")

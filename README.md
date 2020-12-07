@@ -1,2 +1,2 @@
 # NoteRecognition
-Note recognition neural network.
+Note recognition convolutional network.
