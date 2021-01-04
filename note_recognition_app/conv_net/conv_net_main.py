@@ -1,6 +1,6 @@
 from note_recognition_app.conv_net import value_processing_conv_net
-from note_recognition_app.info_output.output_constructor import construct_output
-
+from note_recognition_app.console_output.console_output_constructor import construct_output
+from note_recognition_app.conv_net import duration_processing_conv_net
 
 def conv_network_analysis(input_image_name):
     """
@@ -14,15 +14,14 @@ def conv_network_analysis(input_image_name):
                      .format(input_image_name))
 
     # If retraining is needed, uncomment this.
-    #  value_processing_conv_net.train_note_values_conv_net(test_data_percentage=0.2) #UNCOMMENT FOR RETRAINING
+    # value_processing_conv_net.train_note_values_conv_net(test_data_percentage=0.2) #UNCOMMENT FOR RETRAINING
 
     # Load the trained data from the disk.
     value_names = value_processing_conv_net.analyze_using_saved_data(input_image_name)
     print(value_names)
 
-    # TODO similar for note durations
-    #   If retraining is needed, uncomment this.
-    #   duration_processing_conv_net.train_note_durations_conv_net(test_data_percentage=0.2) #UNCOMMENT FOR RETRAINING
+    #  If retraining is needed, uncomment this.
+    duration_processing_conv_net.train_note_duration_conv_net(test_data_percentage=0.2) #UNCOMMENT FOR RETRAINING
     #   Load the trained data from the disk.
     #   durations = duration_processing_conv_net.analyze_using_saved_data(input_image_name)
 

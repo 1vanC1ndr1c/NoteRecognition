@@ -5,7 +5,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from note_recognition_app.info_output.output_constructor import construct_output
+from note_recognition_app.console_output.console_output_constructor import construct_output
 
 
 def extract_elements_by_template_matching(img_name):

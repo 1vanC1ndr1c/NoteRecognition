@@ -24,10 +24,10 @@ def prepare_new_data(test_data_percentage):
     dataset_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'dataset'))
 
     # Load all the image files in the directory. TEST, LIMITED DATASET, comment the other one.
-    # dataset_images_names = [im for i, im in enumerate(listdir(dataset_path)) if im.endswith(".png") and i < 200]
+    dataset_images_names = [im for i, im in enumerate(listdir(dataset_path)) if im.endswith(".png") and i < 200]
 
     # # Load all the image files in the directory. REAL DATASET, comment the other one.
-    dataset_images_names = [im for im in listdir(dataset_path) if im.endswith(".png")]
+    # dataset_images_names = [im for im in listdir(dataset_path) if im.endswith(".png")]
 
     # Classify the input images based on their values. (Connect an image with what it is shown on it.)
     names_and_note_values = classify_the_images(dataset_images_names)

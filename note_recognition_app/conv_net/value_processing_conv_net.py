@@ -6,7 +6,7 @@ import numpy as np
 import tensorflow as tf
 
 from note_recognition_app.conv_net.input_data_processing import prepare_new_data
-from note_recognition_app.info_output.output_constructor import construct_output
+from note_recognition_app.console_output.console_output_constructor import construct_output
 
 
 def train_note_values_conv_net(test_data_percentage):

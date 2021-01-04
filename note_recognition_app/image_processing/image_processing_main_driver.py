@@ -1,6 +1,6 @@
 from note_recognition_app.image_processing.row_splitter import split_into_rows
 from note_recognition_app.image_processing.single_element_template_matcher import extract_elements_by_template_matching
-from note_recognition_app.info_output.output_constructor import construct_output
+from note_recognition_app.console_output.console_output_constructor import construct_output
 
 
 def process_image(input_image_path):
