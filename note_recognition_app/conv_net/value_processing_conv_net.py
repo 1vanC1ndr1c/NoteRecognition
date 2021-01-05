@@ -98,7 +98,7 @@ def train_note_values_conv_net(test_data_arr, test_data_label, train_data_arr, t
         model.fit(
             value_network_train_data_arr,
             value_network_train_data_label_values_numerical,
-            epochs=2,
+            epochs=3,
             callbacks=[values_model_cb]
         )
         construct_output(indent_level=0, message="Save the network weights to avoid retraining on every run.")

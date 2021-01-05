@@ -16,9 +16,9 @@ def conv_network_analysis(input_image_name):
                      .format(input_image_name))
 
     # Import the dataset and split it to training and testing.
-    (test_arr, test_label), (train_arr, train__label) = prepare_new_data(test_data_percentage=0.2)
-    value_processing_conv_net.train_note_values_conv_net(test_arr, test_label, train_arr, train__label)
-    duration_processing_conv_net.train_note_duration_conv_net(test_arr, test_label, train_arr, train__label)
+    # (test_arr, test_label), (train_arr, train__label) = prepare_new_data(test_data_percentage=0.2)
+    # value_processing_conv_net.train_note_values_conv_net(test_arr, test_label, train_arr, train__label)
+    # duration_processing_conv_net.train_note_duration_conv_net(test_arr, test_label, train_arr, train__label)
 
     # Load the trained data from the disk.
     value_names = value_processing_conv_net.analyze_using_saved_data(input_image_name)

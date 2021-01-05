@@ -7,7 +7,7 @@ import cv2
 
 def ResizeWithAspectRatio(image, width=None, height=None, inter=cv2.INTER_AREA):
     """
-    Function that resizes the image and keeps the original aspect ration.
+    Function that resizes the image and keeps the original aspect ratio.
 
     :param image: Input image that needs to be resized.
     :param width: Wanted width. (If this is not None, no need to include height)
