@@ -198,7 +198,7 @@ def save_elements_standard_size(max_size_templates, img_rgb, image_h, image_w, i
                                      message="Writing the information about a recognized element ({}) into: '{}'"
                                      .format(slice_name, file_path))
                     recognized_templates_file = open(file_path, "a")
-                    recognized_templates_file.write(slice_name + "\n")
+                    recognized_templates_file.write(slice_name[:-4] + "\n")
                     recognized_templates_file.close()
                 except OSError:
                     pass

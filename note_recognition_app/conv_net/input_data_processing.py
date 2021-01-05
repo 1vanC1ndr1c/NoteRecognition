@@ -24,10 +24,10 @@ def prepare_new_data(test_data_percentage):
     dataset_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'dataset'))
 
     # Load all the image files in the directory. TEST, LIMITED DATASET, comment the other one.
-    dataset_images_names = [im for i, im in enumerate(listdir(dataset_path)) if im.endswith(".png") and i < 200]
+    # dataset_images_names = [im for i, im in enumerate(listdir(dataset_path)) if im.endswith(".png") and i < 200]
 
     # # Load all the image files in the directory. REAL DATASET, comment the other one.
-    # dataset_images_names = [im for im in listdir(dataset_path) if im.endswith(".png")]
+    dataset_images_names = [im for im in listdir(dataset_path) if im.endswith(".png")]
 
     # Classify the input images based on their values. (Connect an image with what it is shown on it.)
     names_and_note_values = classify_the_images(dataset_images_names)
@@ -52,18 +52,32 @@ def classify_the_images(dataset_images_names):
     :return: dict: containing the image name and corresponding value.
     """
     # Dictionary that will hold classifications of the images (note values).
-    names_and_note_values = {}
+    names_and_classification = {}
     # Iterate through all the image names to classify them.
     for index, img_name in enumerate(dataset_images_names):
         if img_name.startswith("note"):  # If it is classified as a note.
+            duration = "Uncategorized"
+            if "16TH" in img_name:
+                duration = "1/16"
+            elif "EIGHTH" in img_name:
+                duration = "1/8"
+            elif "HALF" in img_name:
+                duration = "1/2"
+            elif "QUARTER" in img_name:
+                duration = "1/4"
+            elif "WHOLE" in img_name:
+                duration = "1/1"
+
             # Find the note value from the name ( for example '..._C1_...')
             value = re.findall(r'_[A|B|C|D|E|F|G|a|b|c|d|e|f|g][0-9]_', img_name)
             if len(value) > 0:  # If a note has value, save the found value.
-                names_and_note_values[img_name] = value[0][1:-1]
+                value = value[0][1:-1]
             else:  # Otherwise, classify the note as uncategorized.
-                names_and_note_values[img_name] = "Uncategorized"
-    return names_and_note_values
+                value = "Uncategorized"
 
+            names_and_classification[img_name] = (value, duration)
+
+    return names_and_classification
 
 def split_the_data(names_and_note_values, test_data_percentage):
     """

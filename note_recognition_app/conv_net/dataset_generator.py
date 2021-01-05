@@ -20,7 +20,7 @@ def main():
     The unshifted images are then sent do the function that shifts them.
     """
     # Get the path to the dataset directory.
-    dataset_images_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent)))
+    dataset_images_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent)))
     dataset_images_path = os.path.abspath(os.path.join(dataset_images_path, "resources", "dataset"))
     # Get all the files in said directory.
     dataset_images = [img_name for img_name in os.listdir(dataset_images_path)]

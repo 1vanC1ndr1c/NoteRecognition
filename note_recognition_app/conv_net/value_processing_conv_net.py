@@ -5,25 +5,24 @@ import cv2
 import numpy as np
 import tensorflow as tf
 
-from note_recognition_app.conv_net.input_data_processing import prepare_new_data
 from note_recognition_app.console_output.console_output_constructor import construct_output
 
 
-def train_note_values_conv_net(test_data_percentage):
+def train_note_values_conv_net(test_data_arr, test_data_label, train_data_arr, train_data_label):
     """
     This function trains the convolutional network for recognizing note values based on input data.
     Tutorial for this code found here:
     https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/classification.ipynb
     The results are saved on a disk so that they can be used without retraining the network.
-    :param test_data_percentage: A number ([0-1]) indicating how much of the input data will be used for testing.
+    :param train_data_label: Labels with names and durations for the train data images.
+    :param train_data_arr: Array containing the train images.
+    :param test_data_label: Labels with names and durations for the test data images.
+    :param test_data_arr: Array containing the test images.
     """
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Alleged fix for some tensorflow bugs.
 
     construct_output(indent_level=0,
                      message="Convolutional Network 1 (Note value determining).")
-
-    # Import the dataset and split it to training and testing.
-    (test_data_arr, test_data_label), (train_data_arr, train_data_label) = prepare_new_data(test_data_percentage)
 
     # Scale these values to a range of 0 to 1 before feeding them to the convolutional network model
     print("Scaling test values to [0-1] range.")
@@ -32,7 +31,6 @@ def train_note_values_conv_net(test_data_percentage):
     train_data_arr = train_data_arr / 255.0
 
     # Construct the path for saving the results of training.
-    construct_output(indent_level=0, message="Save the network weights to avoid retraining on every run.")
     saved_model_values_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'resources'))
     saved_model_values_path = os.path.join(saved_model_values_path, 'saved_models')
     saved_model_name = "value_processing_net_saved.ckpt"
@@ -43,12 +41,12 @@ def train_note_values_conv_net(test_data_percentage):
 
     # First network only recognizes the values. No need to feed it unrecognized elements (elements with no value).
     value_network_train_data_arr = np.array(
-        [x for i, x in enumerate(train_data_arr) if train_data_label[i][0] != "Uncategorized"])
-    value_network_train_data_label = np.array([x for x in train_data_label if x[0] != "Uncategorized"])
+        [x for i, x in enumerate(train_data_arr) if train_data_label[i][0][0] != "Uncategorized"])
+    value_network_train_data_label = np.array([(x[0][0], x[1]) for x in train_data_label if x[0][0] != "Uncategorized"])
 
     value_network_test_data_arr = np.array(
-        [x for i, x in enumerate(test_data_arr) if test_data_label[i][0] != "Uncategorized"])
-    value_network_test_data_label = np.array([x for x in test_data_label if x[0] != "Uncategorized"])
+        [x for i, x in enumerate(test_data_arr) if test_data_label[i][0][0] != "Uncategorized"])
+    value_network_test_data_label = np.array([(x[0][0], x[1]) for x in test_data_label if x[0][0] != "Uncategorized"])
 
     class_names = ["A3", "A4", "A5",  # class_names contains possible results
                    "B3", "B4", "B5",
@@ -60,6 +58,7 @@ def train_note_values_conv_net(test_data_percentage):
 
     # Fetch only the labels (note values) from the data.
     value_network_train_data_label = [item[0] for item in value_network_train_data_label]
+
     # Assign the corresponding numerical values to labels.
     value_network_train_data_label_values_numerical = values_to_numerical(value_network_train_data_label, class_names)
 
@@ -100,8 +99,9 @@ def train_note_values_conv_net(test_data_percentage):
             value_network_train_data_arr,
             value_network_train_data_label_values_numerical,
             epochs=2,
-            # callbacks=[values_model_cb]
+            callbacks=[values_model_cb]
         )
+        construct_output(indent_level=0, message="Save the network weights to avoid retraining on every run.")
 
         # Attach a softmax layer to convert the logits to probabilities, which are easier to interpret.
         probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
