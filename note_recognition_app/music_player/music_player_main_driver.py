@@ -1,5 +1,4 @@
 from midiutil.MidiFile import MIDIFile
-import re
 
 
 def play(results, img_name):
@@ -38,12 +37,6 @@ def play(results, img_name):
         elif "UNKNOWN" in result_name:
             is_note = False
             note_pitch = -1
-            try:
-                int(result[1])
-                is_note = True
-                note_pitch = int(result[1])
-            except ValueError:
-                is_note = False
 
             if result[2] == "1/16":
                 note_duration = 1 / 4
@@ -65,15 +58,11 @@ def play(results, img_name):
             if bar_length < max_bar_length:
                 duration = max_bar_length - bar_length
                 if duration > 0:
-                    pitch = 0
-                    midi_file.addNote(track, channel, pitch, time, duration, volume)
-                    time = time + note_duration
+                    time = time + duration
             bar_length = 0
 
     with open(img_name[:-4] + ".mid", 'wb') as out_file:
         midi_file.writeFile(out_file)
-
-    return
 
 
 def match_notes_to_midi_values(results):
