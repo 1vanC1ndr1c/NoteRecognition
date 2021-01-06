@@ -25,6 +25,8 @@ def main():
     # Get all the files in said directory.
     dataset_images = [img_name for img_name in os.listdir(dataset_images_path)]
 
+    # reset_dataset(dataset_images_path, dataset_images)
+
     unprocessed_images = []  # A list that contains only the images that need to be processed.
     for index, img_name in enumerate(dataset_images):  # Iterate through the image names.
         # If a name contains a 'plus' or a 'minus', it means that it is already shifted.
@@ -50,7 +52,7 @@ def generate_more_images(img_name, path, current_index, total):
     :param total: Total number of images.
     """
 
-    NO_OF_ITER = 3  # Number of iterations per image. Change to change the size of the new dataset.
+    NO_OF_ITER = 2  # Number of iterations per image. Change to change the size of the new dataset.
 
     img_path = os.path.join(path, img_name)  # Construct the path to the image.
     img = cv2.imread(img_path)  # Read the image.
@@ -66,7 +68,8 @@ def generate_more_images(img_name, path, current_index, total):
 
     for x in range(0, NO_OF_ITER):
         # Print out the current progress.
-        print("'\rImage({} of {}): '{}', Iteration: {} out of 2.".format(current_index, total, img_name, x), end='')
+        print("'\rImage({} of {}): '{}', Iteration: {} out of {}."
+              .format(current_index + 1, total, img_name, x, NO_OF_ITER), end='')
 
         # Add a column of pixels (1 pixel wide) to the right.
         img_plus_x = np.concatenate((img_plus_x[0: image_h, 1:image_w], px_right), axis=1)
@@ -129,6 +132,17 @@ def generate_more_images(img_name, path, current_index, total):
             full_path = os.path.join(path, img_minus_x_minus_y_minus_noise)
             cv2.imwrite(full_path, img_minus_x_minus_y_noise)
     print()
+
+
+def reset_dataset(dataset_images_path, dataset_images):
+    for index, img_name in enumerate(dataset_images):
+        if img_name.endswith(".png"):
+            if "plus" in img_name:
+                img_path = os.path.join(dataset_images_path, img_name)
+                os.remove(img_path)
+            elif "minus" in img_name:
+                img_path = os.path.join(dataset_images_path, img_name)
+                os.remove(img_path)
 
 
 if __name__ == '__main__':

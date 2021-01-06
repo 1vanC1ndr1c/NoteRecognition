@@ -20,9 +20,9 @@ def main():
 
     # # Convolutional network analysis.
     names, durations = conv_network_analysis(input_image_name)
-    # print(names)
+    print(names)
 
-    # Play the midi file.
+    #Play the midi file.
     # input_image_name = "img02.png"
     # names = ['G4', 'A4', 'B4', 'G4', 'G4', 'A4', 'B4', 'G4', 'B4', 'C5', 'D5', 'B4', 'C5', 'D5', 'D4', 'D4', 'C5',
     #          'C5', 'B4', 'G4', 'D4', 'D4', 'C5', 'C5', 'B4', 'G4', 'G4', 'D4', 'G4', 'G4', 'D4', 'G4']

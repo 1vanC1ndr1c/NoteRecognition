@@ -36,7 +36,6 @@ def play(results, img_name):
             max_bar_length = 3
         elif "UNKNOWN" in result_name:
             is_note = False
-            note_pitch = -1
 
             if result[2] == "1/16":
                 note_duration = 1 / 4
@@ -49,7 +48,8 @@ def play(results, img_name):
             elif result[2] == "1/1":
                 note_duration = 4
 
-            if note_duration != -1 and note_pitch != -1:
+            note_pitch = result[1]
+            if note_duration != -1 and note_pitch in range(47, 82):
                 bar_length = bar_length + note_duration
                 midi_file.addNote(track, channel, note_pitch, time, note_duration, volume)
                 time = time + note_duration
