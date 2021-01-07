@@ -25,6 +25,7 @@ def main():
     # Get all the files in said directory.
     dataset_images = [img_name for img_name in os.listdir(dataset_images_path)]
 
+    # UNCOMMENT THIS TO RESET THE DATABASE
     # reset_dataset(dataset_images_path, dataset_images)
 
     unprocessed_images = []  # A list that contains only the images that need to be processed.

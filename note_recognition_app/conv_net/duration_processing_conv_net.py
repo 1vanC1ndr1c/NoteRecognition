@@ -14,7 +14,10 @@ def train_note_duration_conv_net(test_data_arr, test_data_label, train_data_arr,
     Tutorial for this code found here:
     https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/classification.ipynb
     The results are saved on a disk so that they can be used without retraining the network.
-    :param test_data_percentage: A number ([0-1]) indicating how much of the input data will be used for testing.
+    :param train_data_label: Labels with names and durations for the train data images.
+    :param train_data_arr: Array containing the train images.
+    :param test_data_label: Labels with names and durations for the test data images.
+    :param test_data_arr: Array containing the test images.
     """
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Alleged fix for some tensorflow bugs.
 

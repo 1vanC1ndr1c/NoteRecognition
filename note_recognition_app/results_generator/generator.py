@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from note_recognition_app.console_output.console_output_constructor import construct_output
+
 
 def generate_results(img_name, note_names, note_durations):
     """
@@ -11,6 +13,10 @@ def generate_results(img_name, note_names, note_durations):
     :param note_durations: Note durations.
     :return: list: List containing the order and description of the elements on the image.
     """
+    construct_output(indent_level="block",
+                     message="Matching the elements of the image ({}) with the values given by the networks."
+                     .format(img_name))
+
     results = []  # A list that will be returned.
 
     # Path that contains the information about the original image.
@@ -69,5 +75,9 @@ def generate_results(img_name, note_names, note_durations):
     results = []
     for x in results_and_positions:
         results.append(x[0])
+
+    construct_output(indent_level="block",
+                     message="Results generated."
+                     .format(img_name))
 
     return results
