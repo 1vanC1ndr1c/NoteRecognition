@@ -19,6 +19,9 @@ def train_note_values_conv_net(test_data_arr, test_data_label, train_data_arr, t
     :param test_data_label: Labels with names and durations for the test data images.
     :param test_data_arr: Array containing the test images.
     """
+
+    gpus = tf.config.experimental.list_physical_devices('GPU')
+    tf.config.experimental.set_memory_growth(gpus[0], True)
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Alleged fix for some tensorflow bugs.
 
     construct_output(indent_level=0,
