@@ -23,3 +23,4 @@ __pycache__/
 /note_recognition_app_v2/resources_v2/annotations/trainval.txt
 /note_recognition_app_v2/resources_v2/images/
 /note_recognition_app_v2/oxford_segmentation.h5
+/note_recognition_app_v2/keras_yolo3_master/yolov3.weights
