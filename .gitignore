@@ -14,3 +14,12 @@ venv/
 .idea/
 __pycache__/
 /resources/dataset_OLD/
+/note_recognition_app_v2/resources_v2/annotations/trimaps/
+/note_recognition_app_v2/resources_v2/annotations/xmls/
+/note_recognition_app_v2/resources_v2/annotations/._trimaps
+/note_recognition_app_v2/resources_v2/annotations/list.txt
+/note_recognition_app_v2/resources_v2/annotations/README
+/note_recognition_app_v2/resources_v2/annotations/test.txt
+/note_recognition_app_v2/resources_v2/annotations/trainval.txt
+/note_recognition_app_v2/resources_v2/images/
+/note_recognition_app_v2/oxford_segmentation.h5

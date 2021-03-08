@@ -28,7 +28,7 @@ input_dir = os.path.abspath(os.path.join(str(Path(__file__).parent), 'resources_
 target_dir = os.path.abspath(os.path.join(str(Path(__file__).parent), 'resources_v2', 'annotations', 'trimaps'))
 img_size = (160, 160)
 num_classes = 3
-batch_size = 32
+batch_size = 8
 
 input_img_paths = sorted(
     [
@@ -212,7 +212,7 @@ callbacks = [
 ]
 
 # Train the model, doing validation at the end of each epoch.
-epochs = 15
+epochs = 1
 model.fit(train_gen, epochs=epochs, validation_data=val_gen, callbacks=callbacks)
 
 """
