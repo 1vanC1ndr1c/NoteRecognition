@@ -11,7 +11,7 @@ from note_recognition_app_v2.console_output.console_output_constructor import co
 def extract_elements_by_template_matching(img_name):
     """
     Main function for element extraction that calls on all the sub-functions.
-    :param img_name: Name of the input image from which image rows where extracted.
+    :param img_name: Name of the resources image from which image rows where extracted.
     """
     img_location = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
     img_location = os.path.join(img_location, 'input_images_rows', img_name[:-4])
@@ -54,8 +54,8 @@ def extract_elements_by_template_matching(img_name):
 
         # RESULT DRAWING (TESTING).
         # from copy import deepcopy
-        # from note_recognition_app.image_processing.img_resizer import ResizeWithAspectRatio
-        # from note_recognition_app.image_processing.row_splitter_result_visualizer import generate_result_img
+        # from note_recognition_app.image_segmentation_dataset_generator.img_resizer import ResizeWithAspectRatio
+        # from note_recognition_app.image_segmentation_dataset_generator.row_splitter_result_visualizer import generate_result_img
         # Draw the results of (2). Leave for checking purposes.
         # tmp_img = deepcopy(img_rgb)
         # for el in templates_start_end:

@@ -9,14 +9,14 @@ from note_recognition_app_v2.console_output.console_output_constructor import co
 
 def split_into_rows(img_path):
     """
-    This function splits the input image into separate rows of note lines.
+    This function splits the resources image into separate rows of note lines.
     :param img_path: Path to the image.
     :return: boolean: True if successful, false otherwise.
     """
     try:
         construct_output(indent_level=0, message="Row splitting.")
         img_name = img_path[img_path.rfind('\\') + 1:]  # Extract image name from the given path.
-        # Directory name for the directory that will hold the rows of the input image.
+        # Directory name for the directory that will hold the rows of the resources image.
         dir_name = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
         dir_name = os.path.join(dir_name, 'input_images_rows', img_name[:-4])
         try:  # Try creating a directory.
@@ -25,7 +25,7 @@ def split_into_rows(img_path):
         except OSError as e:
             construct_output(indent_level=1, message="Folder already exists: {}".format(dir_name))
 
-        construct_output(indent_level=1, message="Reading the input image {}.".format(img_name))
+        construct_output(indent_level=1, message="Reading the resources image {}.".format(img_name))
         img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)  # Read the image.
         trans_mask = img[:, :, 3] == 0  # Remove any transparency.
         img[trans_mask] = [255, 255, 255, 255]

@@ -4,7 +4,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from note_recognition_app_v2.image_processing.img_resizer import ResizeWithAspectRatio
+from note_recognition_app_v2.image_segmentation_dataset_generator.img_resizer import ResizeWithAspectRatio
 
 
 def generate_result_img(slices):
