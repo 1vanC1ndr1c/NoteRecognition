@@ -23,11 +23,16 @@ def generator_main():
 
     # Get the path to the input images.
     input_images_path = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
+    output_path = os.path.join(str(Path(__file__).parent.parent), 'positions_detection', 'resources', 'train')
+    output_path_check = [f for f in listdir(output_path) if not isfile(join(input_images_path, f))]
 
     # Get all the images in said folder.
     input_images = [f for f in listdir(input_images_path) if isfile(join(input_images_path, f))]
     # Iterate through those images.
     for input_image in input_images:
+        if input_image[:-4] in output_path_check:  # Skip already existing images.
+            continue
+
         input_image_path = os.path.join(input_images_path, input_image)  # Construct the path to the individual image.
 
         construct_output(indent_level="block", message="Processing the resources image ({}).".format(input_image))
