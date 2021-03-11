@@ -18,7 +18,7 @@ def main():
     # input_image_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent), 'resources', 'input_images'))
     # input_image_path = os.path.join(input_image_path, input_image_name)
 
-    detect_elements('img_name')
+    detect_elements('img_name', retrain_flag=False)
 
     # TODO Call on the new function.
     # TODO Add train flag.
