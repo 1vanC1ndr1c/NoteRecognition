@@ -14,7 +14,7 @@ Also, for every shifted image, an image with gaussian noise is also saved.
 """
 
 
-def main():
+def generator_main():
     """
     The main function reads the images from the original dataset_OLD and removes the images that were already shifted.
     The unshifted images are then sent do the function that shifts them.
@@ -147,4 +147,4 @@ def reset_dataset(dataset_images_path, dataset_images):
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    sys.exit(generator_main())

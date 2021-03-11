@@ -14,7 +14,7 @@ from note_recognition_app_v2.image_segmentation_dataset_generator.single_element
     extract_elements_by_template_matching
 
 
-def main():
+def generator_main():
     """
     Main function for image processing.
     Calls on module for row splitting (first), and then module for individual elements extraction(second).
@@ -76,4 +76,4 @@ def draw_results(img_name, element_positions):
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    sys.exit(generator_main())

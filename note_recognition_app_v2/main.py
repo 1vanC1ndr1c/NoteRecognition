@@ -6,17 +6,19 @@ from pathlib import Path
 from note_recognition_app_v2.image_segmentation_dataset_generator import main
 from note_recognition_app_v2.console_output.console_output_constructor import construct_output
 
-
 # from note_recognition_app_v2.results_generator.generator import generate_results
 # from note_recognition_app_v2.midi_handler.midi_constructor import construct_midi
+from note_recognition_app_v2.positions_detection.element_detector import detect_elements
 
 
 def main():
-    input_image_name = "img01.png"
-    # Picture segmentation.
-    construct_output(indent_level=-1, message="Input image: {}\n".format(input_image_name))
-    input_image_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent), 'resources', 'input_images'))
-    input_image_path = os.path.join(input_image_path, input_image_name)
+    # input_image_name = "img01.png"
+    # # Picture segmentation.
+    # construct_output(indent_level=-1, message="Input image: {}\n".format(input_image_name))
+    # input_image_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent), 'resources', 'input_images'))
+    # input_image_path = os.path.join(input_image_path, input_image_name)
+
+    detect_elements('img_name')
 
     # TODO Call on the new function.
     # TODO Add train flag.
