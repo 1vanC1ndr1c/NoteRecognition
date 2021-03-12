@@ -20,9 +20,6 @@ def main():
 
     detect_elements('img02', retrain_flag=False)
 
-    # TODO Call on the new function.
-    # TODO Add train flag.
-
     # # Convolutional network analysis.
     # names, durations = conv_network_analysis(input_image_name)
     #
