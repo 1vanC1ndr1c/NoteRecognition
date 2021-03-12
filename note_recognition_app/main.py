@@ -28,29 +28,41 @@ def main():
 
 
 def foreground(queue_foreground_to_background, queue_background_to_foreground):
-    queue_foreground_to_background.put('TEST1')
     run_gui(queue_foreground_to_background, queue_background_to_foreground)
 
 
 def background(queue_foreground_to_background, queue_background_to_foreground):
-    print('TODO2')
-    print(queue_foreground_to_background.get())
+    while True:
+        gui_input_image_path = queue_foreground_to_background.get()
+        if gui_input_image_path != 'End.':  # 'End.' is sent when the GUI is closed.
+            try:
+                # Get the image name from the given path.
+                input_image_name = gui_input_image_path.split('/')[-1]
 
-    # # todo path
-    # input_image_name = "img01.png"
-    # # Picture segmentation.
-    # construct_output(indent_level=-1, message="Input image: {}\n".format(input_image_name))
-    # input_image_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent), 'resources', 'input_images'))
-    # input_image_path = os.path.join(input_image_path, input_image_name)
-    # process_image(input_image_path)
-    #
-    # # Convolutional network analysis.
-    # names, durations = conv_network_analysis(input_image_name, retrain_flag=False)
-    #
-    # # Generate the results format for the midi constructor.
-    # results = generate_results(input_image_name, names, durations)
-    # # Construct the midi.
-    # construct_midi(results, input_image_name)
+                # Picture segmentation.
+                construct_output(indent_level=-1, message="Input image: {}\n".format(input_image_name))
+
+                # Transform it into OS depended path.
+                input_image_path = os.path.abspath(
+                    os.path.join(str(Path(__file__).parent.parent), 'resources', 'input_images'))
+                input_image_path = os.path.join(input_image_path, input_image_name)
+
+                # Process the images to get the individual elements.
+                process_image(input_image_path)
+
+                # Convolutional network analysis.
+                names, durations = conv_network_analysis(input_image_name, retrain_flag=False)
+
+                # Generate the results format for the midi constructor.
+                results = generate_results(input_image_name, names, durations)
+                # Construct the midi.
+                construct_midi(results, input_image_name)
+                queue_background_to_foreground.put('Success.')
+            except:
+                queue_background_to_foreground.put('ERROR! Check logs file.')
+        else:
+            print('APPLICATION SHUTING DOWN.')
+            break
 
 
 if __name__ == '__main__':
