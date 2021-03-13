@@ -1,7 +1,7 @@
 from PyQt5.QtCore import QObject, pyqtSignal
 
 
-class StdReaderWorker(QObject):
+class ReaderWorker(QObject):
     """
     Worker class called from GUI that continuously reads the stdout queue and sends a signal for the GUI update.
     """

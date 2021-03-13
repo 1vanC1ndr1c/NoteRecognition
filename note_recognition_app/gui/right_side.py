@@ -11,6 +11,7 @@ from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, Q
 
 from note_recognition_app.console_output.stdout_redirect import StreamRedirect
 from note_recognition_app.gui.left_side import LeftSide
+from note_recognition_app.gui.mediaplayer import MidiPlayer
 
 
 class RightSide:
@@ -29,6 +30,10 @@ class RightSide:
         self.layout.addWidget(self.stdout_info)
 
         self._set_media_player()
+
+        self._midi_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent), 'results'))
+        self._midi_file = None
+        self._midi_player = MidiPlayer()
 
     def update_stdout_text_window(self, msg):
         cursor = self.stdout_info.textCursor()
@@ -64,3 +69,13 @@ class RightSide:
         self._media_box.addWidget(self._pause_button)
         self._media_box.addWidget(self._stop_button)
         self.layout.addLayout(self._media_box)
+
+    def update_media_player(self, msg):
+        self._midi_file = os.path.join(self._midi_path, msg[:-4] + '.mid')
+
+        self._play_button.setEnabled(True)
+        self._pause_button.setEnabled(True)
+        self._stop_button.setEnabled(True)
+
+    def _play_midi(self):
+        self._midi_player.play()

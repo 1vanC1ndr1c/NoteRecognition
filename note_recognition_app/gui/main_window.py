@@ -1,6 +1,8 @@
 import multiprocessing
 import sys
 
+import threading
+
 from PyQt5.QtCore import QThread
 from PySide2 import QtGui
 from PySide2.QtGui import QFont, QIcon, Qt, QCloseEvent
@@ -9,7 +11,7 @@ from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, Q
 
 from note_recognition_app.console_output.stdout_redirect import StreamRedirect
 from note_recognition_app.gui.left_side import LeftSide
-from note_recognition_app.gui.queue_workers import StdReaderWorker
+from note_recognition_app.gui.queue_workers import ReaderWorker
 from note_recognition_app.gui.right_side import RightSide
 
 
@@ -58,6 +60,9 @@ class Gui(QMainWindow):
         self._right_layout = self._right_side.layout
         self._start_std_reader_thread()
 
+        self._background_reader_thread = threading.Thread(target=self._bg_reading_function)
+        self._background_reader_thread.start()
+
         self._parent_layout.addWidget(self._left_widget)
         self._parent_layout.addWidget(self._middle_line)
         self._parent_layout.addLayout(self._right_layout)
@@ -68,12 +73,14 @@ class Gui(QMainWindow):
 
     def closeEvent(self, event: QCloseEvent):
         self.std_reader_worker.read_queue = False
+        self._queue_background_to_foreground.put(("End.", False))
+        self._background_reader_thread.join()
         self._queue_foreground_to_background.put(("End.", False))
         event.accept()
 
     def _start_std_reader_thread(self):
         self.std_thread = QThread()
-        self.std_reader_worker = StdReaderWorker(self._queue_stdout, read_queue=True)
+        self.std_reader_worker = ReaderWorker(self._queue_stdout, read_queue=True)
         self.std_reader_worker.moveToThread(self.std_thread)
         self.std_thread.started.connect(self.std_reader_worker.run)
         self.std_reader_worker.finished.connect(self.std_thread.quit)
@@ -81,6 +88,14 @@ class Gui(QMainWindow):
         self.std_thread.finished.connect(self.std_thread.deleteLater)
         self.std_reader_worker.new_msg.connect(self._right_side.update_stdout_text_window)
         self.std_thread.start()
+
+    def _bg_reading_function(self):
+        while True:
+            msg = self._queue_background_to_foreground.get()
+            if msg[0] == 'Success.':
+                self._right_side.update_media_player(msg[1])
+            if msg[0] == 'End.':
+                break
 
 
 def init_q_application():
