@@ -75,10 +75,10 @@ def background(queue_foreground_to_background, queue_background_to_foreground, q
                 construct_midi(results, input_image_name)
 
                 # Send the information about the successful operation.
-                queue_background_to_foreground.put('Success.')
+                queue_background_to_foreground.put(('Success.', input_image_name))
             except:
                 # Catch errors.
-                queue_background_to_foreground.put('ERROR! Check logs file.')
+                queue_background_to_foreground.put(('ERROR! Check logs file.', 'None.'))
         else:
             break
 

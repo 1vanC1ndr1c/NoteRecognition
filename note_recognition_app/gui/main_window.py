@@ -9,7 +9,8 @@ from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, Q
 
 from note_recognition_app.console_output.stdout_redirect import StreamRedirect
 from note_recognition_app.gui.left_side import LeftSide
-from note_recognition_app.gui.std_reader import StdReaderWorker
+from note_recognition_app.gui.queue_workers import StdReaderWorker
+from note_recognition_app.gui.right_side import RightSide
 
 
 def run_gui(queue_foreground_to_background, queue_background_to_foreground, queue_stdout):
@@ -41,31 +42,22 @@ class Gui(QMainWindow):
         self._queue_foreground_to_background = queue_foreground_to_background
         self._queue_background_to_foreground = queue_background_to_foreground
 
-        self._start_std_reader_thread()
-
         self._main_widget = QWidget()
         self._parent_layout = QHBoxLayout()
         self._font = QFont("Arial", 12)
         self._main_widget.setFont(self._font)
 
-        self._left_layout = LeftSide(
+        self._left_widget = LeftSide(
             self._font,
             self._queue_foreground_to_background,
-            self._queue_background_to_foreground).layout
+            self._queue_background_to_foreground).main_widget
 
         self._middle_line = _create_vertical_line()
-        self._right_layout = QVBoxLayout()
-        self.stdout_info = QTextEdit()
-        self.stdout_info.setFixedWidth(800)
-        self.stdout_info.moveCursor(QtGui.QTextCursor.Start)
-        self.stdout_info.ensureCursorVisible()
-        self.stdout_info.setLineWrapColumnOrWidth(500)
-        self.stdout_info.setLineWrapMode(QTextEdit.FixedPixelWidth)
-        self._right_layout.addWidget(self.stdout_info)
 
-        self._left_widget = QWidget()
-        self._left_widget.setFixedWidth(500)
-        self._left_widget.setLayout(self._left_layout)
+        self._right_side = RightSide(self.font)
+        self._right_layout = self._right_side.layout
+        self._start_std_reader_thread()
+
         self._parent_layout.addWidget(self._left_widget)
         self._parent_layout.addWidget(self._middle_line)
         self._parent_layout.addLayout(self._right_layout)
@@ -80,22 +72,15 @@ class Gui(QMainWindow):
         event.accept()
 
     def _start_std_reader_thread(self):
-        self.thread = QThread()
+        self.std_thread = QThread()
         self.std_reader_worker = StdReaderWorker(self._queue_stdout, read_queue=True)
-        self.std_reader_worker.moveToThread(self.thread)
-        self.thread.started.connect(self.std_reader_worker.run)
-        self.std_reader_worker.finished.connect(self.thread.quit)
+        self.std_reader_worker.moveToThread(self.std_thread)
+        self.std_thread.started.connect(self.std_reader_worker.run)
+        self.std_reader_worker.finished.connect(self.std_thread.quit)
         self.std_reader_worker.finished.connect(self.std_reader_worker.deleteLater)
-        self.thread.finished.connect(self.thread.deleteLater)
-        self.std_reader_worker.new_msg.connect(self._update_stdout_text_window)
-        self.thread.start()
-
-    def _update_stdout_text_window(self, msg):
-        cursor = self.stdout_info.textCursor()
-        cursor.movePosition(QtGui.QTextCursor.End)
-        cursor.insertText(msg)
-        self.stdout_info.setTextCursor(cursor)
-        self.stdout_info.ensureCursorVisible()
+        self.std_thread.finished.connect(self.std_thread.deleteLater)
+        self.std_reader_worker.new_msg.connect(self._right_side.update_stdout_text_window)
+        self.std_thread.start()
 
 
 def init_q_application():
@@ -109,6 +94,6 @@ def init_q_application():
 
 if __name__ == '__main__':
     # Queue where all the stdout messages will be redirected.
-    queue_stdout = multiprocessing.Queue()
-    sys.stdout = StreamRedirect(queue_stdout)
-    run_gui('q1', 'q2', queue_stdout)
+    _queue_stdout = multiprocessing.Queue()
+    sys.stdout = StreamRedirect(_queue_stdout)
+    run_gui('q1', 'q2', _queue_stdout)

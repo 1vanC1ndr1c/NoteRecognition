@@ -15,7 +15,7 @@ from PySide2 import QtCore
 class LeftSide:
     def __init__(self, font, queue_foreground_to_background, queue_background_to_foreground):
 
-        self.layout = QVBoxLayout()
+        self._layout = QVBoxLayout()
 
         self._queue_foreground_to_background = queue_foreground_to_background
         self._queue_background_to_foreground = queue_background_to_foreground
@@ -38,6 +38,10 @@ class LeftSide:
 
         self._left_side()
 
+        self.main_widget = QWidget()
+        self.main_widget.setFixedWidth(500)
+        self.main_widget.setLayout(self._layout)
+
     def _left_side(self):
         self._img_select = QPushButton("Select an image.")
         self._img_select.setFixedWidth(200)
@@ -58,17 +62,17 @@ class LeftSide:
         self._img_predict.clicked.connect(lambda c: self._img_prediction())
         self._img_predict.setEnabled(False)
 
-        self.layout.addWidget(self._img_label)
-        self.layout.addWidget(self._img_select)
-        self.layout.addWidget(self._retrain_checkbox)
-        self.layout.addWidget(self._img_predict)
+        self._layout.addWidget(self._img_label)
+        self._layout.addWidget(self._img_select)
+        self._layout.addWidget(self._retrain_checkbox)
+        self._layout.addWidget(self._img_predict)
 
     def _img_selection(self, ):
         file_name = QFileDialog.getOpenFileName(dir=self._default_img_location)
         file_name = file_name[0]
         if len(file_name) > 0:
             print(file_name)
-            self._reset_layout(self.layout)
+            self._reset_layout(self._layout)
             self._img_path = file_name
             self._img_label = self._load_img_into_label()
             self._left_side()
