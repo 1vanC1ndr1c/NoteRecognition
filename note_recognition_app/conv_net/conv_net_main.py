@@ -1,9 +1,9 @@
+import tensorflow as tf
+
 from note_recognition_app.console_output.console_output_constructor import construct_output
 from note_recognition_app.conv_net import duration_processing_conv_net
 from note_recognition_app.conv_net import value_processing_conv_net
 from note_recognition_app.conv_net.input_data_processing import prepare_new_data
-
-import tensorflow as tf
 
 
 def conv_network_analysis(input_image_name, retrain_flag=False):
@@ -23,6 +23,7 @@ def conv_network_analysis(input_image_name, retrain_flag=False):
 
     if retrain_flag is True:
         # Import the dataset and split it to training and testing.
+        print('RETRAINING THE NETWORKS (this may take a while.)')
         (test_arr, test_label), (train_arr, train__label) = prepare_new_data(test_data_percentage=0)
         value_processing_conv_net.train_note_values_conv_net(test_arr, test_label, train_arr, train__label)
         duration_processing_conv_net.train_note_duration_conv_net(test_arr, test_label, train_arr, train__label)

@@ -1,7 +1,7 @@
 from PySide2 import QtCore
 from PySide2.QtGui import QFont, QIcon, Qt, QCloseEvent, QImage, QPixmap
 from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, \
-    QHBoxLayout, QSizePolicy, QFrame, QMenu, QMainWindow, QAction, QGroupBox, QLabel, QFileDialog
+    QHBoxLayout, QSizePolicy, QFrame, QMenu, QMainWindow, QAction, QGroupBox, QLabel, QFileDialog, QTextEdit, QCheckBox
 from note_recognition_app.image_processing.img_resizer import ResizeWithAspectRatio
 import os
 import sys
@@ -26,13 +26,15 @@ class LeftSide:
                 str(Path(__file__).parent.parent.parent),
                 'resources', 'input_images'))
 
-        _placeholder_image_path = os.path.abspath(
-            os.path.join(
-                str(Path(__file__).parent.parent.parent),
-                'resources', 'gui', 'placeholder.png'))
+        self._img_path = None
 
-        self._img_path = _placeholder_image_path
-        self._img_label = self._load_img_into_label()
+        self._img_label = QTextEdit("PLEASE SELECT AN IMAGE.")
+        self._img_label.setFont(QFont("Arial", 36))
+        self._img_label.setFixedWidth(400)
+        self._img_label.setFixedHeight(570)
+        self._img_label.setEnabled(False)
+
+        self._retrain_flag = False
 
         self._left_side()
 
@@ -44,6 +46,10 @@ class LeftSide:
         self._img_select.sizeHint()
         self._img_select.clicked.connect(lambda c: self._img_selection())
 
+        self._retrain_checkbox = QCheckBox("Retrain?")
+        self._retrain_checkbox.setChecked(False)
+        self._retrain_checkbox.stateChanged.connect(lambda: self._toggle_retrain())
+
         self._img_predict = QPushButton("Start.")
         self._img_predict.setFixedWidth(200)
         self._img_predict.setStyleSheet("background-color: gray")
@@ -54,12 +60,14 @@ class LeftSide:
 
         self.layout.addWidget(self._img_label)
         self.layout.addWidget(self._img_select)
+        self.layout.addWidget(self._retrain_checkbox)
         self.layout.addWidget(self._img_predict)
 
     def _img_selection(self, ):
         file_name = QFileDialog.getOpenFileName(dir=self._default_img_location)
         file_name = file_name[0]
         if len(file_name) > 0:
+            print(file_name)
             self._reset_layout(self.layout)
             self._img_path = file_name
             self._img_label = self._load_img_into_label()
@@ -68,14 +76,11 @@ class LeftSide:
             self._img_predict.setEnabled(True)
 
     def _img_prediction(self):
-        self._queue_foreground_to_background.put(self._img_path)
+        self._queue_foreground_to_background.put((self._img_path, self._retrain_flag))
 
-        confirm = self._queue_background_to_foreground.get()
-        if confirm == 'Success.':
-            # TODO play it.
-            print('LALALALALAALALALAL')
-        else:
-            print(confirm)
+    def _toggle_retrain(self):
+        self._retrain_flag = not self._retrain_flag
+        print(self._retrain_flag)
 
     def _reset_layout(self, layout):
         while layout.count():
