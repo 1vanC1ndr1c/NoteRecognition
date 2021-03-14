@@ -1,7 +1,10 @@
+import os
 import sys
 import threading
+from pathlib import Path
 
 from PyQt5.QtCore import QThread
+from PySide2 import QtGui
 from PySide2.QtGui import QFont, QIcon, Qt, QCloseEvent
 from PySide2.QtWidgets import QApplication, QWidget, QHBoxLayout, QSizePolicy, QFrame, QMainWindow
 
@@ -15,6 +18,12 @@ def run_gui(queue_foreground_to_background, queue_background_to_foreground, queu
     gui = Gui(queue_foreground_to_background, queue_background_to_foreground, queue_stdout)
     gui.setGeometry(100, 100, 900, 400)
     gui.setWindowFlags(Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint)
+
+    icon_path = os.path.abspath(
+        os.path.join(
+            str(Path(__file__).parent.parent.parent),
+            'resources', 'gui', 'icon.png'))
+    gui.setWindowIcon(QtGui.QIcon(icon_path))
     # gui.showMaximized()
     gui.show()
     app.exec_()
@@ -103,11 +112,3 @@ def init_q_application():
     app.setStyle("fusion")
     app.setApplicationName("Note Recognition.")
     return app
-
-# if __name__ == '__main__':
-#     # Queue where all the stdout messages will be redirected.
-#     _queue_stdout = multiprocessing.Queue()
-#     q1 = multiprocessing.Queue()
-#     q2 = multiprocessing.Queue()
-#     sys.stdout = StreamRedirect(_queue_stdout)
-#     run_gui(q1, q2, _queue_stdout)
