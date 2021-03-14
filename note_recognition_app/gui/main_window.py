@@ -1,15 +1,10 @@
-import multiprocessing
 import sys
-
 import threading
 
 from PyQt5.QtCore import QThread
-from PySide2 import QtGui
 from PySide2.QtGui import QFont, QIcon, Qt, QCloseEvent
-from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QSizePolicy, QFrame, QMainWindow, \
-    QTextEdit
+from PySide2.QtWidgets import QApplication, QWidget, QHBoxLayout, QSizePolicy, QFrame, QMainWindow
 
-from note_recognition_app.console_output.stdout_redirect import StreamRedirect
 from note_recognition_app.gui.left_side import LeftSide
 from note_recognition_app.gui.queue_workers import ReaderWorker
 from note_recognition_app.gui.right_side import RightSide
@@ -75,6 +70,9 @@ class Gui(QMainWindow):
         self.std_reader_worker.read_queue = False
         self._queue_background_to_foreground.put(("End.", False))
         self._background_reader_thread.join()
+        self._right_side.midi_player.end_signal = 'End.'
+        self._right_side.end_signal = 'End.'
+        self._right_side.player_timer_thread.join()
         self._queue_foreground_to_background.put(("End.", False))
         event.accept()
 
@@ -106,9 +104,10 @@ def init_q_application():
     app.setApplicationName("Note Recognition.")
     return app
 
-
-if __name__ == '__main__':
-    # Queue where all the stdout messages will be redirected.
-    _queue_stdout = multiprocessing.Queue()
-    sys.stdout = StreamRedirect(_queue_stdout)
-    run_gui('q1', 'q2', _queue_stdout)
+# if __name__ == '__main__':
+#     # Queue where all the stdout messages will be redirected.
+#     _queue_stdout = multiprocessing.Queue()
+#     q1 = multiprocessing.Queue()
+#     q2 = multiprocessing.Queue()
+#     sys.stdout = StreamRedirect(_queue_stdout)
+#     run_gui(q1, q2, _queue_stdout)

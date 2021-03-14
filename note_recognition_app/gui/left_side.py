@@ -1,15 +1,12 @@
-from PySide2 import QtCore
-from PySide2.QtGui import QFont, QIcon, Qt, QCloseEvent, QImage, QPixmap
-from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, \
-    QHBoxLayout, QSizePolicy, QFrame, QMenu, QMainWindow, QAction, QGroupBox, QLabel, QFileDialog, QTextEdit, QCheckBox
-from note_recognition_app.image_processing.img_resizer import ResizeWithAspectRatio
 import os
-import sys
 from pathlib import Path
 
 import cv2
+from PySide2.QtGui import QFont, QImage, QPixmap
+from PySide2.QtWidgets import QWidget, QVBoxLayout, QPushButton, \
+    QLabel, QFileDialog, QTextEdit, QCheckBox
 
-from PySide2 import QtCore
+from note_recognition_app.image_processing.img_resizer import ResizeWithAspectRatio
 
 
 class LeftSide:
@@ -71,7 +68,6 @@ class LeftSide:
         file_name = QFileDialog.getOpenFileName(dir=self._default_img_location)
         file_name = file_name[0]
         if len(file_name) > 0:
-            print(file_name)
             self._reset_layout(self._layout)
             self._img_path = file_name
             self._img_label = self._load_img_into_label()
@@ -84,7 +80,6 @@ class LeftSide:
 
     def _toggle_retrain(self):
         self._retrain_flag = not self._retrain_flag
-        print(self._retrain_flag)
 
     def _reset_layout(self, layout):
         while layout.count():
