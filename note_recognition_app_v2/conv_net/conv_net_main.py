@@ -1,7 +1,7 @@
-from note_recognition_app.console_output.console_output_constructor import construct_output
-from note_recognition_app.conv_net import duration_processing_conv_net
-from note_recognition_app.conv_net import value_processing_conv_net
-from note_recognition_app.conv_net.input_data_processing import prepare_new_data
+from note_recognition_app_v2.console_output.console_output_constructor import construct_output
+from note_recognition_app_v2.conv_net import duration_processing_conv_net
+from note_recognition_app_v2.conv_net import value_processing_conv_net
+from note_recognition_app_v2.conv_net.input_data_processing import prepare_new_data
 
 import tensorflow as tf
 

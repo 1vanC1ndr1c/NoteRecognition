@@ -3,10 +3,10 @@ from pathlib import Path
 
 import cv2
 
-from note_recognition_app_v2.console_output.console_output_constructor import construct_output
-from note_recognition_app_v2.image_segmentation_dataset_generator.img_resizer import ResizeWithAspectRatio
-from note_recognition_app_v2.image_segmentation_dataset_generator.row_splitter import split_into_rows
-from note_recognition_app_v2.image_segmentation_dataset_generator.single_element_template_matcher import \
+from note_recognition_app_v3.console_output.console_output_constructor import construct_output
+from note_recognition_app_v3.image_segmentation_dataset_generator.img_resizer import ResizeWithAspectRatio
+from note_recognition_app_v3.image_segmentation_dataset_generator.row_splitter import split_into_rows
+from note_recognition_app_v3.image_segmentation_dataset_generator.single_element_template_matcher import \
     extract_elements_by_template_matching
 
 
@@ -15,15 +15,16 @@ def get_positions(input_image_path, input_image):
 
     row_positions = split_into_rows(input_image_path)  # Firstly, extract rows.
     # Then, extract elements from those rows.
-    x_coords_by_row_number = extract_elements_by_template_matching(input_image)
+    x_coords_by_row_number, recognized_list = extract_elements_by_template_matching(input_image)
 
-    element_positions = list()  # element_positions = list(tuple(Y_UP, Y_DOWN, X_LEFT, X_RIGHT)
+    # element_positions = list(tuple(Y_UP, Y_DOWN, X_LEFT, X_RIGHT)
+    element_positions = list()
     for c in x_coords_by_row_number:
         element_positions.append((row_positions[c[0]], c[1]))
 
     # draw_results(img_name=input_image, element_positions=element_positions)
 
-    return element_positions
+    return element_positions, recognized_list
 
 
 def draw_results(img_name, element_positions):

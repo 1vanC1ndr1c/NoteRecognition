@@ -5,7 +5,7 @@ import sys
 from note_recognition_app_v2.positions_detection.element_detector import detect_elements
 
 
-# from note_recognition_app_v2.conv_net.conv_net_main import conv_network_analysis
+# from note_recognition_app_v3.conv_net.conv_net_main import conv_network_analysis
 
 
 def main():

@@ -5,7 +5,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from note_recognition_app_v2.console_output.console_output_constructor import construct_output
+from note_recognition_app_v3.console_output.console_output_constructor import construct_output
 
 
 def extract_elements_by_template_matching(img_name):
@@ -22,6 +22,7 @@ def extract_elements_by_template_matching(img_name):
 
     # element_positions = list(tuple(ROW_NUMBER, X_LEFT, X_RIGHT)
     element_positions = []
+    element_annotations = []
     for row_number, row_img in enumerate(rows_numerated):
         construct_output(indent_level=2, message="Reading row number {}.".format(row_number))
         img_rgb = cv2.imread(img_location + "/" + row_img)  # Read the image.
@@ -50,6 +51,7 @@ def extract_elements_by_template_matching(img_name):
         x_coords = find_x_coords(templates_start_end)
         for x_coord in x_coords:
             element_positions.append((row_number, x_coord))
+        element_annotations += t_recognized_list
         construct_output(indent_level=0, message="Finding individual elements in the saved rows done.")
 
         # RESULT DRAWING (TESTING).
@@ -68,7 +70,7 @@ def extract_elements_by_template_matching(img_name):
         # cv2.moveWindow('Final Result.', 0, 400)
         # cv2.waitKey()
 
-    return element_positions
+    return element_positions, element_annotations
 
 
 def match_templates(template_list, path, img):

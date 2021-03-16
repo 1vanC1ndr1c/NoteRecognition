@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 import tensorflow as tf
 
-from note_recognition_app.console_output.console_output_constructor import construct_output
+from note_recognition_app_v3.console_output.console_output_constructor import construct_output
 
 
 def train_note_duration_conv_net(test_data_arr, test_data_label, train_data_arr, train_data_label):

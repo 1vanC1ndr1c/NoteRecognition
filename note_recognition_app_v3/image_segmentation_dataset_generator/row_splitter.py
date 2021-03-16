@@ -4,7 +4,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from note_recognition_app_v2.console_output.console_output_constructor import construct_output
+from note_recognition_app_v3.console_output.console_output_constructor import construct_output
 
 
 def split_into_rows(img_path):
