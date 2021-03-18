@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from note_recognition_app.console_output.console_output_constructor import construct_output
 from note_recognition_app.conv_net import duration_processing_conv_net

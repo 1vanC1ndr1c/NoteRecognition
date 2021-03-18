@@ -3,7 +3,7 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from note_recognition_app.console_output.console_output_constructor import construct_output
 
