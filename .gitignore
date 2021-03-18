@@ -26,3 +26,8 @@ __pycache__/
 /note_recognition_app_v2/keras_yolo3_master/yolov3.weights
 /note_recognition_app_v2/positions_detection/resources/
 /note_recognition_app_v2/positions_detection/model-dsbowl2018-1.h5
+/note_recognition_app_v3/positions_detection/Data/Source_Images/Test_Image_Detection_Results/
+/note_recognition_app_v3/positions_detection/Data/Model_Weights/
+/note_recognition_app_v3/positions_detection/2_Training/src/keras_yolo3/yolo.h5
+/note_recognition_app_v3/positions_detection/2_Training/src/keras_yolo3/yolov3.weights
+/note_recognition_app_v3/positions_detection/2_Training/src/keras_yolo3/yolov3-tiny.weights
