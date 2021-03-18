@@ -30,29 +30,16 @@ def main():
     input_images = [img for img in input_images if img.endswith('.png')]
 
     # Get all the images names in aforementioned file.
-    json_files = [f for f in listdir(input_images_path) if isfile(join(json_files_path, f))]
+    json_files = [f for f in listdir(json_files_path) if isfile(join(json_files_path, f))]
     # Filter just the .json files.
-    json_files = [img for img in json_files if img.endswith('.json')]
+    json_files = [j for j in json_files if j.endswith('.json')]
 
     # Iterate through all the images.
     for input_img_name in input_images:
-        json_file_name = None  # Variable that will contain the json file name.
-        _id = None  # Id of the file stored within the json file.
-
-        while True:  # Iterate while a unique id has not been found.
-            # Get a random sequence of lowercase letters and numbers. Length is 32.
-            _id = ''.join(random.choices(string.ascii_lowercase + string.digits, k=32))
-            # Generate file name.
-            json_file_name = _id + '-asset.json'
-            # Check if the file name already exist.
-            if json_file_name not in json_files:
-                # If it does not, append it to the list of already existing file names.
-                json_files.append(json_file_name)
-                # Stop the loop.
-                break
-        # If id or json file name is non existing, stop the program.
-        if _id is None or json_file_name is None:
-            raise Exception('Generating ID gone wrong!')
+        json_file_name = input_img_name[:-4] + '.json'
+        if json_file_name in json_files:
+            continue
+        _id = 1  # Id of the file stored within the json file.
 
         # Get the full path to the current image.
         input_img_path = os.path.join(input_images_path, input_img_name)
@@ -136,6 +123,7 @@ def main():
         with open(json_file_full_path, "w") as fout:
             # Save the file.
             json.dump(json_dict, fout, indent=4)
+            cv2.imwrite(os.path.join(json_files_path, input_img_name), img_gray)
 
 
 if __name__ == '__main__':
