@@ -21,13 +21,13 @@ def main():
     input_images_path = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
     # Get the path to json files.
     csv_path = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images', 'csv_info')
-    csv_path = os.path.join(csv_path, 'Annotations-export.csv')
+    csv_file_path = os.path.join(csv_path, 'Annotations-export.csv')
     # Get all the images names in aforementioned file.
     input_images = [f for f in listdir(input_images_path) if isfile(join(input_images_path, f))]
     # Filter just the .png files.
     input_images = [img for img in input_images if img.endswith('.png')]
 
-    with open(csv_path, mode='w', newline='') as csv_file:
+    with open(csv_file_path, mode='w', newline='') as csv_file:
         employee_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
 
         employee_writer.writerow(["image", "xmin", "ymin", "xmax", "ymax", "label"])
@@ -61,12 +61,14 @@ def main():
             end_x = int(end_x)
             end_y = int(end_y)
 
-            with open(csv_path, mode='a', newline='') as csv_file:
+            with open(csv_file_path, mode='a', newline='') as csv_file:
                 print('Writing into .csv')
                 employee_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
 
                 employee_writer.writerow([input_img_name, start_x, start_y, end_x, end_y,
                                           "recognized" if recognized_list[index] is True else "not_recognized"])
+
+        cv2.imwrite(os.path.join(csv_path, input_img_name), img_gray)
 
 
 if __name__ == '__main__':
