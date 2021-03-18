@@ -1,9 +1,9 @@
 {
     "asset": {
         "format": "png",
-        "id": 1,
-        "name": "img06.png",
-        "path": "D:\\Users\\cindr\\PycharmProjects\\NoteRecognition - Copy\\resources\\input_images\\img06.png",
+        "id": "00e02e22d36114b0b7333d091885fdf9",
+        "name": "img02.png",
+        "path": "file:D:/Users/cindr/Desktop/input_images/img02.png",
         "size": {
             "width": 2480,
             "height": 3508
@@ -13,7 +13,7 @@
     },
     "regions": [
         {
-            "id": "ort5u29uk",
+            "id": "jnxadgmht",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -44,7 +44,7 @@
             ]
         },
         {
-            "id": "6fyjx3uij",
+            "id": "z0qndngcq",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -75,7 +75,7 @@
             ]
         },
         {
-            "id": "v5ofxgbla",
+            "id": "7fvm37iaw",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -106,7 +106,7 @@
             ]
         },
         {
-            "id": "ipxowd3pz",
+            "id": "5jx14fvna",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -137,7 +137,7 @@
             ]
         },
         {
-            "id": "7cwnjbr9m",
+            "id": "d3ha3s2p0",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -168,7 +168,7 @@
             ]
         },
         {
-            "id": "22zpqi715",
+            "id": "ooz1qla4v",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -199,7 +199,7 @@
             ]
         },
         {
-            "id": "ooqwm8hk5",
+            "id": "3vjkedulz",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -230,7 +230,7 @@
             ]
         },
         {
-            "id": "fjzrcbn92",
+            "id": "aof8r689t",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -261,7 +261,7 @@
             ]
         },
         {
-            "id": "4jimjfbe5",
+            "id": "916qzn1gi",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -292,7 +292,7 @@
             ]
         },
         {
-            "id": "eeqhdzt5z",
+            "id": "08qgb2d8u",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -323,7 +323,7 @@
             ]
         },
         {
-            "id": "t02l7fnr9",
+            "id": "w1qw0shz6",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -354,7 +354,7 @@
             ]
         },
         {
-            "id": "014je2f23",
+            "id": "pl80f75xk",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -385,7 +385,7 @@
             ]
         },
         {
-            "id": "zdbgib3qg",
+            "id": "2aozv1yqj",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -416,7 +416,7 @@
             ]
         },
         {
-            "id": "s8956il0j",
+            "id": "ljioqouqc",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -447,7 +447,7 @@
             ]
         },
         {
-            "id": "woxl48jma",
+            "id": "n7xvs6xd6",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -478,7 +478,7 @@
             ]
         },
         {
-            "id": "icn98lev9",
+            "id": "qivk7vx8b",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -509,7 +509,7 @@
             ]
         },
         {
-            "id": "38kdlpdrn",
+            "id": "mque1bgcn",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -540,7 +540,7 @@
             ]
         },
         {
-            "id": "upxcthkjj",
+            "id": "c6vpcg65z",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -571,7 +571,7 @@
             ]
         },
         {
-            "id": "l11n2ernz",
+            "id": "78bt1rgi3",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -602,7 +602,7 @@
             ]
         },
         {
-            "id": "rbnmg1m08",
+            "id": "2pvhhw3vw",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -633,7 +633,7 @@
             ]
         },
         {
-            "id": "t2bvs8b59",
+            "id": "gz3qrrm2l",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -664,7 +664,7 @@
             ]
         },
         {
-            "id": "cu8tj3c3l",
+            "id": "8kunbnxa5",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -695,7 +695,7 @@
             ]
         },
         {
-            "id": "wmhmlsrre",
+            "id": "ugs0o4ypk",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -726,7 +726,7 @@
             ]
         },
         {
-            "id": "psuojksok",
+            "id": "6hgn3o1ow",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -757,7 +757,7 @@
             ]
         },
         {
-            "id": "5nw23881e",
+            "id": "48ewp8l75",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -788,7 +788,7 @@
             ]
         },
         {
-            "id": "e0nptsw0g",
+            "id": "u3qy30m33",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -819,7 +819,7 @@
             ]
         },
         {
-            "id": "cdaxav4in",
+            "id": "nwimmeuk4",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -850,7 +850,7 @@
             ]
         },
         {
-            "id": "n2ovneick",
+            "id": "yhb1miei8",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -881,7 +881,7 @@
             ]
         },
         {
-            "id": "hkeuhjze0",
+            "id": "0cwodu3bx",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -912,7 +912,7 @@
             ]
         },
         {
-            "id": "krsv48qhl",
+            "id": "l2su3yu3m",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -943,7 +943,7 @@
             ]
         },
         {
-            "id": "nfe24us7f",
+            "id": "6te20smey",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -974,7 +974,7 @@
             ]
         },
         {
-            "id": "vujrctl9x",
+            "id": "ybq5t9biw",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1005,7 +1005,7 @@
             ]
         },
         {
-            "id": "nxehwjulr",
+            "id": "h43jmsqno",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1036,7 +1036,7 @@
             ]
         },
         {
-            "id": "ad5a0o8ie",
+            "id": "mnrboro3v",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1067,7 +1067,7 @@
             ]
         },
         {
-            "id": "r9d77s4j9",
+            "id": "g85ioqle1",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1098,7 +1098,7 @@
             ]
         },
         {
-            "id": "0hb51l63w",
+            "id": "sdx6tqdre",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1129,7 +1129,7 @@
             ]
         },
         {
-            "id": "t5wzvt8pp",
+            "id": "qyyrdubrz",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1160,7 +1160,7 @@
             ]
         },
         {
-            "id": "kn0dzowb0",
+            "id": "c9hc68s7q",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1191,7 +1191,7 @@
             ]
         },
         {
-            "id": "yvaodyews",
+            "id": "cj935m7ht",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1222,7 +1222,7 @@
             ]
         },
         {
-            "id": "n23ppyk20",
+            "id": "zk9kpdjxw",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1253,7 +1253,7 @@
             ]
         },
         {
-            "id": "hitiu43ew",
+            "id": "26889k95s",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1284,7 +1284,7 @@
             ]
         },
         {
-            "id": "vsjrfiilu",
+            "id": "y2nd4lzdc",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"

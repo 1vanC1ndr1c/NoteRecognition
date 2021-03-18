@@ -1,0 +1,267 @@
+{
+    "name": "Annotations",
+    "securityToken": "Annotations Token",
+    "sourceConnection": {
+        "name": "input",
+        "description": "input folder",
+        "providerType": "localFileSystemProxy",
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiOTNkY2MxZjcyMWE5M2EzM2JiODlhMDY0MzkyMzE1OTZmNWQ4ZDZmYWU2ODliMjYzNGVjNjUxZTYyOGJkNjVhZGI4NmU1YzZkNmIxMTI0NzVlOTEyOGVlMDU4MzYwZDA1Yjc5OWQwZGMzOTIwMWUwNGE4ZmNlNTE4ZjQyNDdiNTUiLCJpdiI6IjYzZThjN2JiNjVhMDBmNjhjNGI3MWQwNjZmNjRmNGM2NGU5N2IzYzFiMjRlOGZmMCJ9"
+        },
+        "id": "FMPmCYN0D"
+    },
+    "targetConnection": {
+        "name": "input",
+        "description": "input folder",
+        "providerType": "localFileSystemProxy",
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiMDZhZmM4ZDRkMmMwYWI1NTBkMmYxYzQ3NjVjMTQ4NzlhNGQyN2ZiYzliZDU5YjNiMTIwNWJkNjQ1OTJkYjc4OTBiZTUyZmMyODcxMDIxY2QyMzQ2MWFlMWNjNThiZDUwZmFhZmQ5OGJjZmMwNzJmOTVmZmUxMjQ5M2NkODJhMTUiLCJpdiI6IjUxNDE1NzQzNTQwZGJjNmMzZjIyOGM0YjQ3ZWQwMDljYTdlODZlZWZkNGY0YWI1OCJ9"
+        },
+        "id": "FMPmCYN0D"
+    },
+    "videoSettings": {
+        "frameExtractionRate": 15
+    },
+    "tags": [
+        {
+            "name": "recognized",
+            "color": "#00FFFF"
+        },
+        {
+            "name": "not_recognized",
+            "color": "#000080"
+        }
+    ],
+    "id": "kBkzdpWn5",
+    "activeLearningSettings": {
+        "autoDetect": false,
+        "predictTag": true,
+        "modelPathType": "coco"
+    },
+    "exportFormat": {
+        "providerType": "vottJson",
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiMDJmNGE0NGM3MzFkNTNkY2JiYjFjZWQ0ZGQ5OTUxZmEyMDFmMTE0MTMwYTMzZmVlZTU4OWU0MzdkMGM5OWY5MTdiZGY5YzFlNjJjYzkzMzQ5M2RlMmZlNjEyMDEzMWNlIiwiaXYiOiI2MWI3YWI2OGE2ZDQxOTI1NmE4ODU1YzIyYzVkMDc0MDY3YTJjY2I4NDY5ZDU0MjkifQ=="
+        }
+    },
+    "version": "2.2.0",
+    "lastVisitedAssetId": "ea1f188a06fdcfd4e94b7928ce28c7e0",
+    "assets": {
+        "abf662b359bd990713547e1e10245cd4": {
+            "format": "png",
+            "id": "abf662b359bd990713547e1e10245cd4",
+            "name": "ajnzerica-1.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/ajnzerica-1.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "3b02ea2185fc17ae31c205e5dcfdda1e": {
+            "format": "png",
+            "id": "3b02ea2185fc17ae31c205e5dcfdda1e",
+            "name": "ajnzerica2-1.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/ajnzerica2-1.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "1345ce52ac8f7f6c45a47af3886efe99": {
+            "format": "png",
+            "id": "1345ce52ac8f7f6c45a47af3886efe99",
+            "name": "img01.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/img01.png",
+            "size": {
+                "width": 2481,
+                "height": 3507
+            },
+            "state": 2,
+            "type": 1
+        },
+        "00e02e22d36114b0b7333d091885fdf9": {
+            "format": "png",
+            "id": "00e02e22d36114b0b7333d091885fdf9",
+            "name": "img02.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/img02.png",
+            "size": {
+                "width": 2480,
+                "height": 3508
+            },
+            "state": 2,
+            "type": 1
+        },
+        "ae933cac0fc2e583f51f513670f020cb": {
+            "format": "png",
+            "id": "ae933cac0fc2e583f51f513670f020cb",
+            "name": "img00.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/img00.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "d744f971571a338b2d35f2904a0aaae7": {
+            "format": "png",
+            "id": "d744f971571a338b2d35f2904a0aaae7",
+            "name": "img05.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/img05.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "9d244fbca2594ca0982e151a754d3038": {
+            "format": "png",
+            "id": "9d244fbca2594ca0982e151a754d3038",
+            "name": "img06.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/img06.png",
+            "size": {
+                "width": 2480,
+                "height": 3508
+            },
+            "state": 1,
+            "type": 1
+        },
+        "112539ec05b28af14fdc8848d94e53c1": {
+            "format": "png",
+            "id": "112539ec05b28af14fdc8848d94e53c1",
+            "name": "img08.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/img08.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "13153fc9c3f054bf5de0e27af5c66af5": {
+            "format": "png",
+            "id": "13153fc9c3f054bf5de0e27af5c66af5",
+            "name": "img09.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/img09.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "c24e6a0943f68db0f204dca8d031040c": {
+            "format": "png",
+            "id": "c24e6a0943f68db0f204dca8d031040c",
+            "name": "img10.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/img10.png",
+            "size": {
+                "width": 2480,
+                "height": 3508
+            },
+            "state": 2,
+            "type": 1
+        },
+        "f2fe7dcd13d79e0844fd17ea2e052a73": {
+            "format": "png",
+            "id": "f2fe7dcd13d79e0844fd17ea2e052a73",
+            "name": "tes9-1.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/tes9-1.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "aae4cdb17fd9738af0668ce5a2a518f8": {
+            "format": "png",
+            "id": "aae4cdb17fd9738af0668ce5a2a518f8",
+            "name": "Test1.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/Test1.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "e3e1b451b34dc017db59195bdef4291d": {
+            "format": "png",
+            "id": "e3e1b451b34dc017db59195bdef4291d",
+            "name": "test3-1.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/test3-1.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "c4b02e059448be1e824f8ebd454165bf": {
+            "format": "png",
+            "id": "c4b02e059448be1e824f8ebd454165bf",
+            "name": "test4-1.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/test4-1.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "5c5ac64b9bde1ce55e77461a32c17506": {
+            "format": "png",
+            "id": "5c5ac64b9bde1ce55e77461a32c17506",
+            "name": "test5-1.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/test5-1.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "de1daf87cffa19b10f0d0b48f5da2b89": {
+            "format": "png",
+            "id": "de1daf87cffa19b10f0d0b48f5da2b89",
+            "name": "test6-1.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/test6-1.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "c7ab818947343b6777e8b58fa949c310": {
+            "format": "png",
+            "id": "c7ab818947343b6777e8b58fa949c310",
+            "name": "test7-1.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/test7-1.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        },
+        "ea1f188a06fdcfd4e94b7928ce28c7e0": {
+            "format": "png",
+            "id": "ea1f188a06fdcfd4e94b7928ce28c7e0",
+            "name": "test8-1.png",
+            "path": "file:D:/Users/cindr/Desktop/input_images/test8-1.png",
+            "size": {
+                "width": 2550,
+                "height": 3300
+            },
+            "state": 2,
+            "type": 1
+        }
+    }
+}

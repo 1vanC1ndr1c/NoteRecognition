@@ -1,9 +1,9 @@
 {
     "asset": {
         "format": "png",
-        "id": 1,
+        "id": "de1daf87cffa19b10f0d0b48f5da2b89",
         "name": "test6-1.png",
-        "path": "D:\\Users\\cindr\\PycharmProjects\\NoteRecognition - Copy\\resources\\input_images\\test6-1.png",
+        "path": "file:D:/Users/cindr/Desktop/input_images/test6-1.png",
         "size": {
             "width": 2550,
             "height": 3300

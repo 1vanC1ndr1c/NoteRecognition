@@ -1,9 +1,9 @@
 {
     "asset": {
         "format": "png",
-        "id": 1,
-        "name": "img08.png",
-        "path": "D:\\Users\\cindr\\PycharmProjects\\NoteRecognition - Copy\\resources\\input_images\\img08.png",
+        "id": "d744f971571a338b2d35f2904a0aaae7",
+        "name": "img05.png",
+        "path": "file:D:/Users/cindr/Desktop/input_images/img05.png",
         "size": {
             "width": 2550,
             "height": 3300
@@ -13,7 +13,7 @@
     },
     "regions": [
         {
-            "id": "hle9pydke",
+            "id": "pnr8m5yk6",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -44,7 +44,7 @@
             ]
         },
         {
-            "id": "foitfxci5",
+            "id": "8xn3lqjrh",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -75,20 +75,20 @@
             ]
         },
         {
-            "id": "fn7mk78zc",
+            "id": "crwy9tn8g",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
             ],
             "boundingBox": {
                 "height": 239,
-                "width": 39,
-                "left": 269,
+                "width": 38,
+                "left": 270,
                 "top": 394
             },
             "points": [
                 {
-                    "x": 269,
+                    "x": 270,
                     "y": 394
                 },
                 {
@@ -100,168 +100,13 @@
                     "y": 633
                 },
                 {
-                    "x": 269,
+                    "x": 270,
                     "y": 633
                 }
             ]
         },
         {
-            "id": "04q076s6r",
-            "type": "RECTANGLE",
-            "tags": [
-                "not_recognized"
-            ],
-            "boundingBox": {
-                "height": 239,
-                "width": 37,
-                "left": 529,
-                "top": 394
-            },
-            "points": [
-                {
-                    "x": 529,
-                    "y": 394
-                },
-                {
-                    "x": 566,
-                    "y": 394
-                },
-                {
-                    "x": 566,
-                    "y": 633
-                },
-                {
-                    "x": 529,
-                    "y": 633
-                }
-            ]
-        },
-        {
-            "id": "6uoaothce",
-            "type": "RECTANGLE",
-            "tags": [
-                "recognized"
-            ],
-            "boundingBox": {
-                "height": 239,
-                "width": 38,
-                "left": 776,
-                "top": 394
-            },
-            "points": [
-                {
-                    "x": 776,
-                    "y": 394
-                },
-                {
-                    "x": 814,
-                    "y": 394
-                },
-                {
-                    "x": 814,
-                    "y": 633
-                },
-                {
-                    "x": 776,
-                    "y": 633
-                }
-            ]
-        },
-        {
-            "id": "f4yb5dcnd",
-            "type": "RECTANGLE",
-            "tags": [
-                "not_recognized"
-            ],
-            "boundingBox": {
-                "height": 239,
-                "width": 33,
-                "left": 819,
-                "top": 394
-            },
-            "points": [
-                {
-                    "x": 819,
-                    "y": 394
-                },
-                {
-                    "x": 852,
-                    "y": 394
-                },
-                {
-                    "x": 852,
-                    "y": 633
-                },
-                {
-                    "x": 819,
-                    "y": 633
-                }
-            ]
-        },
-        {
-            "id": "wcie1e9ax",
-            "type": "RECTANGLE",
-            "tags": [
-                "not_recognized"
-            ],
-            "boundingBox": {
-                "height": 239,
-                "width": 37,
-                "left": 1074,
-                "top": 394
-            },
-            "points": [
-                {
-                    "x": 1074,
-                    "y": 394
-                },
-                {
-                    "x": 1111,
-                    "y": 394
-                },
-                {
-                    "x": 1111,
-                    "y": 633
-                },
-                {
-                    "x": 1074,
-                    "y": 633
-                }
-            ]
-        },
-        {
-            "id": "l9neu69y4",
-            "type": "RECTANGLE",
-            "tags": [
-                "recognized"
-            ],
-            "boundingBox": {
-                "height": 239,
-                "width": 38,
-                "left": 1321,
-                "top": 394
-            },
-            "points": [
-                {
-                    "x": 1321,
-                    "y": 394
-                },
-                {
-                    "x": 1359,
-                    "y": 394
-                },
-                {
-                    "x": 1359,
-                    "y": 633
-                },
-                {
-                    "x": 1321,
-                    "y": 633
-                }
-            ]
-        },
-        {
-            "id": "o2h1is6ux",
+            "id": "g99bfhgzm",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -269,92 +114,61 @@
             "boundingBox": {
                 "height": 239,
                 "width": 39,
-                "left": 1361,
+                "left": 399,
                 "top": 394
             },
             "points": [
                 {
-                    "x": 1361,
+                    "x": 399,
                     "y": 394
                 },
                 {
-                    "x": 1400,
+                    "x": 438,
                     "y": 394
                 },
                 {
-                    "x": 1400,
+                    "x": 438,
                     "y": 633
                 },
                 {
-                    "x": 1361,
+                    "x": 399,
                     "y": 633
                 }
             ]
         },
         {
-            "id": "pygqjddze",
+            "id": "l3y1y1gpp",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
             ],
             "boundingBox": {
                 "height": 239,
-                "width": 37,
-                "left": 1620,
-                "top": 394
-            },
-            "points": [
-                {
-                    "x": 1620,
-                    "y": 394
-                },
-                {
-                    "x": 1657,
-                    "y": 394
-                },
-                {
-                    "x": 1657,
-                    "y": 633
-                },
-                {
-                    "x": 1620,
-                    "y": 633
-                }
-            ]
-        },
-        {
-            "id": "8j3i85lth",
-            "type": "RECTANGLE",
-            "tags": [
-                "recognized"
-            ],
-            "boundingBox": {
-                "height": 239,
                 "width": 38,
-                "left": 1867,
+                "left": 527,
                 "top": 394
             },
             "points": [
                 {
-                    "x": 1867,
+                    "x": 527,
                     "y": 394
                 },
                 {
-                    "x": 1905,
+                    "x": 565,
                     "y": 394
                 },
                 {
-                    "x": 1905,
+                    "x": 565,
                     "y": 633
                 },
                 {
-                    "x": 1867,
+                    "x": 527,
                     "y": 633
                 }
             ]
         },
         {
-            "id": "v8wbcin40",
+            "id": "tode0w0t2",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -362,61 +176,433 @@
             "boundingBox": {
                 "height": 239,
                 "width": 39,
-                "left": 1906,
+                "left": 657,
                 "top": 394
             },
             "points": [
                 {
-                    "x": 1906,
+                    "x": 657,
                     "y": 394
                 },
                 {
-                    "x": 1945,
+                    "x": 696,
                     "y": 394
                 },
                 {
-                    "x": 1945,
+                    "x": 696,
                     "y": 633
                 },
                 {
-                    "x": 1906,
+                    "x": 657,
                     "y": 633
                 }
             ]
         },
         {
-            "id": "dxvkzzz55",
+            "id": "i1yw57n07",
+            "type": "RECTANGLE",
+            "tags": [
+                "recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 775,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 775,
+                    "y": 394
+                },
+                {
+                    "x": 813,
+                    "y": 394
+                },
+                {
+                    "x": 813,
+                    "y": 633
+                },
+                {
+                    "x": 775,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "7xo4xj734",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
             ],
             "boundingBox": {
                 "height": 239,
-                "width": 37,
-                "left": 2166,
+                "width": 38,
+                "left": 815,
                 "top": 394
             },
             "points": [
                 {
-                    "x": 2166,
+                    "x": 815,
                     "y": 394
                 },
                 {
-                    "x": 2203,
+                    "x": 853,
                     "y": 394
                 },
                 {
-                    "x": 2203,
+                    "x": 853,
                     "y": 633
                 },
                 {
-                    "x": 2166,
+                    "x": 815,
                     "y": 633
                 }
             ]
         },
         {
-            "id": "uyjrti6tj",
+            "id": "ijn7v3974",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 39,
+                "left": 898,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 898,
+                    "y": 394
+                },
+                {
+                    "x": 937,
+                    "y": 394
+                },
+                {
+                    "x": 937,
+                    "y": 633
+                },
+                {
+                    "x": 898,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "2wv76yg5k",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 980,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 980,
+                    "y": 394
+                },
+                {
+                    "x": 1018,
+                    "y": 394
+                },
+                {
+                    "x": 1018,
+                    "y": 633
+                },
+                {
+                    "x": 980,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "xaiun9k6k",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 39,
+                "left": 1064,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 1064,
+                    "y": 394
+                },
+                {
+                    "x": 1103,
+                    "y": 394
+                },
+                {
+                    "x": 1103,
+                    "y": 633
+                },
+                {
+                    "x": 1064,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "7aucrdysu",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 42,
+                "left": 1144,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 1144,
+                    "y": 394
+                },
+                {
+                    "x": 1186,
+                    "y": 394
+                },
+                {
+                    "x": 1186,
+                    "y": 633
+                },
+                {
+                    "x": 1144,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "fn6x01pr3",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 41,
+                "left": 1229,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 1229,
+                    "y": 394
+                },
+                {
+                    "x": 1270,
+                    "y": 394
+                },
+                {
+                    "x": 1270,
+                    "y": 633
+                },
+                {
+                    "x": 1229,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "uyvqe10el",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 42,
+                "left": 1308,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 1308,
+                    "y": 394
+                },
+                {
+                    "x": 1350,
+                    "y": 394
+                },
+                {
+                    "x": 1350,
+                    "y": 633
+                },
+                {
+                    "x": 1308,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "d00j8tggl",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 41,
+                "left": 1392,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 1392,
+                    "y": 394
+                },
+                {
+                    "x": 1433,
+                    "y": 394
+                },
+                {
+                    "x": 1433,
+                    "y": 633
+                },
+                {
+                    "x": 1392,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "8c6abhpno",
+            "type": "RECTANGLE",
+            "tags": [
+                "recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 1469,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 1469,
+                    "y": 394
+                },
+                {
+                    "x": 1507,
+                    "y": 394
+                },
+                {
+                    "x": 1507,
+                    "y": 633
+                },
+                {
+                    "x": 1469,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "gzk8ndyzm",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 43,
+                "left": 1512,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 1512,
+                    "y": 394
+                },
+                {
+                    "x": 1555,
+                    "y": 394
+                },
+                {
+                    "x": 1555,
+                    "y": 633
+                },
+                {
+                    "x": 1512,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "hf4qd74zi",
+            "type": "RECTANGLE",
+            "tags": [
+                "recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 1941,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 1941,
+                    "y": 394
+                },
+                {
+                    "x": 1979,
+                    "y": 394
+                },
+                {
+                    "x": 1979,
+                    "y": 633
+                },
+                {
+                    "x": 1941,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "ir9isewo1",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 43,
+                "left": 1984,
+                "top": 394
+            },
+            "points": [
+                {
+                    "x": 1984,
+                    "y": 394
+                },
+                {
+                    "x": 2027,
+                    "y": 394
+                },
+                {
+                    "x": 2027,
+                    "y": 633
+                },
+                {
+                    "x": 1984,
+                    "y": 633
+                }
+            ]
+        },
+        {
+            "id": "tpjsv0iwp",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -447,7 +633,7 @@
             ]
         },
         {
-            "id": "hhlt23wj2",
+            "id": "q190t7jdx",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -478,20 +664,20 @@
             ]
         },
         {
-            "id": "4zttum0vr",
+            "id": "9qd5xuyof",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
             ],
             "boundingBox": {
                 "height": 239,
-                "width": 39,
-                "left": 214,
+                "width": 38,
+                "left": 215,
                 "top": 732
             },
             "points": [
                 {
-                    "x": 214,
+                    "x": 215,
                     "y": 732
                 },
                 {
@@ -503,75 +689,13 @@
                     "y": 971
                 },
                 {
-                    "x": 214,
+                    "x": 215,
                     "y": 971
                 }
             ]
         },
         {
-            "id": "lyduant7q",
-            "type": "RECTANGLE",
-            "tags": [
-                "not_recognized"
-            ],
-            "boundingBox": {
-                "height": 239,
-                "width": 37,
-                "left": 476,
-                "top": 732
-            },
-            "points": [
-                {
-                    "x": 476,
-                    "y": 732
-                },
-                {
-                    "x": 513,
-                    "y": 732
-                },
-                {
-                    "x": 513,
-                    "y": 971
-                },
-                {
-                    "x": 476,
-                    "y": 971
-                }
-            ]
-        },
-        {
-            "id": "zmd9fnc71",
-            "type": "RECTANGLE",
-            "tags": [
-                "recognized"
-            ],
-            "boundingBox": {
-                "height": 239,
-                "width": 38,
-                "left": 721,
-                "top": 732
-            },
-            "points": [
-                {
-                    "x": 721,
-                    "y": 732
-                },
-                {
-                    "x": 759,
-                    "y": 732
-                },
-                {
-                    "x": 759,
-                    "y": 971
-                },
-                {
-                    "x": 721,
-                    "y": 971
-                }
-            ]
-        },
-        {
-            "id": "1dxw6xb9l",
+            "id": "rniwnjyj6",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -579,92 +703,61 @@
             "boundingBox": {
                 "height": 239,
                 "width": 39,
-                "left": 761,
+                "left": 271,
                 "top": 732
             },
             "points": [
                 {
-                    "x": 761,
+                    "x": 271,
                     "y": 732
                 },
                 {
-                    "x": 800,
+                    "x": 310,
                     "y": 732
                 },
                 {
-                    "x": 800,
+                    "x": 310,
                     "y": 971
                 },
                 {
-                    "x": 761,
+                    "x": 271,
                     "y": 971
                 }
             ]
         },
         {
-            "id": "1ofb4mpjf",
+            "id": "4yma3ouax",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
             ],
             "boundingBox": {
                 "height": 239,
-                "width": 37,
-                "left": 1029,
-                "top": 732
-            },
-            "points": [
-                {
-                    "x": 1029,
-                    "y": 732
-                },
-                {
-                    "x": 1066,
-                    "y": 732
-                },
-                {
-                    "x": 1066,
-                    "y": 971
-                },
-                {
-                    "x": 1029,
-                    "y": 971
-                }
-            ]
-        },
-        {
-            "id": "k0ztqj6qr",
-            "type": "RECTANGLE",
-            "tags": [
-                "recognized"
-            ],
-            "boundingBox": {
-                "height": 239,
                 "width": 38,
-                "left": 1283,
+                "left": 326,
                 "top": 732
             },
             "points": [
                 {
-                    "x": 1283,
+                    "x": 326,
                     "y": 732
                 },
                 {
-                    "x": 1321,
+                    "x": 364,
                     "y": 732
                 },
                 {
-                    "x": 1321,
+                    "x": 364,
                     "y": 971
                 },
                 {
-                    "x": 1283,
+                    "x": 326,
                     "y": 971
                 }
             ]
         },
         {
-            "id": "s8s0q32qy",
+            "id": "uqkh9wzfq",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -672,92 +765,61 @@
             "boundingBox": {
                 "height": 239,
                 "width": 39,
-                "left": 1324,
+                "left": 381,
                 "top": 732
             },
             "points": [
                 {
-                    "x": 1324,
+                    "x": 381,
                     "y": 732
                 },
                 {
-                    "x": 1363,
+                    "x": 420,
                     "y": 732
                 },
                 {
-                    "x": 1363,
+                    "x": 420,
                     "y": 971
                 },
                 {
-                    "x": 1324,
+                    "x": 381,
                     "y": 971
                 }
             ]
         },
         {
-            "id": "lyyz2z8wn",
+            "id": "rdu86ei7x",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
             ],
             "boundingBox": {
                 "height": 239,
-                "width": 37,
-                "left": 1592,
-                "top": 732
-            },
-            "points": [
-                {
-                    "x": 1592,
-                    "y": 732
-                },
-                {
-                    "x": 1629,
-                    "y": 732
-                },
-                {
-                    "x": 1629,
-                    "y": 971
-                },
-                {
-                    "x": 1592,
-                    "y": 971
-                }
-            ]
-        },
-        {
-            "id": "62dodfruy",
-            "type": "RECTANGLE",
-            "tags": [
-                "recognized"
-            ],
-            "boundingBox": {
-                "height": 239,
                 "width": 38,
-                "left": 1846,
+                "left": 436,
                 "top": 732
             },
             "points": [
                 {
-                    "x": 1846,
+                    "x": 436,
                     "y": 732
                 },
                 {
-                    "x": 1884,
+                    "x": 474,
                     "y": 732
                 },
                 {
-                    "x": 1884,
+                    "x": 474,
                     "y": 971
                 },
                 {
-                    "x": 1846,
+                    "x": 436,
                     "y": 971
                 }
             ]
         },
         {
-            "id": "hwvzzf43o",
+            "id": "y5753vctq",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -765,30 +827,526 @@
             "boundingBox": {
                 "height": 239,
                 "width": 39,
-                "left": 1886,
+                "left": 491,
                 "top": 732
             },
             "points": [
                 {
-                    "x": 1886,
+                    "x": 491,
                     "y": 732
                 },
                 {
-                    "x": 1925,
+                    "x": 530,
                     "y": 732
                 },
                 {
-                    "x": 1925,
+                    "x": 530,
                     "y": 971
                 },
                 {
-                    "x": 1886,
+                    "x": 491,
                     "y": 971
                 }
             ]
         },
         {
-            "id": "rt8sbavse",
+            "id": "vmhw9lr1n",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 547,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 547,
+                    "y": 732
+                },
+                {
+                    "x": 585,
+                    "y": 732
+                },
+                {
+                    "x": 585,
+                    "y": 971
+                },
+                {
+                    "x": 547,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "kqzjizfya",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 39,
+                "left": 603,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 603,
+                    "y": 732
+                },
+                {
+                    "x": 642,
+                    "y": 732
+                },
+                {
+                    "x": 642,
+                    "y": 971
+                },
+                {
+                    "x": 603,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "guopewui5",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 657,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 657,
+                    "y": 732
+                },
+                {
+                    "x": 695,
+                    "y": 732
+                },
+                {
+                    "x": 695,
+                    "y": 971
+                },
+                {
+                    "x": 657,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "53qy903ps",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 39,
+                "left": 713,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 713,
+                    "y": 732
+                },
+                {
+                    "x": 752,
+                    "y": 732
+                },
+                {
+                    "x": 752,
+                    "y": 971
+                },
+                {
+                    "x": 713,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "rpeq361fh",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 768,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 768,
+                    "y": 732
+                },
+                {
+                    "x": 806,
+                    "y": 732
+                },
+                {
+                    "x": 806,
+                    "y": 971
+                },
+                {
+                    "x": 768,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "b9r61dcwq",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 39,
+                "left": 823,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 823,
+                    "y": 732
+                },
+                {
+                    "x": 862,
+                    "y": 732
+                },
+                {
+                    "x": 862,
+                    "y": 971
+                },
+                {
+                    "x": 823,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "67zxpsd7n",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 880,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 880,
+                    "y": 732
+                },
+                {
+                    "x": 918,
+                    "y": 732
+                },
+                {
+                    "x": 918,
+                    "y": 971
+                },
+                {
+                    "x": 880,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "69yb03ins",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 39,
+                "left": 935,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 935,
+                    "y": 732
+                },
+                {
+                    "x": 974,
+                    "y": 732
+                },
+                {
+                    "x": 974,
+                    "y": 971
+                },
+                {
+                    "x": 935,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "oxlit1l7p",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 990,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 990,
+                    "y": 732
+                },
+                {
+                    "x": 1028,
+                    "y": 732
+                },
+                {
+                    "x": 1028,
+                    "y": 971
+                },
+                {
+                    "x": 990,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "yzrgg5qvq",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 39,
+                "left": 1046,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 1046,
+                    "y": 732
+                },
+                {
+                    "x": 1085,
+                    "y": 732
+                },
+                {
+                    "x": 1085,
+                    "y": 971
+                },
+                {
+                    "x": 1046,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "jenk525b7",
+            "type": "RECTANGLE",
+            "tags": [
+                "recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 1089,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 1089,
+                    "y": 732
+                },
+                {
+                    "x": 1127,
+                    "y": 732
+                },
+                {
+                    "x": 1127,
+                    "y": 971
+                },
+                {
+                    "x": 1089,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "9dh8eminb",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 37,
+                "left": 1131,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 1131,
+                    "y": 732
+                },
+                {
+                    "x": 1168,
+                    "y": 732
+                },
+                {
+                    "x": 1168,
+                    "y": 971
+                },
+                {
+                    "x": 1131,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "friqoudaa",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 37,
+                "left": 1346,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 1346,
+                    "y": 732
+                },
+                {
+                    "x": 1383,
+                    "y": 732
+                },
+                {
+                    "x": 1383,
+                    "y": 971
+                },
+                {
+                    "x": 1346,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "0mbub5uco",
+            "type": "RECTANGLE",
+            "tags": [
+                "recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 1549,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 1549,
+                    "y": 732
+                },
+                {
+                    "x": 1587,
+                    "y": 732
+                },
+                {
+                    "x": 1587,
+                    "y": 971
+                },
+                {
+                    "x": 1549,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "62fd3hfvx",
+            "type": "RECTANGLE",
+            "tags": [
+                "not_recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 53,
+                "left": 1589,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 1589,
+                    "y": 732
+                },
+                {
+                    "x": 1642,
+                    "y": 732
+                },
+                {
+                    "x": 1642,
+                    "y": 971
+                },
+                {
+                    "x": 1589,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "qhqmax17d",
+            "type": "RECTANGLE",
+            "tags": [
+                "recognized"
+            ],
+            "boundingBox": {
+                "height": 239,
+                "width": 38,
+                "left": 1982,
+                "top": 732
+            },
+            "points": [
+                {
+                    "x": 1982,
+                    "y": 732
+                },
+                {
+                    "x": 2020,
+                    "y": 732
+                },
+                {
+                    "x": 2020,
+                    "y": 971
+                },
+                {
+                    "x": 1982,
+                    "y": 971
+                }
+            ]
+        },
+        {
+            "id": "72l4tved0",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -796,30 +1354,30 @@
             "boundingBox": {
                 "height": 239,
                 "width": 46,
-                "left": 2154,
+                "left": 2193,
                 "top": 732
             },
             "points": [
                 {
-                    "x": 2154,
+                    "x": 2193,
                     "y": 732
                 },
                 {
-                    "x": 2200,
+                    "x": 2239,
                     "y": 732
                 },
                 {
-                    "x": 2200,
+                    "x": 2239,
                     "y": 971
                 },
                 {
-                    "x": 2154,
+                    "x": 2193,
                     "y": 971
                 }
             ]
         },
         {
-            "id": "5tux2vivt",
+            "id": "urd483eow",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -850,7 +1408,7 @@
             ]
         },
         {
-            "id": "2ahg9qcqt",
+            "id": "97xjwgbnt",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -881,7 +1439,7 @@
             ]
         },
         {
-            "id": "neqwfqze2",
+            "id": "iclil2iz5",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -912,7 +1470,7 @@
             ]
         },
         {
-            "id": "49sn32xa2",
+            "id": "jav8dt0ie",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -943,7 +1501,7 @@
             ]
         },
         {
-            "id": "d35f9jkih",
+            "id": "129fcmhsh",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -974,7 +1532,7 @@
             ]
         },
         {
-            "id": "kagfy0s4e",
+            "id": "5fl142rk6",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1005,7 +1563,7 @@
             ]
         },
         {
-            "id": "1dmckvuha",
+            "id": "7oeexxjsy",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1036,7 +1594,7 @@
             ]
         },
         {
-            "id": "q6yzhxc25",
+            "id": "t1mizid23",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1067,7 +1625,7 @@
             ]
         },
         {
-            "id": "iaoy9in83",
+            "id": "bobmj5tbb",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1098,7 +1656,7 @@
             ]
         },
         {
-            "id": "8za23uz7f",
+            "id": "0yc6xyru7",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1129,7 +1687,7 @@
             ]
         },
         {
-            "id": "k586zntor",
+            "id": "jt2k0ddsh",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1160,7 +1718,7 @@
             ]
         },
         {
-            "id": "c0m3lfexc",
+            "id": "k9prnd6tx",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1191,7 +1749,7 @@
             ]
         },
         {
-            "id": "ocoxl8ht3",
+            "id": "ogazby1k6",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1222,7 +1780,7 @@
             ]
         },
         {
-            "id": "bqwyrpblh",
+            "id": "tfmkpqhsm",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1253,7 +1811,7 @@
             ]
         },
         {
-            "id": "l3bmvht5h",
+            "id": "9u0a3m6el",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1284,7 +1842,7 @@
             ]
         },
         {
-            "id": "928nv10lw",
+            "id": "euch31xgy",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1315,7 +1873,7 @@
             ]
         },
         {
-            "id": "idxae7etn",
+            "id": "iusod5wl8",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1346,7 +1904,7 @@
             ]
         },
         {
-            "id": "f5l5m3820",
+            "id": "8vlm8koq4",
             "type": "RECTANGLE",
             "tags": [
                 "not_recognized"
@@ -1377,7 +1935,7 @@
             ]
         },
         {
-            "id": "2kas5savz",
+            "id": "rkn2t4x7p",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1408,7 +1966,7 @@
             ]
         },
         {
-            "id": "m1t9b1z2s",
+            "id": "m8wfoj2h4",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1439,7 +1997,7 @@
             ]
         },
         {
-            "id": "f7pu379s0",
+            "id": "2f8ljah8u",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1470,7 +2028,7 @@
             ]
         },
         {
-            "id": "w200lrzh0",
+            "id": "ems0s4uk7",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1501,7 +2059,7 @@
             ]
         },
         {
-            "id": "trirtb3a8",
+            "id": "pze9turc8",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1532,7 +2090,7 @@
             ]
         },
         {
-            "id": "ao6j9sq3d",
+            "id": "06rjxgci4",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1563,7 +2121,7 @@
             ]
         },
         {
-            "id": "57vp7oe81",
+            "id": "mlq8vfiwk",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1594,7 +2152,7 @@
             ]
         },
         {
-            "id": "0j3kia9xb",
+            "id": "f6oj9ivpr",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1625,7 +2183,7 @@
             ]
         },
         {
-            "id": "v503m0dq1",
+            "id": "401847tyw",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1656,7 +2214,7 @@
             ]
         },
         {
-            "id": "ylzcoru9p",
+            "id": "rvdk27j84",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1687,7 +2245,7 @@
             ]
         },
         {
-            "id": "mg1fkh2ef",
+            "id": "vyvzg9s1r",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1718,7 +2276,7 @@
             ]
         },
         {
-            "id": "yl6aehekf",
+            "id": "3psmtokoa",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1749,7 +2307,7 @@
             ]
         },
         {
-            "id": "qazmh9e3s",
+            "id": "5wc3gaqrx",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1780,7 +2338,7 @@
             ]
         },
         {
-            "id": "7sjpy0n5q",
+            "id": "k6kszbgc4",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1811,7 +2369,7 @@
             ]
         },
         {
-            "id": "en19b7aww",
+            "id": "f9yzqbarx",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1842,7 +2400,7 @@
             ]
         },
         {
-            "id": "7kz089i2f",
+            "id": "nv00h4esx",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1873,7 +2431,7 @@
             ]
         },
         {
-            "id": "36c9k6jyz",
+            "id": "ouegd4ljt",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1904,7 +2462,7 @@
             ]
         },
         {
-            "id": "qgmaxuppa",
+            "id": "jb39a6hjt",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1935,7 +2493,7 @@
             ]
         },
         {
-            "id": "kxtwch0cz",
+            "id": "3vjn8ah7l",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1966,7 +2524,7 @@
             ]
         },
         {
-            "id": "4xz61867s",
+            "id": "33cn9gdzg",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -1997,7 +2555,7 @@
             ]
         },
         {
-            "id": "l7rlxevge",
+            "id": "426ngwml3",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2028,7 +2586,7 @@
             ]
         },
         {
-            "id": "94ronf6o0",
+            "id": "a0co86jlu",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2059,7 +2617,7 @@
             ]
         },
         {
-            "id": "xp6t5jotu",
+            "id": "m8m0tj7jf",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2090,7 +2648,7 @@
             ]
         },
         {
-            "id": "cr0s64l9q",
+            "id": "ce934q2tr",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2121,7 +2679,7 @@
             ]
         },
         {
-            "id": "c6j55j8xb",
+            "id": "fjxjmkomy",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2152,7 +2710,7 @@
             ]
         },
         {
-            "id": "whsc6lpiw",
+            "id": "16gc8lrc2",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2183,7 +2741,7 @@
             ]
         },
         {
-            "id": "52kkauhmk",
+            "id": "ujz0wisfg",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2214,7 +2772,7 @@
             ]
         },
         {
-            "id": "5s6mwvfqm",
+            "id": "pwfo2soor",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2245,7 +2803,7 @@
             ]
         },
         {
-            "id": "dak93zw5a",
+            "id": "7k99xndjb",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2276,7 +2834,7 @@
             ]
         },
         {
-            "id": "x4lgtdofk",
+            "id": "d9vztrggb",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2307,7 +2865,7 @@
             ]
         },
         {
-            "id": "9t46z509a",
+            "id": "g6kkgxsd8",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2338,7 +2896,7 @@
             ]
         },
         {
-            "id": "n0xn4c0yn",
+            "id": "54qr9mi5h",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2369,7 +2927,7 @@
             ]
         },
         {
-            "id": "cfshrmzm5",
+            "id": "nz0bmvt7q",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2400,7 +2958,7 @@
             ]
         },
         {
-            "id": "oxqjmq9y1",
+            "id": "q8p595zbo",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2431,7 +2989,7 @@
             ]
         },
         {
-            "id": "766sohx2i",
+            "id": "plxve9tde",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2462,7 +3020,7 @@
             ]
         },
         {
-            "id": "blepb8f2k",
+            "id": "67rdvy6ua",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
@@ -2493,7 +3051,7 @@
             ]
         },
         {
-            "id": "w9481w8k7",
+            "id": "cxpv7nnut",
             "type": "RECTANGLE",
             "tags": [
                 "recognized"
