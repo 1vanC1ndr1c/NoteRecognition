@@ -205,11 +205,13 @@ class YOLO(object):
             # My kingdom for a good redistributable image drawing library.
             for i in range(thickness):
                 draw.rectangle(
-                    [left + i, top + i, right - i, bottom - i], outline=self.colors[c]
+                    [left + i, top + i, right - i, bottom - i], outline=self.colors[c],
+                    width=1
                 )
             draw.rectangle(
                 [tuple(text_origin), tuple(text_origin + label_size)],
                 fill=self.colors[c],
+                width=1
             )
 
             draw.text(text_origin, label, fill=(0, 0, 0), font=font)

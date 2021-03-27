@@ -7,10 +7,11 @@ import numpy as np
 from note_recognition_app_v3.console_output.console_output_constructor import construct_output
 
 
-def split_into_rows(img_path):
+def split_into_rows(img_path, save=False):
     """
     This function splits the resources image into separate rows of note lines.
     :param img_path: Path to the image.
+    :param save: Indicates whether the images need to be saved.
     :return: boolean: True if successful, false otherwise.
     """
     try:
@@ -19,20 +20,25 @@ def split_into_rows(img_path):
         # Directory name for the directory that will hold the rows of the resources image.
         dir_name = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
         dir_name = os.path.join(dir_name, 'input_images_rows', img_name[:-4])
-        try:  # Try creating a directory.
-            construct_output(indent_level=1, message="Creating a folder for the image: {}".format(dir_name))
-            os.mkdir(dir_name)
-        except OSError as e:
-            construct_output(indent_level=1, message="Folder already exists: {}".format(dir_name))
+        if save is True:
+            try:  # Try creating a directory.
+                construct_output(indent_level=1, message="Creating a folder for the image: {}".format(dir_name))
+                os.mkdir(dir_name)
+            except OSError as e:
+                construct_output(indent_level=1, message="Folder already exists: {}".format(dir_name))
 
         construct_output(indent_level=1, message="Reading the resources image {}.".format(img_name))
         img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)  # Read the image.
-        trans_mask = img[:, :, 3] == 0  # Remove any transparency.
-        img[trans_mask] = [255, 255, 255, 255]
-        img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert to BR2GRAY (grayscale mode).
-        # Make a black and white image based on a threshold.
-        th, img_gray = cv2.threshold(img_gray, 127, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
-        image_w, image_h = img_gray.shape[::-1]  # Image dimensions.
+        if len(img.shape) == 3:
+            trans_mask = img[:, :, 3] == 0  # Remove any transparency.
+            img[trans_mask] = [255, 255, 255, 255]
+            img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert to BR2GRAY (grayscale mode).
+            # Make a black and white image based on a threshold.
+            th, img_gray = cv2.threshold(img_gray, 127, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
+            image_w, image_h = img_gray.shape[::-1]  # Image dimensions.
+        else:
+            img_gray = img
+            image_w, image_h = img_gray.shape
 
         template_path = os.path.abspath(
             os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'templates', 'line_start_templates'))
@@ -65,9 +71,11 @@ def split_into_rows(img_path):
             row_position = tuple((el[1] - 40, el[1] + t_dimensions[index][1] + 40))
             row_positions.append(row_position)
 
-            img_slice_name_and_path = dir_name + "/row" + str(index) + ".png"  # Generate a path and a name.
-            img_slice = img_gray[el[1] - 40:el[1] + t_dimensions[index][1] + 40:, 0:image_w]  # Cut the part of the img.
-            cv2.imwrite(img_slice_name_and_path, img_slice)  # Save that part of the image.
+            if save is True:
+                img_slice_name_and_path = dir_name + "/row" + str(index) + ".png"  # Generate a path and a name.
+                # Cut the part of the img.
+                img_slice = img_gray[el[1] - 40:el[1] + t_dimensions[index][1] + 40:, 0:image_w]
+                cv2.imwrite(img_slice_name_and_path, img_slice)  # Save that part of the image.
 
         return row_positions
 

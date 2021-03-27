@@ -8,14 +8,11 @@ import numpy as np
 from note_recognition_app_v3.console_output.console_output_constructor import construct_output
 
 
-def extract_elements_by_template_matching(img_name):
+def extract_elements_by_template_matching(input_image_path):
     """
     Main function for element extraction that calls on all the sub-functions.
-    :param img_name: Name of the resources image from which image rows where extracted.
+    :param input_image_path: Path to the image..
     """
-    img_location = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
-    img_location = os.path.join(img_location, 'input_images_rows', img_name[:-4])
-    rows_numerated = [row for row in os.listdir(img_location) if row.startswith("row")]
 
     construct_output(indent_level=0, message="Finding individual elements in the saved rows.")
     construct_output(indent_level=1, message="Reading extracted rows.")
@@ -23,52 +20,35 @@ def extract_elements_by_template_matching(img_name):
     # element_positions = list(tuple(ROW_NUMBER, X_LEFT, X_RIGHT)
     element_positions = []
     element_annotations = []
-    for row_number, row_img in enumerate(rows_numerated):
-        construct_output(indent_level=2, message="Reading row number {}.".format(row_number))
-        img_rgb = cv2.imread(img_location + "/" + row_img)  # Read the image.
-        img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)  # Convert it into a gray image.
-        image_w, image_h = img_gray.shape[::-1]  # Image dimensions.
+    construct_output(indent_level=2, message="Reading  {}.".format(input_image_path))
+    img_rgb = cv2.imread(input_image_path)  # Read the image.
+    img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)  # Convert it into a gray image.
+    image_w, image_h = img_gray.shape[::-1]  # Image dimensions.
 
-        # Construct the path to the templates.
-        template_path = os.path.abspath(
-            os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'templates'))
-        # List all the templates that are not within the 'line_start_templates' subdirectory.
-        template_names = [t for t in os.listdir(template_path) if not str(t).startswith("line_start_templates")]
+    # Construct the path to the templates.
+    template_path = os.path.abspath(
+        os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'templates'))
+    # List all the templates that are not within the 'line_start_templates' subdirectory.
+    template_names = [t for t in os.listdir(template_path) if not str(t).startswith("line_start_templates")]
 
-        # (1) Find templates using template matching.
-        # Use the 'match_templates' function to get the locations(list),dimensions(list).
-        # Also, get list of booleans on whether the templates are recognized by their names (such as clef_g),
-        # or if they need to be processed by a conv. network.
-        # Replace the values in 'template_names' with names of the found templates
-        t_loc, t_dim, t_recognized_list, found_t_names = match_templates(template_names, template_path, img_gray)
+    # (1) Find templates using template matching.
+    # Use the 'match_templates' function to get the locations(list),dimensions(list).
+    # Also, get list of booleans on whether the templates are recognized by their names (such as clef_g),
+    # or if they need to be processed by a conv. network.
+    # Replace the values in 'template_names' with names of the found templates
+    t_loc, t_dim, t_recognized_list, found_t_names = match_templates(template_names, template_path, img_gray)
 
-        # (2) Get the start and end coordinates of the templates.
-        construct_output(indent_level=2, message="Matching the row elements with the templates.")
-        templates_start_end = [(x[0], x[0] + t_dim[index][0]) for index, x in enumerate(t_loc)]
+    # (2) Get the start and end coordinates of the templates.
+    construct_output(indent_level=2, message="Matching the row elements with the templates.")
+    templates_start_end = [(x[0], x[0] + t_dim[index][0]) for index, x in enumerate(t_loc)]
 
-        # (3) Save the images in the standard size (200x200 px). Return value only used for visualisation.
-        construct_output(indent_level=2, message="Saving found elements in the row {}.".format(row_number))
-        x_coords = find_x_coords(templates_start_end)
-        for x_coord in x_coords:
-            element_positions.append((row_number, x_coord))
-        element_annotations += t_recognized_list
-        construct_output(indent_level=0, message="Finding individual elements in the saved rows done.")
-
-        # RESULT DRAWING (TESTING).
-        # from copy import deepcopy
-        # from note_recognition_app.image_segmentation_dataset_generator.img_resizer import ResizeWithAspectRatio
-        # from note_recognition_app.image_segmentation_dataset_generator.row_splitter_result_visualizer import generate_result_img
-        # Draw the results of (2). Leave for checking purposes.
-        # tmp_img = deepcopy(img_rgb)
-        # for el in templates_start_end:
-        #     cv2.rectangle(tmp_img, (el[0], 20), (el[1], image_h - 20), (255, 0, 255), 2)
-        # cv2.imshow('Found elements.', ResizeWithAspectRatio(tmp_img, width=1000))
-        # cv2.moveWindow('Found elements.', 0, 200)
-        # Draw the results of (3). Leave for checking purposes.
-        # result_img = generate_result_img(input_images_individual_elements)
-        # cv2.imshow('Final Result.', ResizeWithAspectRatio(result_img, width=500))
-        # cv2.moveWindow('Final Result.', 0, 400)
-        # cv2.waitKey()
+    # (3) Save the images in the standard size (200x200 px). Return value only used for visualisation.
+    construct_output(indent_level=2, message="Saving found elements in {}.".format(input_image_path))
+    x_coords = find_x_coords(templates_start_end)
+    for x_coord in x_coords:
+        element_positions.append((0, x_coord))
+    element_annotations += t_recognized_list
+    construct_output(indent_level=0, message="Finding individual elements in the saved rows done.")
 
     return element_positions, element_annotations
 

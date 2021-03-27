@@ -11,11 +11,12 @@ from note_recognition_app_v3.image_segmentation_dataset_generator.single_element
 
 
 def get_positions(input_image_path, input_image):
+
     construct_output(indent_level="block", message="Processing the resources image ({}).".format(input_image))
 
     row_positions = split_into_rows(input_image_path)  # Firstly, extract rows.
     # Then, extract elements from those rows.
-    x_coords_by_row_number, recognized_list = extract_elements_by_template_matching(input_image)
+    x_coords_by_row_number, recognized_list = extract_elements_by_template_matching(input_image_path)
 
     # element_positions = list(tuple(Y_UP, Y_DOWN, X_LEFT, X_RIGHT)
     element_positions = list()

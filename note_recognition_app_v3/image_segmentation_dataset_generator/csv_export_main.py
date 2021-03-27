@@ -9,6 +9,7 @@ import csv
 import cv2
 
 from note_recognition_app_v3.image_segmentation_dataset_generator.position_aggregator import get_positions
+from note_recognition_app_v3.image_segmentation_dataset_generator.row_splitter import split_into_rows
 
 
 def main():
@@ -28,47 +29,52 @@ def main():
     input_images = [img for img in input_images if img.endswith('.png')]
 
     with open(csv_file_path, mode='w', newline='') as csv_file:
-        employee_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
-
-        employee_writer.writerow(["image", "xmin", "ymin", "xmax", "ymax", "label"])
+        csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
+        csv_writer.writerow(["image", "xmin", "ymin", "xmax", "ymax", "label"])
 
     # Iterate through all the images.
     for input_img_name in input_images:
-
-        _id = 1  # Id of the file stored within the json file.
-
         # Get the full path to the current image.
         input_img_path = os.path.join(input_images_path, input_img_name)
-        img = cv2.imread(input_img_path, cv2.IMREAD_UNCHANGED)  # Read the image.
-        trans_mask = img[:, :, 3] == 0  # Remove any transparency.
-        img[trans_mask] = [255, 255, 255, 255]
-        img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert to BR2GRAY (grayscale mode).
-        # Make a black and white image based on a threshold.
-        th, img_gray = cv2.threshold(img_gray, 127, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
+        # Split the image into rows.
+        #_ = split_into_rows(input_img_path, save=True)
 
-        # Get element positions and list that indicates if the element is recognized or not.
-        element_positions, recognized_list = get_positions(input_img_path, input_img_name)
+        # Get the path to the rows of the current image.
+        saved_rows_path = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
+        saved_rows_path = os.path.join(saved_rows_path, 'input_images_rows')
+        saved_rows_path = os.path.join(saved_rows_path, input_img_name[:-4])
 
-        for index, el in enumerate(element_positions):  # Iterate over all the elements.
+        # Get all row names.
+        row_names = [f for f in listdir(saved_rows_path) if isfile(join(saved_rows_path, f))]
+        row_names = [r for r in row_names if r.endswith('.png')]
 
-            # point = (x, y)
-            start_x, start_y = (el[1][0], el[0][0])
-            end_x, end_y = (el[1][1], el[0][1])
+        for row_name in row_names:
+            row_path = os.path.join(saved_rows_path, row_name)
+            row = cv2.imread(row_path, cv2.IMREAD_UNCHANGED)  # Read the image.
 
-            # Convert the points from numpy numbers.
-            start_x = int(start_x)
-            start_y = int(start_y)
-            end_x = int(end_x)
-            end_y = int(end_y)
+            # Get element positions and list that indicates if the element is recognized or not.
+            element_positions, recognized_list = get_positions(row_path, row_name)
 
-            with open(csv_file_path, mode='a', newline='') as csv_file:
-                print('Writing into .csv')
-                employee_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
+            # Since row names are 'rowX' X is the row number, add the image name in front of it.
+            row_name = input_img_name[:-4] + '_' + row_name
 
-                employee_writer.writerow([input_img_name, start_x, start_y, end_x, end_y,
-                                          "recognized" if recognized_list[index] is True else "not_recognized"])
+            for index, el in enumerate(element_positions):  # Iterate over all the elements.
+                start_x, start_y = (el[1][0], el[0][0])
+                end_x, end_y = (el[1][1], el[0][1])
 
-        cv2.imwrite(os.path.join(csv_path, input_img_name), img_gray)
+                # Convert the points from numpy numbers.
+                start_x = int(start_x)
+                start_y = int(start_y)
+                end_x = int(end_x)
+                end_y = int(end_y)
+
+                with open(csv_file_path, mode='a', newline='') as csv_file:
+                    _writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
+
+                    _writer.writerow([row_name, start_x, start_y, end_x, end_y,
+                                      "recognized" if recognized_list[index] is True else "not_recognized"])
+
+            cv2.imwrite(os.path.join(csv_path, row_name), row)
 
 
 if __name__ == '__main__':
