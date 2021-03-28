@@ -10,10 +10,10 @@ import warnings
 
 from tensorflow.python.eager.context import device
 
-BATCH_SIZE = 1
-INPUT_SHAPE = (256, 2560)  # multiple of 32, height, width
+BATCH_SIZE = 2
+INPUT_SHAPE = (96, 960)  # multiple of 32, height, width
 NO_OF_EPOCHS = 100
-EARLY_STOP_PATIENCE = 10
+EARLY_STOP_PATIENCE = 15
 
 with device("/cpu:0"):
     def get_parent_dir(n=1):

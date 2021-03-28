@@ -3,7 +3,7 @@ import sys
 import argparse
 from tensorflow.python.eager.context import device
 
-IMG_SIZE = (256, 2560)
+IMG_SIZE = (128, 1280)
 THRESHOLD = 0.01
 
 with device("/cpu:0"):

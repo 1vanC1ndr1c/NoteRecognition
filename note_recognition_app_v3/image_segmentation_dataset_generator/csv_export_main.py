@@ -1,13 +1,13 @@
+import csv
 import os
-import string
 import sys
 from os import listdir
 from os.path import isfile, join
 from pathlib import Path
-import csv
 
 import cv2
 
+from note_recognition_app_v3.image_segmentation_dataset_generator import img_shifter
 from note_recognition_app_v3.image_segmentation_dataset_generator.position_aggregator import get_positions
 from note_recognition_app_v3.image_segmentation_dataset_generator.row_splitter import split_into_rows
 
@@ -36,8 +36,12 @@ def main():
     for input_img_name in input_images:
         # Get the full path to the current image.
         input_img_path = os.path.join(input_images_path, input_img_name)
+
         # Split the image into rows.
-        #_ = split_into_rows(input_img_path, save=True)
+        _ = split_into_rows(input_img_path, save=True)
+
+        # Get additional images by shifting the original images.
+        img_shifter.shift(input_img_path)
 
         # Get the path to the rows of the current image.
         saved_rows_path = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')

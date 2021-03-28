@@ -1,12 +1,11 @@
+import json
 import os
+import random
 import string
 import sys
 from os import listdir
 from os.path import isfile, join
 from pathlib import Path
-import json
-
-import random
 
 import cv2
 
