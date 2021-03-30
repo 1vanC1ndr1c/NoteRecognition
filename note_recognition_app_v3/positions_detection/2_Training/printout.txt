@@ -1,0 +1,370 @@
+Create YOLOv3 model with 9 anchors and 2 classes.
+Load weights D:\Users\cindr\PycharmProjects\NoteRecognition - Copy\note_recognition_app_v3\positions_detection\2_Training\src\keras_yolo3\yolo.h5.
+Freeze the first 249 layers of total 252 layers.
+2021-03-28 15:51:06.785498: I tensorflow/core/profiler/lib/profiler_session.cc:136] Profiler session initializing.
+2021-03-28 15:51:06.785703: I tensorflow/core/profiler/lib/profiler_session.cc:155] Profiler session started.
+2021-03-28 15:51:06.785907: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1365] Profiler found 1 GPUs
+2021-03-28 15:51:06.802206: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cupti64_110.dll
+2021-03-28 15:51:06.921402: I tensorflow/core/profiler/lib/profiler_session.cc:172] Profiler session tear down.
+2021-03-28 15:51:06.921788: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1487] CUPTI activity buffer flushed
+Train on 1086 samples, val on 120 samples, with batch size 4.
+2021-03-28 15:51:07.743220: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+Epoch 1/100
+  1/271 [..............................] - ETA: 40:21 - loss: 3923.16462021-03-28 15:51:17.184859: I tensorflow/core/profiler/lib/profiler_session.cc:136] Profiler session initializing.
+2021-03-28 15:51:17.185555: I tensorflow/core/profiler/lib/profiler_session.cc:155] Profiler session started.
+  2/271 [..............................] - ETA: 6:39 - loss: 3899.5610 2021-03-28 15:51:18.317559: I tensorflow/core/profiler/lib/profiler_session.cc:71] Profiler session collecting data.
+2021-03-28 15:51:18.318051: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1487] CUPTI activity buffer flushed
+2021-03-28 15:51:18.479787: I tensorflow/core/profiler/internal/gpu/cupti_collector.cc:228]  GpuTracer has collected 0 callback api events and 0 activity events. 
+2021-03-28 15:51:18.494735: I tensorflow/core/profiler/lib/profiler_session.cc:172] Profiler session tear down.
+271/271 [==============================] - 303s 1s/step - loss: 2181.7681 - val_loss: 566.5631
+Epoch 2/100
+271/271 [==============================] - 343s 1s/step - loss: 486.5933 - val_loss: 323.9074
+Epoch 3/100
+271/271 [==============================] - 355s 1s/step - loss: 301.5453 - val_loss: 245.1757
+Epoch 4/100
+271/271 [==============================] - 292s 1s/step - loss: 233.7823 - val_loss: 202.3866
+Epoch 5/100
+271/271 [==============================] - 287s 1s/step - loss: 205.2440 - val_loss: 182.6892
+Epoch 6/100
+271/271 [==============================] - 334s 1s/step - loss: 185.3638 - val_loss: 174.9821
+Epoch 7/100
+271/271 [==============================] - 450s 2s/step - loss: 175.6560 - val_loss: 157.2896
+Epoch 8/100
+271/271 [==============================] - 404s 1s/step - loss: 171.1347 - val_loss: 162.2700
+Epoch 9/100
+271/271 [==============================] - 293s 1s/step - loss: 163.6222 - val_loss: 154.3916
+Epoch 10/100
+271/271 [==============================] - 339s 1s/step - loss: 157.4678 - val_loss: 154.9498
+Epoch 11/100
+271/271 [==============================] - 451s 2s/step - loss: 155.1023 - val_loss: 147.3259
+Epoch 12/100
+271/271 [==============================] - 452s 2s/step - loss: 154.0291 - val_loss: 148.3241
+Epoch 13/100
+271/271 [==============================] - 459s 2s/step - loss: 151.1248 - val_loss: 144.8793
+Epoch 14/100
+271/271 [==============================] - 451s 2s/step - loss: 148.5461 - val_loss: 153.0667
+Epoch 15/100
+271/271 [==============================] - 459s 2s/step - loss: 142.8181 - val_loss: 144.3781
+Epoch 16/100
+271/271 [==============================] - 480s 2s/step - loss: 145.0876 - val_loss: 144.2784
+Epoch 17/100
+271/271 [==============================] - 471s 2s/step - loss: 143.7386 - val_loss: 146.8657
+Epoch 18/100
+271/271 [==============================] - 471s 2s/step - loss: 139.7932 - val_loss: 144.8312
+Epoch 19/100
+271/271 [==============================] - 454s 2s/step - loss: 143.8012 - val_loss: 140.5900
+Epoch 20/100
+271/271 [==============================] - 450s 2s/step - loss: 144.0074 - val_loss: 139.8742
+Epoch 21/100
+271/271 [==============================] - 291s 1s/step - loss: 140.1999 - val_loss: 137.7727
+Epoch 22/100
+271/271 [==============================] - 291s 1s/step - loss: 139.8843 - val_loss: 136.6967
+Epoch 23/100
+271/271 [==============================] - 291s 1s/step - loss: 140.8976 - val_loss: 142.9314
+Epoch 24/100
+271/271 [==============================] - 293s 1s/step - loss: 142.1931 - val_loss: 131.2370
+Epoch 25/100
+271/271 [==============================] - 292s 1s/step - loss: 138.2917 - val_loss: 139.1053
+Epoch 26/100
+271/271 [==============================] - 289s 1s/step - loss: 138.5783 - val_loss: 133.4045
+Epoch 27/100
+271/271 [==============================] - 290s 1s/step - loss: 133.9869 - val_loss: 127.1370
+Epoch 28/100
+271/271 [==============================] - 284s 1s/step - loss: 137.8876 - val_loss: 128.0697
+Epoch 29/100
+271/271 [==============================] - 286s 1s/step - loss: 136.3958 - val_loss: 134.3642
+Epoch 30/100
+271/271 [==============================] - 336s 1s/step - loss: 134.9741 - val_loss: 123.1717
+Epoch 31/100
+271/271 [==============================] - 321s 1s/step - loss: 136.7606 - val_loss: 130.4335
+Epoch 32/100
+271/271 [==============================] - 334s 1s/step - loss: 136.3683 - val_loss: 132.6077
+Epoch 33/100
+271/271 [==============================] - 304s 1s/step - loss: 133.3157 - val_loss: 133.1836
+Epoch 34/100
+271/271 [==============================] - 333s 1s/step - loss: 133.1752 - val_loss: 130.3607
+Epoch 35/100
+271/271 [==============================] - 313s 1s/step - loss: 135.7932 - val_loss: 128.8411
+Epoch 36/100
+271/271 [==============================] - 294s 1s/step - loss: 131.6259 - val_loss: 129.4411
+Epoch 37/100
+271/271 [==============================] - 293s 1s/step - loss: 133.0836 - val_loss: 131.9357
+Epoch 38/100
+271/271 [==============================] - 294s 1s/step - loss: 131.5591 - val_loss: 127.0702
+Epoch 39/100
+271/271 [==============================] - 293s 1s/step - loss: 137.5670 - val_loss: 124.4809
+Epoch 40/100
+271/271 [==============================] - 288s 1s/step - loss: 129.3725 - val_loss: 128.5145
+Epoch 41/100
+271/271 [==============================] - 272s 1s/step - loss: 132.0752 - val_loss: 128.8265
+Epoch 42/100
+271/271 [==============================] - 274s 1s/step - loss: 134.0765 - val_loss: 126.5108
+Epoch 43/100
+271/271 [==============================] - 276s 1s/step - loss: 135.7406 - val_loss: 132.6450
+Epoch 44/100
+271/271 [==============================] - 274s 1s/step - loss: 132.5922 - val_loss: 130.5030
+Epoch 45/100
+271/271 [==============================] - 277s 1s/step - loss: 130.9824 - val_loss: 129.7567
+Epoch 46/100
+271/271 [==============================] - 298s 1s/step - loss: 134.6212 - val_loss: 129.0341
+Epoch 47/100
+271/271 [==============================] - 293s 1s/step - loss: 130.2904 - val_loss: 128.9907
+Epoch 48/100
+271/271 [==============================] - 298s 1s/step - loss: 133.4986 - val_loss: 128.3721
+Epoch 49/100
+271/271 [==============================] - 289s 1s/step - loss: 133.7243 - val_loss: 128.3261
+Epoch 50/100
+271/271 [==============================] - 289s 1s/step - loss: 129.4549 - val_loss: 126.8062
+Epoch 51/100
+271/271 [==============================] - 288s 1s/step - loss: 128.4393 - val_loss: 129.1054
+Epoch 52/100
+271/271 [==============================] - 281s 1s/step - loss: 128.0194 - val_loss: 127.2680
+Epoch 53/100
+271/271 [==============================] - 280s 1s/step - loss: 125.7388 - val_loss: 133.3519
+Epoch 54/100
+271/271 [==============================] - 276s 1s/step - loss: 131.1353 - val_loss: 123.6272
+Epoch 55/100
+271/271 [==============================] - 275s 1s/step - loss: 130.6933 - val_loss: 123.6071
+Epoch 56/100
+271/271 [==============================] - 285s 1s/step - loss: 128.1674 - val_loss: 129.8907
+Epoch 57/100
+271/271 [==============================] - 285s 1s/step - loss: 129.2223 - val_loss: 123.6144
+Epoch 58/100
+271/271 [==============================] - 291s 1s/step - loss: 130.3382 - val_loss: 125.2792
+Epoch 59/100
+271/271 [==============================] - 284s 1s/step - loss: 132.0012 - val_loss: 130.4253
+Epoch 60/100
+271/271 [==============================] - 289s 1s/step - loss: 127.9032 - val_loss: 119.8912
+Epoch 61/100
+271/271 [==============================] - 281s 1s/step - loss: 128.8614 - val_loss: 122.6904
+Epoch 62/100
+271/271 [==============================] - 271s 999ms/step - loss: 127.9939 - val_loss: 124.4563
+Epoch 63/100
+271/271 [==============================] - 271s 1s/step - loss: 130.3687 - val_loss: 127.9761
+Epoch 64/100
+271/271 [==============================] - 271s 1s/step - loss: 130.9608 - val_loss: 124.5164
+Epoch 65/100
+271/271 [==============================] - 271s 1s/step - loss: 128.4614 - val_loss: 123.0226
+Epoch 66/100
+271/271 [==============================] - 271s 1s/step - loss: 128.4301 - val_loss: 126.5175
+Epoch 67/100
+271/271 [==============================] - 271s 1s/step - loss: 129.2665 - val_loss: 121.1161
+Epoch 68/100
+271/271 [==============================] - 271s 1s/step - loss: 129.7839 - val_loss: 128.1671
+Epoch 69/100
+271/271 [==============================] - 272s 1s/step - loss: 128.7950 - val_loss: 115.5840
+Epoch 70/100
+271/271 [==============================] - 272s 1s/step - loss: 128.1631 - val_loss: 130.2667
+Epoch 71/100
+271/271 [==============================] - 272s 1s/step - loss: 127.1116 - val_loss: 125.6925
+Epoch 72/100
+271/271 [==============================] - 271s 1s/step - loss: 128.1201 - val_loss: 133.2719
+Epoch 73/100
+271/271 [==============================] - 271s 1s/step - loss: 130.7968 - val_loss: 124.4143
+Epoch 74/100
+271/271 [==============================] - 271s 1s/step - loss: 127.6729 - val_loss: 124.4856
+Epoch 75/100
+271/271 [==============================] - 271s 1s/step - loss: 125.9613 - val_loss: 120.7456
+Epoch 76/100
+271/271 [==============================] - 271s 1s/step - loss: 129.8740 - val_loss: 124.6004
+Epoch 77/100
+271/271 [==============================] - 283s 1s/step - loss: 127.8169 - val_loss: 125.6918
+Epoch 78/100
+271/271 [==============================] - 289s 1s/step - loss: 129.8069 - val_loss: 120.3463
+Epoch 79/100
+271/271 [==============================] - 281s 1s/step - loss: 126.4496 - val_loss: 129.8996
+Epoch 80/100
+271/271 [==============================] - 271s 1000ms/step - loss: 129.8089 - val_loss: 124.3965
+Epoch 81/100
+271/271 [==============================] - 271s 1s/step - loss: 127.9002 - val_loss: 118.6629
+Epoch 82/100
+271/271 [==============================] - 271s 1s/step - loss: 125.6959 - val_loss: 119.8498
+Epoch 83/100
+271/271 [==============================] - 271s 1000ms/step - loss: 128.0901 - val_loss: 122.4358
+Epoch 84/100
+271/271 [==============================] - 271s 1000ms/step - loss: 127.6024 - val_loss: 121.6754
+Epoch 85/100
+271/271 [==============================] - 271s 1s/step - loss: 127.6086 - val_loss: 116.8408
+Epoch 86/100
+271/271 [==============================] - 269s 993ms/step - loss: 128.5774 - val_loss: 121.2797
+Epoch 87/100
+271/271 [==============================] - 269s 992ms/step - loss: 127.1827 - val_loss: 122.4327
+Epoch 88/100
+271/271 [==============================] - 269s 992ms/step - loss: 125.4321 - val_loss: 123.4525
+Epoch 89/100
+271/271 [==============================] - 270s 997ms/step - loss: 129.1460 - val_loss: 124.2144
+Epoch 90/100
+271/271 [==============================] - 271s 1s/step - loss: 127.9607 - val_loss: 129.9926
+Epoch 91/100
+271/271 [==============================] - 271s 1s/step - loss: 125.4736 - val_loss: 123.1987
+Epoch 92/100
+271/271 [==============================] - 271s 1000ms/step - loss: 126.8030 - val_loss: 120.4190
+Epoch 93/100
+271/271 [==============================] - 271s 999ms/step - loss: 125.5418 - val_loss: 122.8820
+Epoch 94/100
+271/271 [==============================] - 271s 999ms/step - loss: 127.2284 - val_loss: 120.2198
+Epoch 95/100
+271/271 [==============================] - 271s 999ms/step - loss: 127.0615 - val_loss: 124.0754
+Epoch 96/100
+271/271 [==============================] - 271s 1000ms/step - loss: 125.6726 - val_loss: 117.7375
+Epoch 97/100
+271/271 [==============================] - 271s 1s/step - loss: 128.2621 - val_loss: 128.2605
+Epoch 98/100
+271/271 [==============================] - 271s 999ms/step - loss: 126.2948 - val_loss: 115.8450
+Epoch 99/100
+271/271 [==============================] - 271s 1000ms/step - loss: 125.6434 - val_loss: 125.7386
+Epoch 100/100
+271/271 [==============================] - 271s 1000ms/step - loss: 125.3311 - val_loss: 132.4618
+Unfreeze all layers.
+Train on 1086 samples, val on 120 samples, with batch size 4.
+Epoch 101/200
+  1/271 [..............................] - ETA: 1:23:06 - loss: 2179.19142021-03-29 00:21:32.900417: I tensorflow/core/profiler/lib/profiler_session.cc:136] Profiler session initializing.
+2021-03-29 00:21:32.900664: I tensorflow/core/profiler/lib/profiler_session.cc:155] Profiler session started.
+  2/271 [..............................] - ETA: 26:15 - loss: 1895.8766  2021-03-29 00:21:39.325203: I tensorflow/core/profiler/lib/profiler_session.cc:71] Profiler session collecting data.
+2021-03-29 00:21:39.327264: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1487] CUPTI activity buffer flushed
+2021-03-29 00:21:39.509497: I tensorflow/core/profiler/internal/gpu/cupti_collector.cc:228]  GpuTracer has collected 0 callback api events and 0 activity events. 
+2021-03-29 00:21:39.528999: I tensorflow/core/profiler/lib/profiler_session.cc:172] Profiler session tear down.
+271/271 [==============================] - 1393s 5s/step - loss: 598.5398 - val_loss: 1016.1729
+Epoch 102/200
+271/271 [==============================] - 1359s 5s/step - loss: 135.7776 - val_loss: 114.2628
+Epoch 103/200
+271/271 [==============================] - 1360s 5s/step - loss: 117.1872 - val_loss: 108.1133
+Epoch 104/200
+271/271 [==============================] - 1373s 5s/step - loss: 110.2469 - val_loss: 97.0459
+Epoch 105/200
+271/271 [==============================] - 1372s 5s/step - loss: 103.7877 - val_loss: 99.6328
+Epoch 106/200
+271/271 [==============================] - 1366s 5s/step - loss: 99.1508 - val_loss: 93.3201
+Epoch 107/200
+271/271 [==============================] - 1371s 5s/step - loss: 98.9089 - val_loss: 91.9646
+Epoch 108/200
+271/271 [==============================] - 1372s 5s/step - loss: 90.0950 - val_loss: 93.8927
+Epoch 109/200
+271/271 [==============================] - 1372s 5s/step - loss: 87.1524 - val_loss: 81.3150
+Epoch 110/200
+271/271 [==============================] - 1377s 5s/step - loss: 85.1346 - val_loss: 92.0231
+Epoch 111/200
+271/271 [==============================] - 1372s 5s/step - loss: 84.7268 - val_loss: 85.0003
+Epoch 112/200
+271/271 [==============================] - 1373s 5s/step - loss: 81.1707 - val_loss: 73.7860
+Epoch 113/200
+271/271 [==============================] - 1372s 5s/step - loss: 79.6569 - val_loss: 79.2243
+Epoch 114/200
+271/271 [==============================] - 1372s 5s/step - loss: 77.5992 - val_loss: 71.3629
+Epoch 115/200
+271/271 [==============================] - 1371s 5s/step - loss: 78.9890 - val_loss: 76.9175
+Epoch 116/200
+271/271 [==============================] - 1369s 5s/step - loss: 76.1715 - val_loss: 72.2689
+Epoch 117/200
+271/271 [==============================] - 1372s 5s/step - loss: 75.6954 - val_loss: 73.7595
+
+Epoch 00117: ReduceLROnPlateau reducing learning rate to 9.999999747378752e-06.
+Epoch 118/200
+271/271 [==============================] - 1430s 5s/step - loss: 74.3993 - val_loss: 72.9390
+Epoch 119/200
+271/271 [==============================] - 1371s 5s/step - loss: 70.8972 - val_loss: 68.9021
+Epoch 120/200
+271/271 [==============================] - 1419s 5s/step - loss: 71.4410 - val_loss: 70.1475
+Epoch 121/200
+271/271 [==============================] - 1374s 5s/step - loss: 69.1970 - val_loss: 65.0565
+Epoch 122/200
+271/271 [==============================] - 1375s 5s/step - loss: 69.4616 - val_loss: 72.0852
+Epoch 123/200
+271/271 [==============================] - 1371s 5s/step - loss: 69.4413 - val_loss: 65.0266
+Epoch 124/200
+271/271 [==============================] - 1373s 5s/step - loss: 69.4759 - val_loss: 63.7166
+Epoch 125/200
+271/271 [==============================] - 1379s 5s/step - loss: 68.4889 - val_loss: 67.0038
+Epoch 126/200
+271/271 [==============================] - 1364s 5s/step - loss: 68.5833 - val_loss: 66.9268
+Epoch 127/200
+271/271 [==============================] - 1371s 5s/step - loss: 68.5419 - val_loss: 63.9807
+
+Epoch 00127: ReduceLROnPlateau reducing learning rate to 9.999999747378752e-07.
+Epoch 128/200
+271/271 [==============================] - 1375s 5s/step - loss: 65.5875 - val_loss: 64.6000
+Epoch 129/200
+271/271 [==============================] - 1373s 5s/step - loss: 67.6900 - val_loss: 65.0730
+Epoch 130/200
+271/271 [==============================] - 1374s 5s/step - loss: 67.0245 - val_loss: 65.6901
+
+Epoch 00130: ReduceLROnPlateau reducing learning rate to 9.999999974752428e-08.
+Epoch 131/200
+271/271 [==============================] - 1371s 5s/step - loss: 66.6535 - val_loss: 66.3917
+Epoch 132/200
+271/271 [==============================] - 1374s 5s/step - loss: 66.8615 - val_loss: 67.1101
+Epoch 133/200
+271/271 [==============================] - 1375s 5s/step - loss: 68.9502 - val_loss: 67.9772
+
+Epoch 00133: ReduceLROnPlateau reducing learning rate to 1.0000000116860975e-08.
+Epoch 134/200
+271/271 [==============================] - 1373s 5s/step - loss: 67.7805 - val_loss: 68.9938
+Epoch 135/200
+271/271 [==============================] - 1373s 5s/step - loss: 66.1596 - val_loss: 62.5034
+Epoch 136/200
+271/271 [==============================] - 1366s 5s/step - loss: 68.2092 - val_loss: 68.6422
+Epoch 137/200
+271/271 [==============================] - 1371s 5s/step - loss: 66.8947 - val_loss: 63.3301
+Epoch 138/200
+271/271 [==============================] - 1371s 5s/step - loss: 67.2778 - val_loss: 70.2786
+
+Epoch 00138: ReduceLROnPlateau reducing learning rate to 9.999999939225292e-10.
+Epoch 139/200
+271/271 [==============================] - 1374s 5s/step - loss: 67.3567 - val_loss: 62.2675
+Epoch 140/200
+271/271 [==============================] - 1371s 5s/step - loss: 66.9806 - val_loss: 67.3333
+Epoch 141/200
+271/271 [==============================] - 1373s 5s/step - loss: 68.6469 - val_loss: 64.4826
+Epoch 142/200
+271/271 [==============================] - 1372s 5s/step - loss: 67.8047 - val_loss: 67.1576
+
+Epoch 00142: ReduceLROnPlateau reducing learning rate to 9.999999717180686e-11.
+Epoch 143/200
+271/271 [==============================] - 1374s 5s/step - loss: 69.3414 - val_loss: 62.6156
+Epoch 144/200
+271/271 [==============================] - 1396s 5s/step - loss: 68.3204 - val_loss: 68.2078
+Epoch 145/200
+271/271 [==============================] - 1759s 6s/step - loss: 67.9821 - val_loss: 66.7437
+
+Epoch 00145: ReduceLROnPlateau reducing learning rate to 9.99999943962493e-12.
+Epoch 146/200
+271/271 [==============================] - 1934s 7s/step - loss: 65.1391 - val_loss: 62.6653
+Epoch 147/200
+271/271 [==============================] - 1664s 6s/step - loss: 67.5588 - val_loss: 63.8477
+Epoch 148/200
+271/271 [==============================] - 1527s 6s/step - loss: 68.6286 - val_loss: 65.0736
+
+Epoch 00148: ReduceLROnPlateau reducing learning rate to 9.999999092680235e-13.
+Epoch 149/200
+271/271 [==============================] - 1500s 6s/step - loss: 66.3400 - val_loss: 64.9638
+Epoch 150/200
+271/271 [==============================] - 1598s 6s/step - loss: 70.2433 - val_loss: 67.0268
+Epoch 151/200
+271/271 [==============================] - 1485s 5s/step - loss: 66.3552 - val_loss: 63.9058
+
+Epoch 00151: ReduceLROnPlateau reducing learning rate to 9.9999988758398e-14.
+Epoch 152/200
+271/271 [==============================] - 1470s 5s/step - loss: 67.9716 - val_loss: 63.6589
+Epoch 153/200
+271/271 [==============================] - 1422s 5s/step - loss: 69.0243 - val_loss: 65.7003
+Epoch 154/200
+271/271 [==============================] - 1382s 5s/step - loss: 65.5391 - val_loss: 65.1136
+
+Epoch 00154: ReduceLROnPlateau reducing learning rate to 9.999999146890344e-15.
+Epoch 155/200
+271/271 [==============================] - 1383s 5s/step - loss: 68.2349 - val_loss: 66.3325
+Epoch 156/200
+271/271 [==============================] - 1430s 5s/step - loss: 68.2532 - val_loss: 68.3440
+Epoch 157/200
+271/271 [==============================] - 1431s 5s/step - loss: 67.8024 - val_loss: 66.0154
+
+Epoch 00157: ReduceLROnPlateau reducing learning rate to 9.999998977483753e-16.
+Epoch 158/200
+271/271 [==============================] - 1384s 5s/step - loss: 67.3375 - val_loss: 63.1293
+Epoch 159/200
+271/271 [==============================] - 1382s 5s/step - loss: 67.1858 - val_loss: 64.4087
+Epoch 00159: early stopping
+2021-03-29 23:29:08.353660: W tensorflow/core/kernels/data/generator_dataset_op.cc:107] Error occurred when finalizing GeneratorDataset iterator: Failed precondition: Python interpreter state is not initialized. The process may be terminated.
+	 [[{{node PyFunc}}]]
+
+Process finished with exit code 0
