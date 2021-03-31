@@ -45,7 +45,7 @@ def main():
 
         # Get the path to the rows of the current image.
         saved_rows_path = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
-        saved_rows_path = os.path.join(saved_rows_path, 'input_images_rows')
+        saved_rows_path = os.path.join(saved_rows_path, 'input_images_rows_v3')
         saved_rows_path = os.path.join(saved_rows_path, input_img_name[:-4])
 
         # Get all row names.

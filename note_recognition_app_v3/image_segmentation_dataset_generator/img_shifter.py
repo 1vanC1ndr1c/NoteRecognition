@@ -19,7 +19,7 @@ def shift(input_img_path):
     """
     # # Get the path to the dataset directory.
     images_path = os.path.abspath(os.path.join(str(Path(__file__).parent.parent.parent)))
-    images_path = os.path.abspath(os.path.join(images_path, "resources", "input_images", "input_images_rows"))
+    images_path = os.path.abspath(os.path.join(images_path, "resources", "input_images", "input_images_rows_v3"))
     images_path = os.path.join(images_path, input_img_path.split('\\')[-1][:-4])
     # Get all the files in said directory.
     row_images = [img_name for img_name in os.listdir(images_path)]

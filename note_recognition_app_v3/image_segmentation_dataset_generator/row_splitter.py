@@ -19,7 +19,7 @@ def split_into_rows(img_path, save=False):
         img_name = img_path[img_path.rfind('\\') + 1:]  # Extract image name from the given path.
         # Directory name for the directory that will hold the rows of the resources image.
         dir_name = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
-        dir_name = os.path.join(dir_name, 'input_images_rows', img_name[:-4])
+        dir_name = os.path.join(dir_name, 'input_images_rows_v3', img_name[:-4])
         if save is True:
             try:  # Try creating a directory.
                 construct_output(indent_level=1, message="Creating a folder for the image: {}".format(dir_name))
