@@ -12,14 +12,15 @@ from tensorflow.python.eager.context import device
 
 BATCH_SIZE = 4
 INPUT_SHAPE = (96, 960)  # multiple of 32, height, width
-NO_OF_EPOCHS = 100
+NO_OF_EPOCHS = 200
 EARLY_STOP_PATIENCE = 20
 
+# if True is True:
 with device("/cpu:0"):
     def get_parent_dir(n=1):
         """returns the n-th parent directory of the current
         working directory"""
-        current_path = os.path.dirname(os.path.abspath(__file__))
+        current_path = os.getcwd()
         for _ in range(n):
             current_path = os.path.dirname(current_path)
         return current_path
@@ -30,6 +31,23 @@ with device("/cpu:0"):
 
     utils_path = os.path.join(get_parent_dir(1), "Utils")
     sys.path.append(utils_path)
+
+    keras_path = os.path.join(src_path, "keras_yolo3")
+    Data_Folder = os.path.join(get_parent_dir(1), "Data")
+    Image_Folder = os.path.join(Data_Folder, "Source_Images", "Training_Images")
+    VoTT_Folder = os.path.join(Image_Folder, "vott-csv-export")
+    YOLO_filename = os.path.join(VoTT_Folder, "data_train.txt")
+    Model_Folder = os.path.join(Data_Folder, "Model_Weights")
+    YOLO_classname = os.path.join(Model_Folder, "data_classes.txt")
+    log_dir = Model_Folder
+    anchors_path = os.path.join(keras_path, "model_data", "yolo_anchors.txt")
+    weights_path = os.path.join(keras_path, "yolo.h5")
+    FLAGS = None
+
+    # import urllib.request
+    # fullfilename = os.path.join(keras_path, 'yolo.h5')
+    # urllib.request.urlretrieve("https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5", fullfilename)
+    # os.listdir(keras_path)
 
     import numpy as np
     import keras.backend as K
@@ -61,18 +79,6 @@ with device("/cpu:0"):
         data_generator,
         data_generator_wrapper,
         ChangeToOtherMachine, )
-
-    keras_path = os.path.join(src_path, "keras_yolo3")
-    Data_Folder = os.path.join(get_parent_dir(1), "Data")
-    Image_Folder = os.path.join(Data_Folder, "Source_Images", "Training_Images")
-    VoTT_Folder = os.path.join(Image_Folder, "vott-csv-export")
-    YOLO_filename = os.path.join(VoTT_Folder, "data_train.txt")
-    Model_Folder = os.path.join(Data_Folder, "Model_Weights")
-    YOLO_classname = os.path.join(Model_Folder, "data_classes.txt")
-    log_dir = Model_Folder
-    anchors_path = os.path.join(keras_path, "model_data", "yolo_anchors.txt")
-    weights_path = os.path.join(keras_path, "yolo.h5")
-    FLAGS = None
 
     if __name__ == "__main__":
         # Delete all default flags
