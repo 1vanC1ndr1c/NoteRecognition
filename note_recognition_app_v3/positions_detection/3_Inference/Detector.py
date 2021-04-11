@@ -4,7 +4,7 @@ import argparse
 from tensorflow.python.eager.context import device
 
 IMG_SIZE = (96, 960)
-THRESHOLD = 0.01
+THRESHOLD = 0
 
 with device("/cpu:0"):
     def get_parent_dir(n=1):

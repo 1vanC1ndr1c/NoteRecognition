@@ -50,7 +50,7 @@ def generate_more_images(img_name, path, current_index, total):
     :param current_index: Current index (out of all images) of the image that is being processed.
     :param total: Total number of images.
     """
-    SHIFT = [5, 10, 12, 15]  # List with shift values (pixels).
+    SHIFT = [5, 7, 10, 12, 15, 20]  # List with shift values (pixels).
 
     img_path = os.path.join(path, img_name)  # Construct the path to the image.
     img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)  # Read the image.
