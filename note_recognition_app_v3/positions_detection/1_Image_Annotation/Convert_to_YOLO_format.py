@@ -17,7 +17,7 @@ def get_parent_dir(n=1):
 
 
 sys.path.append(os.path.join(get_parent_dir(1), "Utils"))
-from note_recognition_app_v3.positions_detection.Utils.Convert_Format import convert_vott_csv_to_yolo
+from NoteRecognition.note_recognition_app_v3.positions_detection.Utils.Convert_Format import convert_vott_csv_to_yolo
 
 Data_Folder = os.path.join(get_parent_dir(1), "Data")
 VoTT_Folder = os.path.join(
