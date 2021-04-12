@@ -8,16 +8,17 @@ import argparse
 
 
 def get_parent_dir(n=1):
-    """returns the n-th parent dicrectory of the current
+    """returns the n-th parent directory of the current
     working directory"""
-    current_path = os.path.dirname(os.path.abspath(__file__))
-    for k in range(n):
+    current_path = os.getcwd()
+    for _ in range(n):
         current_path = os.path.dirname(current_path)
     return current_path
 
 
 sys.path.append(os.path.join(get_parent_dir(1), "Utils"))
-from NoteRecognition.note_recognition_app_v3.positions_detection.Utils.Convert_Format import convert_vott_csv_to_yolo
+
+from Convert_Format import convert_vott_csv_to_yolo
 
 Data_Folder = os.path.join(get_parent_dir(1), "Data")
 VoTT_Folder = os.path.join(
