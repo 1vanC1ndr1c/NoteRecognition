@@ -35,13 +35,13 @@ def main():
     # Iterate through all the images.
     for input_img_name in input_images:
         # Get the full path to the current image.
-        input_img_path = os.path.join(input_images_path, input_img_name)
+        #input_img_path = os.path.join(input_images_path, input_img_name)
 
         # Split the image into rows.
-        _ = split_into_rows(input_img_path, save=True)
+        # _ = split_into_rows(input_img_path, save=True)
 
         # Get additional images by shifting the original images.
-        img_shifter.shift(input_img_path)
+        # img_shifter.shift(input_img_path)
 
         # Get the path to the rows of the current image.
         saved_rows_path = os.path.join(str(Path(__file__).parent.parent.parent), 'resources', 'input_images')
@@ -54,7 +54,7 @@ def main():
 
         for row_name in row_names:
             row_path = os.path.join(saved_rows_path, row_name)
-            row = cv2.imread(row_path, cv2.IMREAD_UNCHANGED)  # Read the image.
+            # row = cv2.imread(row_path, cv2.IMREAD_UNCHANGED)  # Read the image.
 
             # Get element positions and list that indicates if the element is recognized or not.
             element_positions, recognized_list = get_positions(row_path, row_name)
@@ -74,9 +74,10 @@ def main():
 
                 with open(csv_file_path, mode='a', newline='') as csv_file:
                     _writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
-                    _writer.writerow([row_name, start_x, start_y, end_x, end_y, 'el'])
+                    _writer.writerow([row_name, start_x, start_y, end_x, end_y,
+                                      "recognized" if recognized_list[index] is True else "not_recognized"])
 
-            cv2.imwrite(os.path.join(csv_path, row_name), row)
+            # cv2.imwrite(os.path.join(csv_path, row_name), row)
 
 
 if __name__ == '__main__':
