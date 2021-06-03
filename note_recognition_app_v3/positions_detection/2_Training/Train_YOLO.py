@@ -10,10 +10,10 @@ import warnings
 
 from tensorflow.python.eager.context import device
 
-BATCH_SIZE = 4
+BATCH_SIZE = 30
 INPUT_SHAPE = (96, 960)  # multiple of 32, height, width
-NO_OF_EPOCHS = 200
-EARLY_STOP_PATIENCE = 20
+NO_OF_EPOCHS = 300
+EARLY_STOP_PATIENCE = 30
 
 # if True is True:
 with device("/cpu:0"):
