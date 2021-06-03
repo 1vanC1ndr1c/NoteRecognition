@@ -31,3 +31,4 @@ __pycache__/
 /note_recognition_app_v3/positions_detection/2_Training/src/keras_yolo3/yolo.h5
 /note_recognition_app_v3/positions_detection/2_Training/src/keras_yolo3/yolov3.weights
 /note_recognition_app_v3/positions_detection/2_Training/src/keras_yolo3/yolov3-tiny.weights
+/resources/input_images/csv_info/
