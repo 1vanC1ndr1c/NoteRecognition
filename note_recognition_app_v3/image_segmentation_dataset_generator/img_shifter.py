@@ -30,7 +30,7 @@ def shift(input_img_path):
         # If a name contains a 'plus' or a 'minus', it means that it is already shifted.
         if "plus" not in img_name:
             if "minus" not in img_name:
-                # If a name if a substring of another name in the same list, the image was already processed.
+                # If a name is a substring of another name in the same list, the image was already processed.
                 # Explanation: example: 'img01_minus1px.png' means that 'img01.png' was processed.
                 if not any(img_name in s for i, s in enumerate(row_images) if i != index):
                     # Append only unprocessed images.
@@ -50,7 +50,7 @@ def generate_more_images(img_name, path, current_index, total):
     :param current_index: Current index (out of all images) of the image that is being processed.
     :param total: Total number of images.
     """
-    SHIFT = [5, 7, 10, 12, 15, 20]  # List with shift values (pixels).
+    SHIFT = [5, 7, 10, 12, 15, 17, 20]  # List with shift values (pixels).
 
     img_path = os.path.join(path, img_name)  # Construct the path to the image.
     img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)  # Read the image.

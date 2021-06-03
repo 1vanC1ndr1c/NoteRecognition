@@ -74,9 +74,7 @@ def main():
 
                 with open(csv_file_path, mode='a', newline='') as csv_file:
                     _writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
-
-                    _writer.writerow([row_name, start_x, start_y, end_x, end_y,
-                                      "recognized" if recognized_list[index] is True else "not_recognized"])
+                    _writer.writerow([row_name, start_x, start_y, end_x, end_y, 'el'])
 
             cv2.imwrite(os.path.join(csv_path, row_name), row)
 
