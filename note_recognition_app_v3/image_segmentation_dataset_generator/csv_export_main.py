@@ -4,6 +4,8 @@ import sys
 from os import listdir
 from os.path import isfile, join
 from pathlib import Path
+import random
+import numpy as np
 
 import cv2
 
@@ -59,6 +61,32 @@ def main():
             # Get element positions and list that indicates if the element is recognized or not.
             element_positions, recognized_list = get_positions(row_path, row_name)
 
+            for index in range(5):
+                print(f'{" " * 20} Doing rng image for the row {row_name} ({index + 1} / 5.)')
+                rng_pos, rng_list, rng_row = get_randomized_rows(
+                    element_positions,
+                    recognized_list,
+                    row)
+
+                rng_row_name = input_img_name[:-4] + '_rng_' + str(index) + '_' + row_name
+
+                for el_index, el in enumerate(rng_pos):  # Iterate over all the elements.
+                    start_x, start_y = (el[1][0], el[0][0])
+                    end_x, end_y = (el[1][1], el[0][1])
+
+                    # Convert the points from numpy numbers.
+                    start_x = int(start_x)
+                    start_y = int(start_y)
+                    end_x = int(end_x)
+                    end_y = int(end_y)
+
+                    with open(csv_file_path, mode='a', newline='') as csv_file:
+                        _writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
+                        _writer.writerow([rng_row_name, start_x, start_y, end_x, end_y,
+                                          "recognized" if rng_list[el_index] is True else "not_recognized"])
+
+                cv2.imwrite(os.path.join(csv_path, rng_row_name), rng_row)
+
             # Since row names are 'rowX' X is the row number, add the image name in front of it.
             row_name = input_img_name[:-4] + '_' + row_name
 
@@ -78,6 +106,41 @@ def main():
                                       "recognized" if recognized_list[index] is True else "not_recognized"])
 
             cv2.imwrite(os.path.join(csv_path, row_name), row)
+
+
+def get_randomized_rows(element_positions, recognized_list, row):
+    # Randomize the rows and list order.
+    tmp = list(zip(element_positions[1:], recognized_list[1:]))
+    random.shuffle(tmp)
+
+    # Unpack it.
+    new_el_pos, new_rec_list = zip(*tmp)
+
+    new_el_pos = list(new_el_pos)
+    new_el_pos.insert(0, element_positions[0])
+    new_el_pos = tuple(new_el_pos)
+
+    new_rec_list = list(new_rec_list)
+    new_rec_list.insert(0, recognized_list[0])
+    new_rec_list = tuple(new_rec_list)
+
+    row_w, row_h = row.shape
+    new_row = np.ones((row_w, row_h), np.uint8)
+
+    # Get the new image with that order.
+    x_pos = element_positions[1][1][0]
+    new_row[0:row_h, element_positions[0][1][0]:  element_positions[0][1][1]] = row[
+                                                                                0:row_h,
+                                                                                element_positions[0][1][0]:
+                                                                                element_positions[0][1][1]]
+    for el in new_el_pos[1:]:
+        width = el[1][1] - el[1][0]
+        new_row[0:row_h, x_pos: x_pos + width] = row[0:row_h, el[1][0]:el[1][1]]
+        x_pos = x_pos + width
+
+    if new_row.shape != row.shape:
+        return element_positions, recognized_list, row
+    return new_el_pos, new_rec_list, new_row
 
 
 if __name__ == '__main__':

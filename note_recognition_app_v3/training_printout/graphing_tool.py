@@ -2,7 +2,6 @@ import sys
 import matplotlib.pyplot as plt
 
 
-
 def plot_los_val_loss(train_info):
     plt.plot(train_info.keys(),
              [loss['loss'] for _, loss in train_info.items()],
@@ -17,7 +16,8 @@ def plot_los_val_loss(train_info):
     plt.show()
 
 
-def get_train_data_from_txt(file_name):
+# TODO adjust for new output.txt format
+def get_train_data_from_txt_1(file_name):
     with open(file_name, mode="r", newline=None) as input_file:
         input_data = [x.strip() for x in input_file.readlines()]
 
@@ -42,4 +42,7 @@ def get_train_data_from_txt(file_name):
             epoch_no = -1
 
     return data_dict
-  
+
+
+def get_train_data_from_txt_2(file_name):
+    pass
