@@ -148,6 +148,8 @@ def get_randomized_rows(element_positions, recognized_list, row):
         dist = el2[1][0] - el1[1][1]
         sum_dist = sum_dist + dist
     avg_dist = sum_dist // index if index > 0 else 9
+    if avg_dist > 10:
+        avg_dist = 9
     # Add some empty space to the image.
     empty_space = row[0:row_hgt, element_positions[0][1][1]:element_positions[0][1][1] + avg_dist]
     new_row = np.concatenate((new_row, empty_space), axis=1)
