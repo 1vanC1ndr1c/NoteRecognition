@@ -67,7 +67,7 @@ def main():
                     element_positions,
                     recognized_list,
                     row)
-                if -1 in [rng_pos, rng_list, rng_row]:
+                if rng_list is None:
                     continue
 
                 rng_row_name = input_img_name[:-4] + '_rng_' + str(index) + '_' + row_name
@@ -155,23 +155,25 @@ def get_randomized_rows(element_positions, recognized_list, row):
     for index, el in enumerate(new_el_pos[1:]):
         width = el[1][1] - el[1][0]
         new_positions.append((el[0], (new_row.shape[1], new_row.shape[1] + width)))
-        print(el[0], (new_row.shape[1], new_row.shape[1] + width))
         # Add an element
         new_row = np.concatenate((new_row, row[0:row_hgt, el[1][0]:el[1][1]]), axis=1)
         # Add some empty space.
         if index < len(new_el_pos) - 2:
             new_row = np.concatenate((new_row, empty_space), axis=1)
 
+    if max([x[1][1] for x in new_positions]) >= row.shape[1]:
+        return None, None, None
+
     right_pad = row.shape[1] - new_row.shape[1]
     if right_pad < 0:
-        return -1, -1, -1
+        return None, None, None
 
     if right_pad > 0:
         right_pad = np.ones((row_hgt, right_pad), np.uint8)
         new_row = np.concatenate((new_row, right_pad), axis=1)
 
     if new_row.shape != row.shape:
-        return -1, -1, -1
+        return None, None, None
 
     return list(new_positions), list(new_rec_list), new_row
 
