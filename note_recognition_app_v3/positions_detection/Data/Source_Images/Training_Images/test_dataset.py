@@ -19,7 +19,7 @@ def main():
            if isfile(join(input_images_path, f))
            and f.endswith('.txt')][0]
 
-    with open(txt, mode="r", newline=None) as input_file:
+    with open(os.path.join(input_images_path, txt), mode="r", newline=None) as input_file:
         txt_input_data = [x.strip() for x in input_file.readlines()]
 
     txt_img_names = [x.split(' ')[0]
@@ -28,7 +28,7 @@ def main():
                                if '.png' in x]
                      if 'png' in x.split(' ')[0]]
 
-    with open(csv, mode="r", newline=None) as input_file:
+    with open(os.path.join(input_images_path, csv), mode="r", newline=None) as input_file:
         csv_input_data = [x.strip() for x in input_file.readlines()]
 
     csv_images = set([x.split(',')[0].replace("'", "").replace('"', '')
