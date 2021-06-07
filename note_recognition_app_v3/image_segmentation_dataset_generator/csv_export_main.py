@@ -67,6 +67,8 @@ def main():
                     element_positions,
                     recognized_list,
                     row)
+                if -1 in [rng_pos, rng_list, rng_row]:
+                    continue
 
                 rng_row_name = input_img_name[:-4] + '_rng_' + str(index) + '_' + row_name
 
@@ -124,23 +126,54 @@ def get_randomized_rows(element_positions, recognized_list, row):
     new_rec_list.insert(0, recognized_list[0])
     new_rec_list = tuple(new_rec_list)
 
-    row_w, row_h = row.shape
-    new_row = np.ones((row_w, row_h), np.uint8)
-
     # Get the new image with that order.
-    x_pos = element_positions[1][1][0]
-    new_row[0:row_h, element_positions[0][1][0]:  element_positions[0][1][1]] = row[
-                                                                                0:row_h,
-                                                                                element_positions[0][1][0]:
-                                                                                element_positions[0][1][1]]
-    for el in new_el_pos[1:]:
+    new_positions = []
+
+    row_hgt, row_width = row.shape
+    # Create new img.
+    new_row = np.ones((row_hgt, 1), np.uint8)
+
+    # Add the new element position (first element).
+    new_positions.append((new_el_pos[0][0], (new_el_pos[0][1][0], new_el_pos[0][1][1])))
+
+    # Add the part of the row before the first element to the image.
+    new_row = np.concatenate((new_row, row[0:row_hgt, 0:element_positions[0][1][0]]), axis=1)
+    # Add the first element to the image.
+    new_row = np.concatenate((new_row, row[0:row_hgt, element_positions[0][1][0]:element_positions[0][1][1]]), axis=1)
+
+    # Calculate the average distance between the elements.
+    sum_dist = 0
+    index = 0
+    for index, (el1, el2) in enumerate(zip(element_positions[:-1], element_positions[1:])):
+        dist = el2[1][0] - el1[1][1]
+        sum_dist = sum_dist + dist
+    avg_dist = sum_dist // index if index > 0 else 9
+    # Add some empty space to the image.
+    empty_space = row[0:row_hgt, element_positions[0][1][1]:element_positions[0][1][1] + avg_dist]
+    new_row = np.concatenate((new_row, empty_space), axis=1)
+
+    for index, el in enumerate(new_el_pos[1:]):
         width = el[1][1] - el[1][0]
-        new_row[0:row_h, x_pos: x_pos + width] = row[0:row_h, el[1][0]:el[1][1]]
-        x_pos = x_pos + width
+        new_positions.append((el[0], (new_row.shape[1], new_row.shape[1] + width)))
+        print(el[0], (new_row.shape[1], new_row.shape[1] + width))
+        # Add an element
+        new_row = np.concatenate((new_row, row[0:row_hgt, el[1][0]:el[1][1]]), axis=1)
+        # Add some empty space.
+        if index < len(new_el_pos) - 2:
+            new_row = np.concatenate((new_row, empty_space), axis=1)
+
+    right_pad = row.shape[1] - new_row.shape[1]
+    if right_pad < 0:
+        return -1, -1, -1
+
+    if right_pad > 0:
+        right_pad = np.ones((row_hgt, right_pad), np.uint8)
+        new_row = np.concatenate((new_row, right_pad), axis=1)
 
     if new_row.shape != row.shape:
-        return element_positions, recognized_list, row
-    return new_el_pos, new_rec_list, new_row
+        return -1, -1, -1
+
+    return list(new_positions), list(new_rec_list), new_row
 
 
 if __name__ == '__main__':
